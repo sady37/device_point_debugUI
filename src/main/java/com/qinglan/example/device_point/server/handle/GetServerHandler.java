@@ -27,7 +27,7 @@ public class GetServerHandler extends SimpleChannelInboundHandler<ServerLBSInfo.
             ServerLBSInfo.GetServerResponse.Builder serverInfo = ServerLBSInfo.GetServerResponse.newBuilder();
             serverInfo.setSeq(2);
             serverInfo.setResult(0);
-            serverInfo.setServer("192.168.1.133");
+            serverInfo.setServer("10.0.0.200");
             serverInfo.setPort(1060);
 
             ByteBuf buffer = ctx.alloc().buffer();

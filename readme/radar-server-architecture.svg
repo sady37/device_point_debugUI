@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600">
+  <!-- Background -->
+  <rect width="900" height="600" fill="#f8f9fa" />
+  
+  <!-- Title -->
+  <text x="450" y="30" text-anchor="middle" font-family="Arial" font-size="24" font-weight="bold" fill="#333">
+    Radar Device Server Communication Architecture
+  </text>
+  
+  <!-- Main Container Sections -->
+  <rect x="50" y="60" width="800" height="520" fill="none" stroke="#ccc" stroke-width="1" rx="5" />
+  
+  <!-- Network Layer -->
+  <rect x="70" y="80" width="760" height="80" fill="#e9ecef" stroke="#adb5bd" stroke-width="1" rx="5" />
+  <text x="450" y="110" text-anchor="middle" font-family="Arial" font-size="18" font-weight="bold" fill="#495057">
+    Network Layer
+  </text>
+  <rect x="120" y="120" width="160" height="30" fill="#fff" stroke="#6c757d" stroke-width="1" rx="3" />
+  <text x="200" y="140" text-anchor="middle" font-family="Arial" font-size="14" fill="#495057">
+    ProcotolFrameDecoder
+  </text>
+  <rect x="370" y="120" width="160" height="30" fill="#fff" stroke="#6c757d" stroke-width="1" rx="3" />
+  <text x="450" y="140" text-anchor="middle" font-family="Arial" font-size="14" fill="#495057">
+    ProtoBufCodecSharable
+  </text>
+  <rect x="620" y="120" width="160" height="30" fill="#fff" stroke="#6c757d" stroke-width="1" rx="3" />
+  <text x="700" y="140" text-anchor="middle" font-family="Arial" font-size="14" fill="#495057">
+    QlIotServer
+  </text>
+  
+  <!-- Message Handlers Layer -->
+  <rect x="70" y="180" width="760" height="120" fill="#e6f3ff" stroke="#adb5bd" stroke-width="1" rx="5" />
+  <text x="450" y="205" text-anchor="middle" font-family="Arial" font-size="18" font-weight="bold" fill="#0066cc">
+    Message Handlers
+  </text>
+  
+  <!-- Handler boxes (3 rows of 5) -->
+  <!-- Row 1 -->
+  <rect x="100" y="220" width="120" height="25" fill="#fff" stroke="#0066cc" stroke-width="1" rx="3" />
+  <text x="160" y="237" text-anchor="middle" font-family="Arial" font-size="12" fill="#0066cc">
+    GetServerHandler
+  </text>
+  
+  <rect x="240" y="220" width="120" height="25" fill="#fff" stroke="#0066cc" stroke-width="1" rx="3" />
+  <text x="300" y="237" text-anchor="middle" font-family="Arial" font-size="12" fill="#0066cc">
+    RegistResponseHandler
+  </text>
+  
+  <rect x="380" y="220" width="120" height="25" fill="#fff" stroke="#0066cc" stroke-width="1" rx="3" />
+  <text x="440" y="237" text-anchor="middle" font-family="Arial" font-size="12" fill="#0066cc">
+    HeartMsgHandler
+  </text>
+  
+  <rect x="520" y="220" width="120" height="25" fill="#fff" stroke="#0066cc" stroke-width="1" rx="3" />
+  <text x="580" y="237" text-anchor="middle" font-family="Arial" font-size="12" fill="#0066cc">
+    FallDownHandler
+  </text>
+  
+  <rect x="660" y="220" width="120" height="25" fill="#fff" stroke="#0066cc" stroke-width="1" rx="3" />
+  <text x="720" y="237" text-anchor="middle" font-family="Arial" font-size="12" fill="#0066cc">
+    PositionDateHandler
+  </text>
+  
+  <!-- Row 2 -->
+  <rect x="100" y="255" width="120" height="25" fill="#fff" stroke="#0066cc" stroke-width="1" rx="3" />
+  <text x="160" y="272" text-anchor="middle" font-family="Arial" font-size="12" fill="#0066cc">
+    BreathDateHandler
+  </text>
+  
+  <rect x="240" y="255" width="120" height="25" fill="#fff" stroke="#0066cc" stroke-width="1" rx="3" />
+  <text x="300" y="272" text-anchor="middle" font-family="Arial" font-size="12" fill="#0066cc">
+    SetPropHandler
+  </text>
+  
+  <rect x="380" y="255" width="120" height="25" fill="#fff" stroke="#0066cc" stroke-width="1" rx="3" />
+  <text x="440" y="272" text-anchor="middle" font-family="Arial" font-size="12" fill="#0066cc">
+    ProItemsHandler
+  </text>
+  
+  <rect x="520" y="255" width="120" height="25" fill="#fff" stroke="#0066cc" stroke-width="1" rx="3" />
+  <text x="580" y="272" text-anchor="middle" font-family="Arial" font-size="12" fill="#0066cc">
+    PositionEventHandler
+  </text>
+  
+  <rect x="660" y="255" width="120" height="25" fill="#fff" stroke="#0066cc" stroke-width="1" rx="3" />
+  <text x="720" y="272" text-anchor="middle" font-family="Arial" font-size="12" fill="#0066cc">
+    NumberOfPeopleHandler
+  </text>
+  
+  <!-- Session Management Layer -->
+  <rect x="70" y="320" width="760" height="80" fill="#e6fff2" stroke="#adb5bd" stroke-width="1" rx="5" />
+  <text x="450" y="350" text-anchor="middle" font-family="Arial" font-size="18" font-weight="bold" fill="#00994c">
+    Session Management
+  </text>
+  <rect x="310" y="360" width="280" height="30" fill="#fff" stroke="#00994c" stroke-width="1" rx="3" />
+  <text x="450" y="380" text-anchor="middle" font-family="Arial" font-size="14" fill="#00994c">
+    DeviceRegSession
+  </text>
+  
+  <!-- UI Layer (New Addition) -->
+  <rect x="70" y="420" width="760" height="140" fill="#fff0e6" stroke="#adb5bd" stroke-width="1" rx="5" />
+  <text x="450" y="445" text-anchor="middle" font-family="Arial" font-size="18" font-weight="bold" fill="#cc5200">
+    Debug UI Layer
+  </text>
+  
+  <!-- UI Components -->
+  <rect x="100" y="465" width="220" height="30" fill="#fff" stroke="#cc5200" stroke-width="1" rx="3" />
+  <text x="210" y="485" text-anchor="middle" font-family="Arial" font-size="14" fill="#cc5200">
+    RadarDebugUI
+  </text>
+  
+  <rect x="340" y="465" width="220" height="30" fill="#fff" stroke="#cc5200" stroke-width="1" rx="3" />
+  <text x="450" y="485" text-anchor="middle" font-family="Arial" font-size="14" fill="#cc5200">
+    RadarUIController
+  </text>
+  
+  <rect x="580" y="465" width="220" height="30" fill="#fff" stroke="#cc5200" stroke-width="1" rx="3" />
+  <text x="690" y="485" text-anchor="middle" font-family="Arial" font-size="14" fill="#cc5200">
+    EventBus
+  </text>
+  
+  <rect x="220" y="510" width="220" height="30" fill="#fff" stroke="#cc5200" stroke-width="1" rx="3" />
+  <text x="330" y="530" text-anchor="middle" font-family="Arial" font-size="14" fill="#cc5200">
+    ConfigurationManager
+  </text>
+  
+  <rect x="460" y="510" width="220" height="30" fill="#fff" stroke="#cc5200" stroke-width="1" rx="3" />
+  <text x="570" y="530" text-anchor="middle" font-family="Arial" font-size="14" fill="#cc5200">
+    DeviceSessionListener
+  </text>
+  
+  <!-- Connection Lines -->
+  <!-- Network to Handlers -->
+  <line x1="450" y1="160" x2="450" y2="180" stroke="#6c757d" stroke-width="2" stroke-dasharray="5,5" />
+  
+  <!-- Handlers to Session -->
+  <line x1="450" y1="300" x2="450" y2="320" stroke="#6c757d" stroke-width="2" stroke-dasharray="5,5" />
+  
+  <!-- Session to UI -->
+  <line x1="450" y1="400" x2="450" y2="420" stroke="#6c757d" stroke-width="2" stroke-dasharray="5,5" />
+  
+  <!-- Legend -->
+  <rect x="700" y="565" width="15" height="15" fill="#e9ecef" stroke="#adb5bd" stroke-width="1" />
+  <text x="720" y="577" font-family="Arial" font-size="12" fill="#333">Network</text>
+  
+  <rect x="770" y="565" width="15" height="15" fill="#e6f3ff" stroke="#adb5bd" stroke-width="1" />
+  <text x="790" y="577" font-family="Arial" font-size="12" fill="#333">Handlers</text>
+  
+  <rect x="700" y="545" width="15" height="15" fill="#e6fff2" stroke="#adb5bd" stroke-width="1" />
+  <text x="720" y="557" font-family="Arial" font-size="12" fill="#333">Session</text>
+  
+  <rect x="770" y="545" width="15" height="15" fill="#fff0e6" stroke="#adb5bd" stroke-width="1" />
+  <text x="790" y="557" font-family="Arial" font-size="12" fill="#333">UI</text>
+</svg>

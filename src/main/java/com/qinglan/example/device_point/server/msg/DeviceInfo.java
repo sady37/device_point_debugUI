@@ -20,6 +20,7 @@ public final class DeviceInfo {
 
     /**
      * <code>uint32 seq = 1;</code>
+     * @return The seq.
      */
     int getSeq();
 
@@ -29,6 +30,7 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string hwver = 2;</code>
+     * @return The hwver.
      */
     java.lang.String getHwver();
     /**
@@ -37,6 +39,7 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string hwver = 2;</code>
+     * @return The bytes for hwver.
      */
     com.google.protobuf.ByteString
         getHwverBytes();
@@ -47,6 +50,7 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string sfver = 3;</code>
+     * @return The sfver.
      */
     java.lang.String getSfver();
     /**
@@ -55,6 +59,7 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string sfver = 3;</code>
+     * @return The bytes for sfver.
      */
     com.google.protobuf.ByteString
         getSfverBytes();
@@ -65,6 +70,7 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string addon = 4;</code>
+     * @return The addon.
      */
     java.lang.String getAddon();
     /**
@@ -73,6 +79,7 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string addon = 4;</code>
+     * @return The bytes for addon.
      */
     com.google.protobuf.ByteString
         getAddonBytes();
@@ -83,6 +90,7 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string uid = 5;</code>
+     * @return The uid.
      */
     java.lang.String getUid();
     /**
@@ -91,6 +99,7 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string uid = 5;</code>
+     * @return The bytes for uid.
      */
     com.google.protobuf.ByteString
         getUidBytes();
@@ -101,6 +110,7 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string type = 6;</code>
+     * @return The type.
      */
     java.lang.String getType();
     /**
@@ -109,6 +119,7 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string type = 6;</code>
+     * @return The bytes for type.
      */
     com.google.protobuf.ByteString
         getTypeBytes();
@@ -119,6 +130,7 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string name = 7;</code>
+     * @return The name.
      */
     java.lang.String getName();
     /**
@@ -127,6 +139,7 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string name = 7;</code>
+     * @return The bytes for name.
      */
     com.google.protobuf.ByteString
         getNameBytes();
@@ -137,6 +150,7 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string location = 8;</code>
+     * @return The location.
      */
     java.lang.String getLocation();
     /**
@@ -145,6 +159,7 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string location = 8;</code>
+     * @return The bytes for location.
      */
     com.google.protobuf.ByteString
         getLocationBytes();
@@ -157,7 +172,7 @@ public final class DeviceInfo {
    *
    * Protobuf type {@code RegisterReq}
    */
-  public  static final class RegisterReq extends
+  public static final class RegisterReq extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:RegisterReq)
       RegisterReqOrBuilder {
@@ -167,7 +182,6 @@ public final class DeviceInfo {
       super(builder);
     }
     private RegisterReq() {
-      seq_ = 0;
       hwver_ = "";
       sfver_ = "";
       addon_ = "";
@@ -178,95 +192,12 @@ public final class DeviceInfo {
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new RegisterReq();
     }
-    private RegisterReq(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
 
-              seq_ = input.readUInt32();
-              break;
-            }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              hwver_ = s;
-              break;
-            }
-            case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              sfver_ = s;
-              break;
-            }
-            case 34: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              addon_ = s;
-              break;
-            }
-            case 42: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              uid_ = s;
-              break;
-            }
-            case 50: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              type_ = s;
-              break;
-            }
-            case 58: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              name_ = s;
-              break;
-            }
-            case 66: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              location_ = s;
-              break;
-            }
-            default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.qinglan.example.device_point.server.msg.DeviceInfo.internal_static_RegisterReq_descriptor;
@@ -281,23 +212,28 @@ public final class DeviceInfo {
     }
 
     public static final int SEQ_FIELD_NUMBER = 1;
-    private int seq_;
+    private int seq_ = 0;
     /**
      * <code>uint32 seq = 1;</code>
+     * @return The seq.
      */
+    @java.lang.Override
     public int getSeq() {
       return seq_;
     }
 
     public static final int HWVER_FIELD_NUMBER = 2;
-    private volatile java.lang.Object hwver_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object hwver_ = "";
     /**
      * <pre>
      *硬件版本号
      * </pre>
      *
      * <code>string hwver = 2;</code>
+     * @return The hwver.
      */
+    @java.lang.Override
     public java.lang.String getHwver() {
       java.lang.Object ref = hwver_;
       if (ref instanceof java.lang.String) {
@@ -316,7 +252,9 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string hwver = 2;</code>
+     * @return The bytes for hwver.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getHwverBytes() {
       java.lang.Object ref = hwver_;
@@ -332,14 +270,17 @@ public final class DeviceInfo {
     }
 
     public static final int SFVER_FIELD_NUMBER = 3;
-    private volatile java.lang.Object sfver_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object sfver_ = "";
     /**
      * <pre>
      *软件版本号
      * </pre>
      *
      * <code>string sfver = 3;</code>
+     * @return The sfver.
      */
+    @java.lang.Override
     public java.lang.String getSfver() {
       java.lang.Object ref = sfver_;
       if (ref instanceof java.lang.String) {
@@ -358,7 +299,9 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string sfver = 3;</code>
+     * @return The bytes for sfver.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getSfverBytes() {
       java.lang.Object ref = sfver_;
@@ -374,14 +317,17 @@ public final class DeviceInfo {
     }
 
     public static final int ADDON_FIELD_NUMBER = 4;
-    private volatile java.lang.Object addon_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object addon_ = "";
     /**
      * <pre>
      *附加信息
      * </pre>
      *
      * <code>string addon = 4;</code>
+     * @return The addon.
      */
+    @java.lang.Override
     public java.lang.String getAddon() {
       java.lang.Object ref = addon_;
       if (ref instanceof java.lang.String) {
@@ -400,7 +346,9 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string addon = 4;</code>
+     * @return The bytes for addon.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getAddonBytes() {
       java.lang.Object ref = addon_;
@@ -416,14 +364,17 @@ public final class DeviceInfo {
     }
 
     public static final int UID_FIELD_NUMBER = 5;
-    private volatile java.lang.Object uid_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object uid_ = "";
     /**
      * <pre>
      *设备UID
      * </pre>
      *
      * <code>string uid = 5;</code>
+     * @return The uid.
      */
+    @java.lang.Override
     public java.lang.String getUid() {
       java.lang.Object ref = uid_;
       if (ref instanceof java.lang.String) {
@@ -442,7 +393,9 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string uid = 5;</code>
+     * @return The bytes for uid.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getUidBytes() {
       java.lang.Object ref = uid_;
@@ -458,14 +411,17 @@ public final class DeviceInfo {
     }
 
     public static final int TYPE_FIELD_NUMBER = 6;
-    private volatile java.lang.Object type_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object type_ = "";
     /**
      * <pre>
      *设备型号
      * </pre>
      *
      * <code>string type = 6;</code>
+     * @return The type.
      */
+    @java.lang.Override
     public java.lang.String getType() {
       java.lang.Object ref = type_;
       if (ref instanceof java.lang.String) {
@@ -484,7 +440,9 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string type = 6;</code>
+     * @return The bytes for type.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getTypeBytes() {
       java.lang.Object ref = type_;
@@ -500,14 +458,17 @@ public final class DeviceInfo {
     }
 
     public static final int NAME_FIELD_NUMBER = 7;
-    private volatile java.lang.Object name_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object name_ = "";
     /**
      * <pre>
      *设备名称
      * </pre>
      *
      * <code>string name = 7;</code>
+     * @return The name.
      */
+    @java.lang.Override
     public java.lang.String getName() {
       java.lang.Object ref = name_;
       if (ref instanceof java.lang.String) {
@@ -526,7 +487,9 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string name = 7;</code>
+     * @return The bytes for name.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getNameBytes() {
       java.lang.Object ref = name_;
@@ -542,14 +505,17 @@ public final class DeviceInfo {
     }
 
     public static final int LOCATION_FIELD_NUMBER = 8;
-    private volatile java.lang.Object location_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object location_ = "";
     /**
      * <pre>
      *设备位置信息
      * </pre>
      *
      * <code>string location = 8;</code>
+     * @return The location.
      */
+    @java.lang.Override
     public java.lang.String getLocation() {
       java.lang.Object ref = location_;
       if (ref instanceof java.lang.String) {
@@ -568,7 +534,9 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string location = 8;</code>
+     * @return The bytes for location.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getLocationBytes() {
       java.lang.Object ref = location_;
@@ -600,28 +568,28 @@ public final class DeviceInfo {
       if (seq_ != 0) {
         output.writeUInt32(1, seq_);
       }
-      if (!getHwverBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(hwver_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, hwver_);
       }
-      if (!getSfverBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(sfver_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, sfver_);
       }
-      if (!getAddonBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(addon_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 4, addon_);
       }
-      if (!getUidBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(uid_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 5, uid_);
       }
-      if (!getTypeBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(type_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 6, type_);
       }
-      if (!getNameBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 7, name_);
       }
-      if (!getLocationBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(location_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 8, location_);
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -634,28 +602,28 @@ public final class DeviceInfo {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(1, seq_);
       }
-      if (!getHwverBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(hwver_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, hwver_);
       }
-      if (!getSfverBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(sfver_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, sfver_);
       }
-      if (!getAddonBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(addon_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, addon_);
       }
-      if (!getUidBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(uid_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, uid_);
       }
-      if (!getTypeBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(type_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, type_);
       }
-      if (!getNameBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, name_);
       }
-      if (!getLocationBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(location_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, location_);
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -670,25 +638,24 @@ public final class DeviceInfo {
       }
       com.qinglan.example.device_point.server.msg.DeviceInfo.RegisterReq other = (com.qinglan.example.device_point.server.msg.DeviceInfo.RegisterReq) obj;
 
-      boolean result = true;
-      result = result && (getSeq()
-          == other.getSeq());
-      result = result && getHwver()
-          .equals(other.getHwver());
-      result = result && getSfver()
-          .equals(other.getSfver());
-      result = result && getAddon()
-          .equals(other.getAddon());
-      result = result && getUid()
-          .equals(other.getUid());
-      result = result && getType()
-          .equals(other.getType());
-      result = result && getName()
-          .equals(other.getName());
-      result = result && getLocation()
-          .equals(other.getLocation());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (getSeq()
+          != other.getSeq()) return false;
+      if (!getHwver()
+          .equals(other.getHwver())) return false;
+      if (!getSfver()
+          .equals(other.getSfver())) return false;
+      if (!getAddon()
+          .equals(other.getAddon())) return false;
+      if (!getUid()
+          .equals(other.getUid())) return false;
+      if (!getType()
+          .equals(other.getType())) return false;
+      if (!getName()
+          .equals(other.getName())) return false;
+      if (!getLocation()
+          .equals(other.getLocation())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -714,7 +681,7 @@ public final class DeviceInfo {
       hash = (53 * hash) + getName().hashCode();
       hash = (37 * hash) + LOCATION_FIELD_NUMBER;
       hash = (53 * hash) + getLocation().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -836,38 +803,26 @@ public final class DeviceInfo {
 
       // Construct using com.qinglan.example.device_point.server.msg.DeviceInfo.RegisterReq.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         seq_ = 0;
-
         hwver_ = "";
-
         sfver_ = "";
-
         addon_ = "";
-
         uid_ = "";
-
         type_ = "";
-
         name_ = "";
-
         location_ = "";
-
         return this;
       }
 
@@ -894,50 +849,39 @@ public final class DeviceInfo {
       @java.lang.Override
       public com.qinglan.example.device_point.server.msg.DeviceInfo.RegisterReq buildPartial() {
         com.qinglan.example.device_point.server.msg.DeviceInfo.RegisterReq result = new com.qinglan.example.device_point.server.msg.DeviceInfo.RegisterReq(this);
-        result.seq_ = seq_;
-        result.hwver_ = hwver_;
-        result.sfver_ = sfver_;
-        result.addon_ = addon_;
-        result.uid_ = uid_;
-        result.type_ = type_;
-        result.name_ = name_;
-        result.location_ = location_;
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      @java.lang.Override
-      public Builder clone() {
-        return (Builder) super.clone();
+      private void buildPartial0(com.qinglan.example.device_point.server.msg.DeviceInfo.RegisterReq result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.seq_ = seq_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.hwver_ = hwver_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.sfver_ = sfver_;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.addon_ = addon_;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.uid_ = uid_;
+        }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          result.type_ = type_;
+        }
+        if (((from_bitField0_ & 0x00000040) != 0)) {
+          result.name_ = name_;
+        }
+        if (((from_bitField0_ & 0x00000080) != 0)) {
+          result.location_ = location_;
+        }
       }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.qinglan.example.device_point.server.msg.DeviceInfo.RegisterReq) {
@@ -955,33 +899,40 @@ public final class DeviceInfo {
         }
         if (!other.getHwver().isEmpty()) {
           hwver_ = other.hwver_;
+          bitField0_ |= 0x00000002;
           onChanged();
         }
         if (!other.getSfver().isEmpty()) {
           sfver_ = other.sfver_;
+          bitField0_ |= 0x00000004;
           onChanged();
         }
         if (!other.getAddon().isEmpty()) {
           addon_ = other.addon_;
+          bitField0_ |= 0x00000008;
           onChanged();
         }
         if (!other.getUid().isEmpty()) {
           uid_ = other.uid_;
+          bitField0_ |= 0x00000010;
           onChanged();
         }
         if (!other.getType().isEmpty()) {
           type_ = other.type_;
+          bitField0_ |= 0x00000020;
           onChanged();
         }
         if (!other.getName().isEmpty()) {
           name_ = other.name_;
+          bitField0_ |= 0x00000040;
           onChanged();
         }
         if (!other.getLocation().isEmpty()) {
           location_ = other.location_;
+          bitField0_ |= 0x00000080;
           onChanged();
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -996,41 +947,101 @@ public final class DeviceInfo {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.qinglan.example.device_point.server.msg.DeviceInfo.RegisterReq parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                seq_ = input.readUInt32();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              case 18: {
+                hwver_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              case 26: {
+                sfver_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 26
+              case 34: {
+                addon_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 34
+              case 42: {
+                uid_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 42
+              case 50: {
+                type_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000020;
+                break;
+              } // case 50
+              case 58: {
+                name_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000040;
+                break;
+              } // case 58
+              case 66: {
+                location_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000080;
+                break;
+              } // case 66
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.qinglan.example.device_point.server.msg.DeviceInfo.RegisterReq) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
+      private int bitField0_;
 
       private int seq_ ;
       /**
        * <code>uint32 seq = 1;</code>
+       * @return The seq.
        */
+      @java.lang.Override
       public int getSeq() {
         return seq_;
       }
       /**
        * <code>uint32 seq = 1;</code>
+       * @param value The seq to set.
+       * @return This builder for chaining.
        */
       public Builder setSeq(int value) {
-        
+
         seq_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
       /**
        * <code>uint32 seq = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearSeq() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         seq_ = 0;
         onChanged();
         return this;
@@ -1043,6 +1054,7 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string hwver = 2;</code>
+       * @return The hwver.
        */
       public java.lang.String getHwver() {
         java.lang.Object ref = hwver_;
@@ -1062,6 +1074,7 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string hwver = 2;</code>
+       * @return The bytes for hwver.
        */
       public com.google.protobuf.ByteString
           getHwverBytes() {
@@ -1082,14 +1095,14 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string hwver = 2;</code>
+       * @param value The hwver to set.
+       * @return This builder for chaining.
        */
       public Builder setHwver(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         hwver_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -1099,10 +1112,11 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string hwver = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearHwver() {
-        
         hwver_ = getDefaultInstance().getHwver();
+        bitField0_ = (bitField0_ & ~0x00000002);
         onChanged();
         return this;
       }
@@ -1112,15 +1126,15 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string hwver = 2;</code>
+       * @param value The bytes for hwver to set.
+       * @return This builder for chaining.
        */
       public Builder setHwverBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         hwver_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -1132,6 +1146,7 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string sfver = 3;</code>
+       * @return The sfver.
        */
       public java.lang.String getSfver() {
         java.lang.Object ref = sfver_;
@@ -1151,6 +1166,7 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string sfver = 3;</code>
+       * @return The bytes for sfver.
        */
       public com.google.protobuf.ByteString
           getSfverBytes() {
@@ -1171,14 +1187,14 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string sfver = 3;</code>
+       * @param value The sfver to set.
+       * @return This builder for chaining.
        */
       public Builder setSfver(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         sfver_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
@@ -1188,10 +1204,11 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string sfver = 3;</code>
+       * @return This builder for chaining.
        */
       public Builder clearSfver() {
-        
         sfver_ = getDefaultInstance().getSfver();
+        bitField0_ = (bitField0_ & ~0x00000004);
         onChanged();
         return this;
       }
@@ -1201,15 +1218,15 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string sfver = 3;</code>
+       * @param value The bytes for sfver to set.
+       * @return This builder for chaining.
        */
       public Builder setSfverBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         sfver_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
@@ -1221,6 +1238,7 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string addon = 4;</code>
+       * @return The addon.
        */
       public java.lang.String getAddon() {
         java.lang.Object ref = addon_;
@@ -1240,6 +1258,7 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string addon = 4;</code>
+       * @return The bytes for addon.
        */
       public com.google.protobuf.ByteString
           getAddonBytes() {
@@ -1260,14 +1279,14 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string addon = 4;</code>
+       * @param value The addon to set.
+       * @return This builder for chaining.
        */
       public Builder setAddon(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         addon_ = value;
+        bitField0_ |= 0x00000008;
         onChanged();
         return this;
       }
@@ -1277,10 +1296,11 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string addon = 4;</code>
+       * @return This builder for chaining.
        */
       public Builder clearAddon() {
-        
         addon_ = getDefaultInstance().getAddon();
+        bitField0_ = (bitField0_ & ~0x00000008);
         onChanged();
         return this;
       }
@@ -1290,15 +1310,15 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string addon = 4;</code>
+       * @param value The bytes for addon to set.
+       * @return This builder for chaining.
        */
       public Builder setAddonBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         addon_ = value;
+        bitField0_ |= 0x00000008;
         onChanged();
         return this;
       }
@@ -1310,6 +1330,7 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string uid = 5;</code>
+       * @return The uid.
        */
       public java.lang.String getUid() {
         java.lang.Object ref = uid_;
@@ -1329,6 +1350,7 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string uid = 5;</code>
+       * @return The bytes for uid.
        */
       public com.google.protobuf.ByteString
           getUidBytes() {
@@ -1349,14 +1371,14 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string uid = 5;</code>
+       * @param value The uid to set.
+       * @return This builder for chaining.
        */
       public Builder setUid(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         uid_ = value;
+        bitField0_ |= 0x00000010;
         onChanged();
         return this;
       }
@@ -1366,10 +1388,11 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string uid = 5;</code>
+       * @return This builder for chaining.
        */
       public Builder clearUid() {
-        
         uid_ = getDefaultInstance().getUid();
+        bitField0_ = (bitField0_ & ~0x00000010);
         onChanged();
         return this;
       }
@@ -1379,15 +1402,15 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string uid = 5;</code>
+       * @param value The bytes for uid to set.
+       * @return This builder for chaining.
        */
       public Builder setUidBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         uid_ = value;
+        bitField0_ |= 0x00000010;
         onChanged();
         return this;
       }
@@ -1399,6 +1422,7 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string type = 6;</code>
+       * @return The type.
        */
       public java.lang.String getType() {
         java.lang.Object ref = type_;
@@ -1418,6 +1442,7 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string type = 6;</code>
+       * @return The bytes for type.
        */
       public com.google.protobuf.ByteString
           getTypeBytes() {
@@ -1438,14 +1463,14 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string type = 6;</code>
+       * @param value The type to set.
+       * @return This builder for chaining.
        */
       public Builder setType(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         type_ = value;
+        bitField0_ |= 0x00000020;
         onChanged();
         return this;
       }
@@ -1455,10 +1480,11 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string type = 6;</code>
+       * @return This builder for chaining.
        */
       public Builder clearType() {
-        
         type_ = getDefaultInstance().getType();
+        bitField0_ = (bitField0_ & ~0x00000020);
         onChanged();
         return this;
       }
@@ -1468,15 +1494,15 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string type = 6;</code>
+       * @param value The bytes for type to set.
+       * @return This builder for chaining.
        */
       public Builder setTypeBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         type_ = value;
+        bitField0_ |= 0x00000020;
         onChanged();
         return this;
       }
@@ -1488,6 +1514,7 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string name = 7;</code>
+       * @return The name.
        */
       public java.lang.String getName() {
         java.lang.Object ref = name_;
@@ -1507,6 +1534,7 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string name = 7;</code>
+       * @return The bytes for name.
        */
       public com.google.protobuf.ByteString
           getNameBytes() {
@@ -1527,14 +1555,14 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string name = 7;</code>
+       * @param value The name to set.
+       * @return This builder for chaining.
        */
       public Builder setName(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         name_ = value;
+        bitField0_ |= 0x00000040;
         onChanged();
         return this;
       }
@@ -1544,10 +1572,11 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string name = 7;</code>
+       * @return This builder for chaining.
        */
       public Builder clearName() {
-        
         name_ = getDefaultInstance().getName();
+        bitField0_ = (bitField0_ & ~0x00000040);
         onChanged();
         return this;
       }
@@ -1557,15 +1586,15 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string name = 7;</code>
+       * @param value The bytes for name to set.
+       * @return This builder for chaining.
        */
       public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         name_ = value;
+        bitField0_ |= 0x00000040;
         onChanged();
         return this;
       }
@@ -1577,6 +1606,7 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string location = 8;</code>
+       * @return The location.
        */
       public java.lang.String getLocation() {
         java.lang.Object ref = location_;
@@ -1596,6 +1626,7 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string location = 8;</code>
+       * @return The bytes for location.
        */
       public com.google.protobuf.ByteString
           getLocationBytes() {
@@ -1616,14 +1647,14 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string location = 8;</code>
+       * @param value The location to set.
+       * @return This builder for chaining.
        */
       public Builder setLocation(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         location_ = value;
+        bitField0_ |= 0x00000080;
         onChanged();
         return this;
       }
@@ -1633,10 +1664,11 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string location = 8;</code>
+       * @return This builder for chaining.
        */
       public Builder clearLocation() {
-        
         location_ = getDefaultInstance().getLocation();
+        bitField0_ = (bitField0_ & ~0x00000080);
         onChanged();
         return this;
       }
@@ -1646,22 +1678,22 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string location = 8;</code>
+       * @param value The bytes for location to set.
+       * @return This builder for chaining.
        */
       public Builder setLocationBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         location_ = value;
+        bitField0_ |= 0x00000080;
         onChanged();
         return this;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -1691,7 +1723,18 @@ public final class DeviceInfo {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new RegisterReq(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -1717,6 +1760,7 @@ public final class DeviceInfo {
 
     /**
      * <code>uint32 seq = 1;</code>
+     * @return The seq.
      */
     int getSeq();
 
@@ -1726,6 +1770,7 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>int32 result = 2;</code>
+     * @return The result.
      */
     int getResult();
 
@@ -1735,6 +1780,7 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string addon = 3;</code>
+     * @return The addon.
      */
     java.lang.String getAddon();
     /**
@@ -1743,6 +1789,7 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string addon = 3;</code>
+     * @return The bytes for addon.
      */
     com.google.protobuf.ByteString
         getAddonBytes();
@@ -1753,6 +1800,7 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string errmsg = 4;</code>
+     * @return The errmsg.
      */
     java.lang.String getErrmsg();
     /**
@@ -1761,6 +1809,7 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string errmsg = 4;</code>
+     * @return The bytes for errmsg.
      */
     com.google.protobuf.ByteString
         getErrmsgBytes();
@@ -1773,7 +1822,7 @@ public final class DeviceInfo {
    *
    * Protobuf type {@code RegisterResponse}
    */
-  public  static final class RegisterResponse extends
+  public static final class RegisterResponse extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:RegisterResponse)
       RegisterResponseOrBuilder {
@@ -1783,77 +1832,17 @@ public final class DeviceInfo {
       super(builder);
     }
     private RegisterResponse() {
-      seq_ = 0;
-      result_ = 0;
       addon_ = "";
       errmsg_ = "";
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new RegisterResponse();
     }
-    private RegisterResponse(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
 
-              seq_ = input.readUInt32();
-              break;
-            }
-            case 16: {
-
-              result_ = input.readInt32();
-              break;
-            }
-            case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              addon_ = s;
-              break;
-            }
-            case 34: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              errmsg_ = s;
-              break;
-            }
-            default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.qinglan.example.device_point.server.msg.DeviceInfo.internal_static_RegisterResponse_descriptor;
@@ -1868,36 +1857,43 @@ public final class DeviceInfo {
     }
 
     public static final int SEQ_FIELD_NUMBER = 1;
-    private int seq_;
+    private int seq_ = 0;
     /**
      * <code>uint32 seq = 1;</code>
+     * @return The seq.
      */
+    @java.lang.Override
     public int getSeq() {
       return seq_;
     }
 
     public static final int RESULT_FIELD_NUMBER = 2;
-    private int result_;
+    private int result_ = 0;
     /**
      * <pre>
      *结果，0:成功，其它值，失败
      * </pre>
      *
      * <code>int32 result = 2;</code>
+     * @return The result.
      */
+    @java.lang.Override
     public int getResult() {
       return result_;
     }
 
     public static final int ADDON_FIELD_NUMBER = 3;
-    private volatile java.lang.Object addon_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object addon_ = "";
     /**
      * <pre>
      *返回的附加信息
      * </pre>
      *
      * <code>string addon = 3;</code>
+     * @return The addon.
      */
+    @java.lang.Override
     public java.lang.String getAddon() {
       java.lang.Object ref = addon_;
       if (ref instanceof java.lang.String) {
@@ -1916,7 +1912,9 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string addon = 3;</code>
+     * @return The bytes for addon.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getAddonBytes() {
       java.lang.Object ref = addon_;
@@ -1932,14 +1930,17 @@ public final class DeviceInfo {
     }
 
     public static final int ERRMSG_FIELD_NUMBER = 4;
-    private volatile java.lang.Object errmsg_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object errmsg_ = "";
     /**
      * <pre>
      *错误信息
      * </pre>
      *
      * <code>string errmsg = 4;</code>
+     * @return The errmsg.
      */
+    @java.lang.Override
     public java.lang.String getErrmsg() {
       java.lang.Object ref = errmsg_;
       if (ref instanceof java.lang.String) {
@@ -1958,7 +1959,9 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string errmsg = 4;</code>
+     * @return The bytes for errmsg.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getErrmsgBytes() {
       java.lang.Object ref = errmsg_;
@@ -1993,13 +1996,13 @@ public final class DeviceInfo {
       if (result_ != 0) {
         output.writeInt32(2, result_);
       }
-      if (!getAddonBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(addon_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, addon_);
       }
-      if (!getErrmsgBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(errmsg_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 4, errmsg_);
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -2016,13 +2019,13 @@ public final class DeviceInfo {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(2, result_);
       }
-      if (!getAddonBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(addon_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, addon_);
       }
-      if (!getErrmsgBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(errmsg_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, errmsg_);
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -2037,17 +2040,16 @@ public final class DeviceInfo {
       }
       com.qinglan.example.device_point.server.msg.DeviceInfo.RegisterResponse other = (com.qinglan.example.device_point.server.msg.DeviceInfo.RegisterResponse) obj;
 
-      boolean result = true;
-      result = result && (getSeq()
-          == other.getSeq());
-      result = result && (getResult()
-          == other.getResult());
-      result = result && getAddon()
-          .equals(other.getAddon());
-      result = result && getErrmsg()
-          .equals(other.getErrmsg());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (getSeq()
+          != other.getSeq()) return false;
+      if (getResult()
+          != other.getResult()) return false;
+      if (!getAddon()
+          .equals(other.getAddon())) return false;
+      if (!getErrmsg()
+          .equals(other.getErrmsg())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -2065,7 +2067,7 @@ public final class DeviceInfo {
       hash = (53 * hash) + getAddon().hashCode();
       hash = (37 * hash) + ERRMSG_FIELD_NUMBER;
       hash = (53 * hash) + getErrmsg().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -2187,30 +2189,22 @@ public final class DeviceInfo {
 
       // Construct using com.qinglan.example.device_point.server.msg.DeviceInfo.RegisterResponse.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         seq_ = 0;
-
         result_ = 0;
-
         addon_ = "";
-
         errmsg_ = "";
-
         return this;
       }
 
@@ -2237,46 +2231,27 @@ public final class DeviceInfo {
       @java.lang.Override
       public com.qinglan.example.device_point.server.msg.DeviceInfo.RegisterResponse buildPartial() {
         com.qinglan.example.device_point.server.msg.DeviceInfo.RegisterResponse result = new com.qinglan.example.device_point.server.msg.DeviceInfo.RegisterResponse(this);
-        result.seq_ = seq_;
-        result.result_ = result_;
-        result.addon_ = addon_;
-        result.errmsg_ = errmsg_;
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      @java.lang.Override
-      public Builder clone() {
-        return (Builder) super.clone();
+      private void buildPartial0(com.qinglan.example.device_point.server.msg.DeviceInfo.RegisterResponse result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.seq_ = seq_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.result_ = result_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.addon_ = addon_;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.errmsg_ = errmsg_;
+        }
       }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.qinglan.example.device_point.server.msg.DeviceInfo.RegisterResponse) {
@@ -2297,13 +2272,15 @@ public final class DeviceInfo {
         }
         if (!other.getAddon().isEmpty()) {
           addon_ = other.addon_;
+          bitField0_ |= 0x00000004;
           onChanged();
         }
         if (!other.getErrmsg().isEmpty()) {
           errmsg_ = other.errmsg_;
+          bitField0_ |= 0x00000008;
           onChanged();
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -2318,41 +2295,81 @@ public final class DeviceInfo {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.qinglan.example.device_point.server.msg.DeviceInfo.RegisterResponse parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                seq_ = input.readUInt32();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              case 16: {
+                result_ = input.readInt32();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              case 26: {
+                addon_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 26
+              case 34: {
+                errmsg_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 34
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.qinglan.example.device_point.server.msg.DeviceInfo.RegisterResponse) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
+      private int bitField0_;
 
       private int seq_ ;
       /**
        * <code>uint32 seq = 1;</code>
+       * @return The seq.
        */
+      @java.lang.Override
       public int getSeq() {
         return seq_;
       }
       /**
        * <code>uint32 seq = 1;</code>
+       * @param value The seq to set.
+       * @return This builder for chaining.
        */
       public Builder setSeq(int value) {
-        
+
         seq_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
       /**
        * <code>uint32 seq = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearSeq() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         seq_ = 0;
         onChanged();
         return this;
@@ -2365,7 +2382,9 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>int32 result = 2;</code>
+       * @return The result.
        */
+      @java.lang.Override
       public int getResult() {
         return result_;
       }
@@ -2375,10 +2394,13 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>int32 result = 2;</code>
+       * @param value The result to set.
+       * @return This builder for chaining.
        */
       public Builder setResult(int value) {
-        
+
         result_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -2388,9 +2410,10 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>int32 result = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearResult() {
-        
+        bitField0_ = (bitField0_ & ~0x00000002);
         result_ = 0;
         onChanged();
         return this;
@@ -2403,6 +2426,7 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string addon = 3;</code>
+       * @return The addon.
        */
       public java.lang.String getAddon() {
         java.lang.Object ref = addon_;
@@ -2422,6 +2446,7 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string addon = 3;</code>
+       * @return The bytes for addon.
        */
       public com.google.protobuf.ByteString
           getAddonBytes() {
@@ -2442,14 +2467,14 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string addon = 3;</code>
+       * @param value The addon to set.
+       * @return This builder for chaining.
        */
       public Builder setAddon(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         addon_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
@@ -2459,10 +2484,11 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string addon = 3;</code>
+       * @return This builder for chaining.
        */
       public Builder clearAddon() {
-        
         addon_ = getDefaultInstance().getAddon();
+        bitField0_ = (bitField0_ & ~0x00000004);
         onChanged();
         return this;
       }
@@ -2472,15 +2498,15 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string addon = 3;</code>
+       * @param value The bytes for addon to set.
+       * @return This builder for chaining.
        */
       public Builder setAddonBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         addon_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
@@ -2492,6 +2518,7 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string errmsg = 4;</code>
+       * @return The errmsg.
        */
       public java.lang.String getErrmsg() {
         java.lang.Object ref = errmsg_;
@@ -2511,6 +2538,7 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string errmsg = 4;</code>
+       * @return The bytes for errmsg.
        */
       public com.google.protobuf.ByteString
           getErrmsgBytes() {
@@ -2531,14 +2559,14 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string errmsg = 4;</code>
+       * @param value The errmsg to set.
+       * @return This builder for chaining.
        */
       public Builder setErrmsg(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         errmsg_ = value;
+        bitField0_ |= 0x00000008;
         onChanged();
         return this;
       }
@@ -2548,10 +2576,11 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string errmsg = 4;</code>
+       * @return This builder for chaining.
        */
       public Builder clearErrmsg() {
-        
         errmsg_ = getDefaultInstance().getErrmsg();
+        bitField0_ = (bitField0_ & ~0x00000008);
         onChanged();
         return this;
       }
@@ -2561,22 +2590,22 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string errmsg = 4;</code>
+       * @param value The bytes for errmsg to set.
+       * @return This builder for chaining.
        */
       public Builder setErrmsgBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         errmsg_ = value;
+        bitField0_ |= 0x00000008;
         onChanged();
         return this;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -2606,7 +2635,18 @@ public final class DeviceInfo {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new RegisterResponse(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -2632,6 +2672,7 @@ public final class DeviceInfo {
 
     /**
      * <code>uint32 seq = 1;</code>
+     * @return The seq.
      */
     int getSeq();
 
@@ -2641,6 +2682,7 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string espsfver = 2;</code>
+     * @return The espsfver.
      */
     java.lang.String getEspsfver();
     /**
@@ -2649,6 +2691,7 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string espsfver = 2;</code>
+     * @return The bytes for espsfver.
      */
     com.google.protobuf.ByteString
         getEspsfverBytes();
@@ -2659,6 +2702,7 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string ESPFileUrl = 3;</code>
+     * @return The eSPFileUrl.
      */
     java.lang.String getESPFileUrl();
     /**
@@ -2667,6 +2711,7 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string ESPFileUrl = 3;</code>
+     * @return The bytes for eSPFileUrl.
      */
     com.google.protobuf.ByteString
         getESPFileUrlBytes();
@@ -2677,6 +2722,7 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>uint32 ESPFileSize = 4;</code>
+     * @return The eSPFileSize.
      */
     int getESPFileSize();
 
@@ -2686,6 +2732,7 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string ESPFileSHA256 = 5;</code>
+     * @return The eSPFileSHA256.
      */
     java.lang.String getESPFileSHA256();
     /**
@@ -2694,6 +2741,7 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string ESPFileSHA256 = 5;</code>
+     * @return The bytes for eSPFileSHA256.
      */
     com.google.protobuf.ByteString
         getESPFileSHA256Bytes();
@@ -2704,6 +2752,7 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string radarsfver = 6;</code>
+     * @return The radarsfver.
      */
     java.lang.String getRadarsfver();
     /**
@@ -2712,6 +2761,7 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string radarsfver = 6;</code>
+     * @return The bytes for radarsfver.
      */
     com.google.protobuf.ByteString
         getRadarsfverBytes();
@@ -2722,6 +2772,7 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string RadarFileUrl = 7;</code>
+     * @return The radarFileUrl.
      */
     java.lang.String getRadarFileUrl();
     /**
@@ -2730,6 +2781,7 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string RadarFileUrl = 7;</code>
+     * @return The bytes for radarFileUrl.
      */
     com.google.protobuf.ByteString
         getRadarFileUrlBytes();
@@ -2740,6 +2792,7 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>uint32 RadarFileSize = 8;</code>
+     * @return The radarFileSize.
      */
     int getRadarFileSize();
 
@@ -2749,6 +2802,7 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string RadarFileSHA256 = 9;</code>
+     * @return The radarFileSHA256.
      */
     java.lang.String getRadarFileSHA256();
     /**
@@ -2757,6 +2811,7 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string RadarFileSHA256 = 9;</code>
+     * @return The bytes for radarFileSHA256.
      */
     com.google.protobuf.ByteString
         getRadarFileSHA256Bytes();
@@ -2769,7 +2824,7 @@ public final class DeviceInfo {
    *
    * Protobuf type {@code OTAReq}
    */
-  public  static final class OTAReq extends
+  public static final class OTAReq extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:OTAReq)
       OTAReqOrBuilder {
@@ -2779,111 +2834,21 @@ public final class DeviceInfo {
       super(builder);
     }
     private OTAReq() {
-      seq_ = 0;
       espsfver_ = "";
       eSPFileUrl_ = "";
-      eSPFileSize_ = 0;
       eSPFileSHA256_ = "";
       radarsfver_ = "";
       radarFileUrl_ = "";
-      radarFileSize_ = 0;
       radarFileSHA256_ = "";
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new OTAReq();
     }
-    private OTAReq(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
 
-              seq_ = input.readUInt32();
-              break;
-            }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              espsfver_ = s;
-              break;
-            }
-            case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              eSPFileUrl_ = s;
-              break;
-            }
-            case 32: {
-
-              eSPFileSize_ = input.readUInt32();
-              break;
-            }
-            case 42: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              eSPFileSHA256_ = s;
-              break;
-            }
-            case 50: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              radarsfver_ = s;
-              break;
-            }
-            case 58: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              radarFileUrl_ = s;
-              break;
-            }
-            case 64: {
-
-              radarFileSize_ = input.readUInt32();
-              break;
-            }
-            case 74: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              radarFileSHA256_ = s;
-              break;
-            }
-            default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.qinglan.example.device_point.server.msg.DeviceInfo.internal_static_OTAReq_descriptor;
@@ -2898,23 +2863,28 @@ public final class DeviceInfo {
     }
 
     public static final int SEQ_FIELD_NUMBER = 1;
-    private int seq_;
+    private int seq_ = 0;
     /**
      * <code>uint32 seq = 1;</code>
+     * @return The seq.
      */
+    @java.lang.Override
     public int getSeq() {
       return seq_;
     }
 
     public static final int ESPSFVER_FIELD_NUMBER = 2;
-    private volatile java.lang.Object espsfver_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object espsfver_ = "";
     /**
      * <pre>
      *HC2：2.0,TK2:2.6
      * </pre>
      *
      * <code>string espsfver = 2;</code>
+     * @return The espsfver.
      */
+    @java.lang.Override
     public java.lang.String getEspsfver() {
       java.lang.Object ref = espsfver_;
       if (ref instanceof java.lang.String) {
@@ -2933,7 +2903,9 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string espsfver = 2;</code>
+     * @return The bytes for espsfver.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getEspsfverBytes() {
       java.lang.Object ref = espsfver_;
@@ -2949,14 +2921,17 @@ public final class DeviceInfo {
     }
 
     public static final int ESPFILEURL_FIELD_NUMBER = 3;
-    private volatile java.lang.Object eSPFileUrl_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object eSPFileUrl_ = "";
     /**
      * <pre>
      *文件名或者标识符，用于后续文件传输请求,文件名长度最大为50字节
      * </pre>
      *
      * <code>string ESPFileUrl = 3;</code>
+     * @return The eSPFileUrl.
      */
+    @java.lang.Override
     public java.lang.String getESPFileUrl() {
       java.lang.Object ref = eSPFileUrl_;
       if (ref instanceof java.lang.String) {
@@ -2975,7 +2950,9 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string ESPFileUrl = 3;</code>
+     * @return The bytes for eSPFileUrl.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getESPFileUrlBytes() {
       java.lang.Object ref = eSPFileUrl_;
@@ -2991,27 +2968,32 @@ public final class DeviceInfo {
     }
 
     public static final int ESPFILESIZE_FIELD_NUMBER = 4;
-    private int eSPFileSize_;
+    private int eSPFileSize_ = 0;
     /**
      * <pre>
      *文件大小，单位字节，最大不超过2M
      * </pre>
      *
      * <code>uint32 ESPFileSize = 4;</code>
+     * @return The eSPFileSize.
      */
+    @java.lang.Override
     public int getESPFileSize() {
       return eSPFileSize_;
     }
 
     public static final int ESPFILESHA256_FIELD_NUMBER = 5;
-    private volatile java.lang.Object eSPFileSHA256_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object eSPFileSHA256_ = "";
     /**
      * <pre>
      *文件sha256值
      * </pre>
      *
      * <code>string ESPFileSHA256 = 5;</code>
+     * @return The eSPFileSHA256.
      */
+    @java.lang.Override
     public java.lang.String getESPFileSHA256() {
       java.lang.Object ref = eSPFileSHA256_;
       if (ref instanceof java.lang.String) {
@@ -3030,7 +3012,9 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string ESPFileSHA256 = 5;</code>
+     * @return The bytes for eSPFileSHA256.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getESPFileSHA256Bytes() {
       java.lang.Object ref = eSPFileSHA256_;
@@ -3046,14 +3030,17 @@ public final class DeviceInfo {
     }
 
     public static final int RADARSFVER_FIELD_NUMBER = 6;
-    private volatile java.lang.Object radarsfver_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object radarsfver_ = "";
     /**
      * <pre>
      *非加密版本:1.0 ,加密版本:2.3
      * </pre>
      *
      * <code>string radarsfver = 6;</code>
+     * @return The radarsfver.
      */
+    @java.lang.Override
     public java.lang.String getRadarsfver() {
       java.lang.Object ref = radarsfver_;
       if (ref instanceof java.lang.String) {
@@ -3072,7 +3059,9 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string radarsfver = 6;</code>
+     * @return The bytes for radarsfver.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getRadarsfverBytes() {
       java.lang.Object ref = radarsfver_;
@@ -3088,14 +3077,17 @@ public final class DeviceInfo {
     }
 
     public static final int RADARFILEURL_FIELD_NUMBER = 7;
-    private volatile java.lang.Object radarFileUrl_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object radarFileUrl_ = "";
     /**
      * <pre>
      *文件名或者标识符，用于后续文件传输请求,文件名长度最大为50字节
      * </pre>
      *
      * <code>string RadarFileUrl = 7;</code>
+     * @return The radarFileUrl.
      */
+    @java.lang.Override
     public java.lang.String getRadarFileUrl() {
       java.lang.Object ref = radarFileUrl_;
       if (ref instanceof java.lang.String) {
@@ -3114,7 +3106,9 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string RadarFileUrl = 7;</code>
+     * @return The bytes for radarFileUrl.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getRadarFileUrlBytes() {
       java.lang.Object ref = radarFileUrl_;
@@ -3130,27 +3124,32 @@ public final class DeviceInfo {
     }
 
     public static final int RADARFILESIZE_FIELD_NUMBER = 8;
-    private int radarFileSize_;
+    private int radarFileSize_ = 0;
     /**
      * <pre>
      *文件大小，单位字节，最大不超过500K
      * </pre>
      *
      * <code>uint32 RadarFileSize = 8;</code>
+     * @return The radarFileSize.
      */
+    @java.lang.Override
     public int getRadarFileSize() {
       return radarFileSize_;
     }
 
     public static final int RADARFILESHA256_FIELD_NUMBER = 9;
-    private volatile java.lang.Object radarFileSHA256_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object radarFileSHA256_ = "";
     /**
      * <pre>
      *文件sha256值
      * </pre>
      *
      * <code>string RadarFileSHA256 = 9;</code>
+     * @return The radarFileSHA256.
      */
+    @java.lang.Override
     public java.lang.String getRadarFileSHA256() {
       java.lang.Object ref = radarFileSHA256_;
       if (ref instanceof java.lang.String) {
@@ -3169,7 +3168,9 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string RadarFileSHA256 = 9;</code>
+     * @return The bytes for radarFileSHA256.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getRadarFileSHA256Bytes() {
       java.lang.Object ref = radarFileSHA256_;
@@ -3201,31 +3202,31 @@ public final class DeviceInfo {
       if (seq_ != 0) {
         output.writeUInt32(1, seq_);
       }
-      if (!getEspsfverBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(espsfver_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, espsfver_);
       }
-      if (!getESPFileUrlBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(eSPFileUrl_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, eSPFileUrl_);
       }
       if (eSPFileSize_ != 0) {
         output.writeUInt32(4, eSPFileSize_);
       }
-      if (!getESPFileSHA256Bytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(eSPFileSHA256_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 5, eSPFileSHA256_);
       }
-      if (!getRadarsfverBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(radarsfver_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 6, radarsfver_);
       }
-      if (!getRadarFileUrlBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(radarFileUrl_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 7, radarFileUrl_);
       }
       if (radarFileSize_ != 0) {
         output.writeUInt32(8, radarFileSize_);
       }
-      if (!getRadarFileSHA256Bytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(radarFileSHA256_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 9, radarFileSHA256_);
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -3238,33 +3239,33 @@ public final class DeviceInfo {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(1, seq_);
       }
-      if (!getEspsfverBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(espsfver_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, espsfver_);
       }
-      if (!getESPFileUrlBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(eSPFileUrl_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, eSPFileUrl_);
       }
       if (eSPFileSize_ != 0) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(4, eSPFileSize_);
       }
-      if (!getESPFileSHA256Bytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(eSPFileSHA256_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, eSPFileSHA256_);
       }
-      if (!getRadarsfverBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(radarsfver_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, radarsfver_);
       }
-      if (!getRadarFileUrlBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(radarFileUrl_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, radarFileUrl_);
       }
       if (radarFileSize_ != 0) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(8, radarFileSize_);
       }
-      if (!getRadarFileSHA256Bytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(radarFileSHA256_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, radarFileSHA256_);
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -3279,27 +3280,26 @@ public final class DeviceInfo {
       }
       com.qinglan.example.device_point.server.msg.DeviceInfo.OTAReq other = (com.qinglan.example.device_point.server.msg.DeviceInfo.OTAReq) obj;
 
-      boolean result = true;
-      result = result && (getSeq()
-          == other.getSeq());
-      result = result && getEspsfver()
-          .equals(other.getEspsfver());
-      result = result && getESPFileUrl()
-          .equals(other.getESPFileUrl());
-      result = result && (getESPFileSize()
-          == other.getESPFileSize());
-      result = result && getESPFileSHA256()
-          .equals(other.getESPFileSHA256());
-      result = result && getRadarsfver()
-          .equals(other.getRadarsfver());
-      result = result && getRadarFileUrl()
-          .equals(other.getRadarFileUrl());
-      result = result && (getRadarFileSize()
-          == other.getRadarFileSize());
-      result = result && getRadarFileSHA256()
-          .equals(other.getRadarFileSHA256());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (getSeq()
+          != other.getSeq()) return false;
+      if (!getEspsfver()
+          .equals(other.getEspsfver())) return false;
+      if (!getESPFileUrl()
+          .equals(other.getESPFileUrl())) return false;
+      if (getESPFileSize()
+          != other.getESPFileSize()) return false;
+      if (!getESPFileSHA256()
+          .equals(other.getESPFileSHA256())) return false;
+      if (!getRadarsfver()
+          .equals(other.getRadarsfver())) return false;
+      if (!getRadarFileUrl()
+          .equals(other.getRadarFileUrl())) return false;
+      if (getRadarFileSize()
+          != other.getRadarFileSize()) return false;
+      if (!getRadarFileSHA256()
+          .equals(other.getRadarFileSHA256())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -3327,7 +3327,7 @@ public final class DeviceInfo {
       hash = (53 * hash) + getRadarFileSize();
       hash = (37 * hash) + RADARFILESHA256_FIELD_NUMBER;
       hash = (53 * hash) + getRadarFileSHA256().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -3449,40 +3449,27 @@ public final class DeviceInfo {
 
       // Construct using com.qinglan.example.device_point.server.msg.DeviceInfo.OTAReq.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         seq_ = 0;
-
         espsfver_ = "";
-
         eSPFileUrl_ = "";
-
         eSPFileSize_ = 0;
-
         eSPFileSHA256_ = "";
-
         radarsfver_ = "";
-
         radarFileUrl_ = "";
-
         radarFileSize_ = 0;
-
         radarFileSHA256_ = "";
-
         return this;
       }
 
@@ -3509,51 +3496,42 @@ public final class DeviceInfo {
       @java.lang.Override
       public com.qinglan.example.device_point.server.msg.DeviceInfo.OTAReq buildPartial() {
         com.qinglan.example.device_point.server.msg.DeviceInfo.OTAReq result = new com.qinglan.example.device_point.server.msg.DeviceInfo.OTAReq(this);
-        result.seq_ = seq_;
-        result.espsfver_ = espsfver_;
-        result.eSPFileUrl_ = eSPFileUrl_;
-        result.eSPFileSize_ = eSPFileSize_;
-        result.eSPFileSHA256_ = eSPFileSHA256_;
-        result.radarsfver_ = radarsfver_;
-        result.radarFileUrl_ = radarFileUrl_;
-        result.radarFileSize_ = radarFileSize_;
-        result.radarFileSHA256_ = radarFileSHA256_;
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      @java.lang.Override
-      public Builder clone() {
-        return (Builder) super.clone();
+      private void buildPartial0(com.qinglan.example.device_point.server.msg.DeviceInfo.OTAReq result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.seq_ = seq_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.espsfver_ = espsfver_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.eSPFileUrl_ = eSPFileUrl_;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.eSPFileSize_ = eSPFileSize_;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.eSPFileSHA256_ = eSPFileSHA256_;
+        }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          result.radarsfver_ = radarsfver_;
+        }
+        if (((from_bitField0_ & 0x00000040) != 0)) {
+          result.radarFileUrl_ = radarFileUrl_;
+        }
+        if (((from_bitField0_ & 0x00000080) != 0)) {
+          result.radarFileSize_ = radarFileSize_;
+        }
+        if (((from_bitField0_ & 0x00000100) != 0)) {
+          result.radarFileSHA256_ = radarFileSHA256_;
+        }
       }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.qinglan.example.device_point.server.msg.DeviceInfo.OTAReq) {
@@ -3571,10 +3549,12 @@ public final class DeviceInfo {
         }
         if (!other.getEspsfver().isEmpty()) {
           espsfver_ = other.espsfver_;
+          bitField0_ |= 0x00000002;
           onChanged();
         }
         if (!other.getESPFileUrl().isEmpty()) {
           eSPFileUrl_ = other.eSPFileUrl_;
+          bitField0_ |= 0x00000004;
           onChanged();
         }
         if (other.getESPFileSize() != 0) {
@@ -3582,14 +3562,17 @@ public final class DeviceInfo {
         }
         if (!other.getESPFileSHA256().isEmpty()) {
           eSPFileSHA256_ = other.eSPFileSHA256_;
+          bitField0_ |= 0x00000010;
           onChanged();
         }
         if (!other.getRadarsfver().isEmpty()) {
           radarsfver_ = other.radarsfver_;
+          bitField0_ |= 0x00000020;
           onChanged();
         }
         if (!other.getRadarFileUrl().isEmpty()) {
           radarFileUrl_ = other.radarFileUrl_;
+          bitField0_ |= 0x00000040;
           onChanged();
         }
         if (other.getRadarFileSize() != 0) {
@@ -3597,9 +3580,10 @@ public final class DeviceInfo {
         }
         if (!other.getRadarFileSHA256().isEmpty()) {
           radarFileSHA256_ = other.radarFileSHA256_;
+          bitField0_ |= 0x00000100;
           onChanged();
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -3614,41 +3598,106 @@ public final class DeviceInfo {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.qinglan.example.device_point.server.msg.DeviceInfo.OTAReq parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                seq_ = input.readUInt32();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              case 18: {
+                espsfver_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              case 26: {
+                eSPFileUrl_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 26
+              case 32: {
+                eSPFileSize_ = input.readUInt32();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 32
+              case 42: {
+                eSPFileSHA256_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 42
+              case 50: {
+                radarsfver_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000020;
+                break;
+              } // case 50
+              case 58: {
+                radarFileUrl_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000040;
+                break;
+              } // case 58
+              case 64: {
+                radarFileSize_ = input.readUInt32();
+                bitField0_ |= 0x00000080;
+                break;
+              } // case 64
+              case 74: {
+                radarFileSHA256_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000100;
+                break;
+              } // case 74
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.qinglan.example.device_point.server.msg.DeviceInfo.OTAReq) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
+      private int bitField0_;
 
       private int seq_ ;
       /**
        * <code>uint32 seq = 1;</code>
+       * @return The seq.
        */
+      @java.lang.Override
       public int getSeq() {
         return seq_;
       }
       /**
        * <code>uint32 seq = 1;</code>
+       * @param value The seq to set.
+       * @return This builder for chaining.
        */
       public Builder setSeq(int value) {
-        
+
         seq_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
       /**
        * <code>uint32 seq = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearSeq() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         seq_ = 0;
         onChanged();
         return this;
@@ -3661,6 +3710,7 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string espsfver = 2;</code>
+       * @return The espsfver.
        */
       public java.lang.String getEspsfver() {
         java.lang.Object ref = espsfver_;
@@ -3680,6 +3730,7 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string espsfver = 2;</code>
+       * @return The bytes for espsfver.
        */
       public com.google.protobuf.ByteString
           getEspsfverBytes() {
@@ -3700,14 +3751,14 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string espsfver = 2;</code>
+       * @param value The espsfver to set.
+       * @return This builder for chaining.
        */
       public Builder setEspsfver(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         espsfver_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -3717,10 +3768,11 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string espsfver = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearEspsfver() {
-        
         espsfver_ = getDefaultInstance().getEspsfver();
+        bitField0_ = (bitField0_ & ~0x00000002);
         onChanged();
         return this;
       }
@@ -3730,15 +3782,15 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string espsfver = 2;</code>
+       * @param value The bytes for espsfver to set.
+       * @return This builder for chaining.
        */
       public Builder setEspsfverBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         espsfver_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -3750,6 +3802,7 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string ESPFileUrl = 3;</code>
+       * @return The eSPFileUrl.
        */
       public java.lang.String getESPFileUrl() {
         java.lang.Object ref = eSPFileUrl_;
@@ -3769,6 +3822,7 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string ESPFileUrl = 3;</code>
+       * @return The bytes for eSPFileUrl.
        */
       public com.google.protobuf.ByteString
           getESPFileUrlBytes() {
@@ -3789,14 +3843,14 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string ESPFileUrl = 3;</code>
+       * @param value The eSPFileUrl to set.
+       * @return This builder for chaining.
        */
       public Builder setESPFileUrl(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         eSPFileUrl_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
@@ -3806,10 +3860,11 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string ESPFileUrl = 3;</code>
+       * @return This builder for chaining.
        */
       public Builder clearESPFileUrl() {
-        
         eSPFileUrl_ = getDefaultInstance().getESPFileUrl();
+        bitField0_ = (bitField0_ & ~0x00000004);
         onChanged();
         return this;
       }
@@ -3819,15 +3874,15 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string ESPFileUrl = 3;</code>
+       * @param value The bytes for eSPFileUrl to set.
+       * @return This builder for chaining.
        */
       public Builder setESPFileUrlBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         eSPFileUrl_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
@@ -3839,7 +3894,9 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>uint32 ESPFileSize = 4;</code>
+       * @return The eSPFileSize.
        */
+      @java.lang.Override
       public int getESPFileSize() {
         return eSPFileSize_;
       }
@@ -3849,10 +3906,13 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>uint32 ESPFileSize = 4;</code>
+       * @param value The eSPFileSize to set.
+       * @return This builder for chaining.
        */
       public Builder setESPFileSize(int value) {
-        
+
         eSPFileSize_ = value;
+        bitField0_ |= 0x00000008;
         onChanged();
         return this;
       }
@@ -3862,9 +3922,10 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>uint32 ESPFileSize = 4;</code>
+       * @return This builder for chaining.
        */
       public Builder clearESPFileSize() {
-        
+        bitField0_ = (bitField0_ & ~0x00000008);
         eSPFileSize_ = 0;
         onChanged();
         return this;
@@ -3877,6 +3938,7 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string ESPFileSHA256 = 5;</code>
+       * @return The eSPFileSHA256.
        */
       public java.lang.String getESPFileSHA256() {
         java.lang.Object ref = eSPFileSHA256_;
@@ -3896,6 +3958,7 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string ESPFileSHA256 = 5;</code>
+       * @return The bytes for eSPFileSHA256.
        */
       public com.google.protobuf.ByteString
           getESPFileSHA256Bytes() {
@@ -3916,14 +3979,14 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string ESPFileSHA256 = 5;</code>
+       * @param value The eSPFileSHA256 to set.
+       * @return This builder for chaining.
        */
       public Builder setESPFileSHA256(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         eSPFileSHA256_ = value;
+        bitField0_ |= 0x00000010;
         onChanged();
         return this;
       }
@@ -3933,10 +3996,11 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string ESPFileSHA256 = 5;</code>
+       * @return This builder for chaining.
        */
       public Builder clearESPFileSHA256() {
-        
         eSPFileSHA256_ = getDefaultInstance().getESPFileSHA256();
+        bitField0_ = (bitField0_ & ~0x00000010);
         onChanged();
         return this;
       }
@@ -3946,15 +4010,15 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string ESPFileSHA256 = 5;</code>
+       * @param value The bytes for eSPFileSHA256 to set.
+       * @return This builder for chaining.
        */
       public Builder setESPFileSHA256Bytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         eSPFileSHA256_ = value;
+        bitField0_ |= 0x00000010;
         onChanged();
         return this;
       }
@@ -3966,6 +4030,7 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string radarsfver = 6;</code>
+       * @return The radarsfver.
        */
       public java.lang.String getRadarsfver() {
         java.lang.Object ref = radarsfver_;
@@ -3985,6 +4050,7 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string radarsfver = 6;</code>
+       * @return The bytes for radarsfver.
        */
       public com.google.protobuf.ByteString
           getRadarsfverBytes() {
@@ -4005,14 +4071,14 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string radarsfver = 6;</code>
+       * @param value The radarsfver to set.
+       * @return This builder for chaining.
        */
       public Builder setRadarsfver(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         radarsfver_ = value;
+        bitField0_ |= 0x00000020;
         onChanged();
         return this;
       }
@@ -4022,10 +4088,11 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string radarsfver = 6;</code>
+       * @return This builder for chaining.
        */
       public Builder clearRadarsfver() {
-        
         radarsfver_ = getDefaultInstance().getRadarsfver();
+        bitField0_ = (bitField0_ & ~0x00000020);
         onChanged();
         return this;
       }
@@ -4035,15 +4102,15 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string radarsfver = 6;</code>
+       * @param value The bytes for radarsfver to set.
+       * @return This builder for chaining.
        */
       public Builder setRadarsfverBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         radarsfver_ = value;
+        bitField0_ |= 0x00000020;
         onChanged();
         return this;
       }
@@ -4055,6 +4122,7 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string RadarFileUrl = 7;</code>
+       * @return The radarFileUrl.
        */
       public java.lang.String getRadarFileUrl() {
         java.lang.Object ref = radarFileUrl_;
@@ -4074,6 +4142,7 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string RadarFileUrl = 7;</code>
+       * @return The bytes for radarFileUrl.
        */
       public com.google.protobuf.ByteString
           getRadarFileUrlBytes() {
@@ -4094,14 +4163,14 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string RadarFileUrl = 7;</code>
+       * @param value The radarFileUrl to set.
+       * @return This builder for chaining.
        */
       public Builder setRadarFileUrl(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         radarFileUrl_ = value;
+        bitField0_ |= 0x00000040;
         onChanged();
         return this;
       }
@@ -4111,10 +4180,11 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string RadarFileUrl = 7;</code>
+       * @return This builder for chaining.
        */
       public Builder clearRadarFileUrl() {
-        
         radarFileUrl_ = getDefaultInstance().getRadarFileUrl();
+        bitField0_ = (bitField0_ & ~0x00000040);
         onChanged();
         return this;
       }
@@ -4124,15 +4194,15 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string RadarFileUrl = 7;</code>
+       * @param value The bytes for radarFileUrl to set.
+       * @return This builder for chaining.
        */
       public Builder setRadarFileUrlBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         radarFileUrl_ = value;
+        bitField0_ |= 0x00000040;
         onChanged();
         return this;
       }
@@ -4144,7 +4214,9 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>uint32 RadarFileSize = 8;</code>
+       * @return The radarFileSize.
        */
+      @java.lang.Override
       public int getRadarFileSize() {
         return radarFileSize_;
       }
@@ -4154,10 +4226,13 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>uint32 RadarFileSize = 8;</code>
+       * @param value The radarFileSize to set.
+       * @return This builder for chaining.
        */
       public Builder setRadarFileSize(int value) {
-        
+
         radarFileSize_ = value;
+        bitField0_ |= 0x00000080;
         onChanged();
         return this;
       }
@@ -4167,9 +4242,10 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>uint32 RadarFileSize = 8;</code>
+       * @return This builder for chaining.
        */
       public Builder clearRadarFileSize() {
-        
+        bitField0_ = (bitField0_ & ~0x00000080);
         radarFileSize_ = 0;
         onChanged();
         return this;
@@ -4182,6 +4258,7 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string RadarFileSHA256 = 9;</code>
+       * @return The radarFileSHA256.
        */
       public java.lang.String getRadarFileSHA256() {
         java.lang.Object ref = radarFileSHA256_;
@@ -4201,6 +4278,7 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string RadarFileSHA256 = 9;</code>
+       * @return The bytes for radarFileSHA256.
        */
       public com.google.protobuf.ByteString
           getRadarFileSHA256Bytes() {
@@ -4221,14 +4299,14 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string RadarFileSHA256 = 9;</code>
+       * @param value The radarFileSHA256 to set.
+       * @return This builder for chaining.
        */
       public Builder setRadarFileSHA256(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         radarFileSHA256_ = value;
+        bitField0_ |= 0x00000100;
         onChanged();
         return this;
       }
@@ -4238,10 +4316,11 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string RadarFileSHA256 = 9;</code>
+       * @return This builder for chaining.
        */
       public Builder clearRadarFileSHA256() {
-        
         radarFileSHA256_ = getDefaultInstance().getRadarFileSHA256();
+        bitField0_ = (bitField0_ & ~0x00000100);
         onChanged();
         return this;
       }
@@ -4251,22 +4330,22 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string RadarFileSHA256 = 9;</code>
+       * @param value The bytes for radarFileSHA256 to set.
+       * @return This builder for chaining.
        */
       public Builder setRadarFileSHA256Bytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         radarFileSHA256_ = value;
+        bitField0_ |= 0x00000100;
         onChanged();
         return this;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -4296,7 +4375,18 @@ public final class DeviceInfo {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new OTAReq(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -4322,20 +4412,24 @@ public final class DeviceInfo {
 
     /**
      * <code>uint32 seq = 1;</code>
+     * @return The seq.
      */
     int getSeq();
 
     /**
      * <code>int32 result = 2;</code>
+     * @return The result.
      */
     int getResult();
 
     /**
      * <code>string errmsg = 3;</code>
+     * @return The errmsg.
      */
     java.lang.String getErrmsg();
     /**
      * <code>string errmsg = 3;</code>
+     * @return The bytes for errmsg.
      */
     com.google.protobuf.ByteString
         getErrmsgBytes();
@@ -4349,7 +4443,7 @@ public final class DeviceInfo {
    *
    * Protobuf type {@code OtaResponse}
    */
-  public  static final class OtaResponse extends
+  public static final class OtaResponse extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:OtaResponse)
       OtaResponseOrBuilder {
@@ -4359,70 +4453,16 @@ public final class DeviceInfo {
       super(builder);
     }
     private OtaResponse() {
-      seq_ = 0;
-      result_ = 0;
       errmsg_ = "";
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new OtaResponse();
     }
-    private OtaResponse(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
 
-              seq_ = input.readUInt32();
-              break;
-            }
-            case 16: {
-
-              result_ = input.readInt32();
-              break;
-            }
-            case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              errmsg_ = s;
-              break;
-            }
-            default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.qinglan.example.device_point.server.msg.DeviceInfo.internal_static_OtaResponse_descriptor;
@@ -4437,28 +4477,35 @@ public final class DeviceInfo {
     }
 
     public static final int SEQ_FIELD_NUMBER = 1;
-    private int seq_;
+    private int seq_ = 0;
     /**
      * <code>uint32 seq = 1;</code>
+     * @return The seq.
      */
+    @java.lang.Override
     public int getSeq() {
       return seq_;
     }
 
     public static final int RESULT_FIELD_NUMBER = 2;
-    private int result_;
+    private int result_ = 0;
     /**
      * <code>int32 result = 2;</code>
+     * @return The result.
      */
+    @java.lang.Override
     public int getResult() {
       return result_;
     }
 
     public static final int ERRMSG_FIELD_NUMBER = 3;
-    private volatile java.lang.Object errmsg_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object errmsg_ = "";
     /**
      * <code>string errmsg = 3;</code>
+     * @return The errmsg.
      */
+    @java.lang.Override
     public java.lang.String getErrmsg() {
       java.lang.Object ref = errmsg_;
       if (ref instanceof java.lang.String) {
@@ -4473,7 +4520,9 @@ public final class DeviceInfo {
     }
     /**
      * <code>string errmsg = 3;</code>
+     * @return The bytes for errmsg.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getErrmsgBytes() {
       java.lang.Object ref = errmsg_;
@@ -4508,10 +4557,10 @@ public final class DeviceInfo {
       if (result_ != 0) {
         output.writeInt32(2, result_);
       }
-      if (!getErrmsgBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(errmsg_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, errmsg_);
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -4528,10 +4577,10 @@ public final class DeviceInfo {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(2, result_);
       }
-      if (!getErrmsgBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(errmsg_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, errmsg_);
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -4546,15 +4595,14 @@ public final class DeviceInfo {
       }
       com.qinglan.example.device_point.server.msg.DeviceInfo.OtaResponse other = (com.qinglan.example.device_point.server.msg.DeviceInfo.OtaResponse) obj;
 
-      boolean result = true;
-      result = result && (getSeq()
-          == other.getSeq());
-      result = result && (getResult()
-          == other.getResult());
-      result = result && getErrmsg()
-          .equals(other.getErrmsg());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (getSeq()
+          != other.getSeq()) return false;
+      if (getResult()
+          != other.getResult()) return false;
+      if (!getErrmsg()
+          .equals(other.getErrmsg())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -4570,7 +4618,7 @@ public final class DeviceInfo {
       hash = (53 * hash) + getResult();
       hash = (37 * hash) + ERRMSG_FIELD_NUMBER;
       hash = (53 * hash) + getErrmsg().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -4693,28 +4741,21 @@ public final class DeviceInfo {
 
       // Construct using com.qinglan.example.device_point.server.msg.DeviceInfo.OtaResponse.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         seq_ = 0;
-
         result_ = 0;
-
         errmsg_ = "";
-
         return this;
       }
 
@@ -4741,45 +4782,24 @@ public final class DeviceInfo {
       @java.lang.Override
       public com.qinglan.example.device_point.server.msg.DeviceInfo.OtaResponse buildPartial() {
         com.qinglan.example.device_point.server.msg.DeviceInfo.OtaResponse result = new com.qinglan.example.device_point.server.msg.DeviceInfo.OtaResponse(this);
-        result.seq_ = seq_;
-        result.result_ = result_;
-        result.errmsg_ = errmsg_;
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      @java.lang.Override
-      public Builder clone() {
-        return (Builder) super.clone();
+      private void buildPartial0(com.qinglan.example.device_point.server.msg.DeviceInfo.OtaResponse result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.seq_ = seq_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.result_ = result_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.errmsg_ = errmsg_;
+        }
       }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.qinglan.example.device_point.server.msg.DeviceInfo.OtaResponse) {
@@ -4800,9 +4820,10 @@ public final class DeviceInfo {
         }
         if (!other.getErrmsg().isEmpty()) {
           errmsg_ = other.errmsg_;
+          bitField0_ |= 0x00000004;
           onChanged();
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -4817,41 +4838,76 @@ public final class DeviceInfo {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.qinglan.example.device_point.server.msg.DeviceInfo.OtaResponse parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                seq_ = input.readUInt32();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              case 16: {
+                result_ = input.readInt32();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              case 26: {
+                errmsg_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 26
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.qinglan.example.device_point.server.msg.DeviceInfo.OtaResponse) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
+      private int bitField0_;
 
       private int seq_ ;
       /**
        * <code>uint32 seq = 1;</code>
+       * @return The seq.
        */
+      @java.lang.Override
       public int getSeq() {
         return seq_;
       }
       /**
        * <code>uint32 seq = 1;</code>
+       * @param value The seq to set.
+       * @return This builder for chaining.
        */
       public Builder setSeq(int value) {
-        
+
         seq_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
       /**
        * <code>uint32 seq = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearSeq() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         seq_ = 0;
         onChanged();
         return this;
@@ -4860,24 +4916,30 @@ public final class DeviceInfo {
       private int result_ ;
       /**
        * <code>int32 result = 2;</code>
+       * @return The result.
        */
+      @java.lang.Override
       public int getResult() {
         return result_;
       }
       /**
        * <code>int32 result = 2;</code>
+       * @param value The result to set.
+       * @return This builder for chaining.
        */
       public Builder setResult(int value) {
-        
+
         result_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
       /**
        * <code>int32 result = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearResult() {
-        
+        bitField0_ = (bitField0_ & ~0x00000002);
         result_ = 0;
         onChanged();
         return this;
@@ -4886,6 +4948,7 @@ public final class DeviceInfo {
       private java.lang.Object errmsg_ = "";
       /**
        * <code>string errmsg = 3;</code>
+       * @return The errmsg.
        */
       public java.lang.String getErrmsg() {
         java.lang.Object ref = errmsg_;
@@ -4901,6 +4964,7 @@ public final class DeviceInfo {
       }
       /**
        * <code>string errmsg = 3;</code>
+       * @return The bytes for errmsg.
        */
       public com.google.protobuf.ByteString
           getErrmsgBytes() {
@@ -4917,44 +4981,45 @@ public final class DeviceInfo {
       }
       /**
        * <code>string errmsg = 3;</code>
+       * @param value The errmsg to set.
+       * @return This builder for chaining.
        */
       public Builder setErrmsg(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         errmsg_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
       /**
        * <code>string errmsg = 3;</code>
+       * @return This builder for chaining.
        */
       public Builder clearErrmsg() {
-        
         errmsg_ = getDefaultInstance().getErrmsg();
+        bitField0_ = (bitField0_ & ~0x00000004);
         onChanged();
         return this;
       }
       /**
        * <code>string errmsg = 3;</code>
+       * @param value The bytes for errmsg to set.
+       * @return This builder for chaining.
        */
       public Builder setErrmsgBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         errmsg_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -4984,7 +5049,18 @@ public final class DeviceInfo {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new OtaResponse(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -5014,15 +5090,18 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>int32 progress = 1;</code>
+     * @return The progress.
      */
     int getProgress();
 
     /**
      * <code>string errMsg = 2;</code>
+     * @return The errMsg.
      */
     java.lang.String getErrMsg();
     /**
      * <code>string errMsg = 2;</code>
+     * @return The bytes for errMsg.
      */
     com.google.protobuf.ByteString
         getErrMsgBytes();
@@ -5035,7 +5114,7 @@ public final class DeviceInfo {
    *
    * Protobuf type {@code OTAProgress}
    */
-  public  static final class OTAProgress extends
+  public static final class OTAProgress extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:OTAProgress)
       OTAProgressOrBuilder {
@@ -5045,64 +5124,16 @@ public final class DeviceInfo {
       super(builder);
     }
     private OTAProgress() {
-      progress_ = 0;
       errMsg_ = "";
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new OTAProgress();
     }
-    private OTAProgress(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
 
-              progress_ = input.readInt32();
-              break;
-            }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              errMsg_ = s;
-              break;
-            }
-            default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.qinglan.example.device_point.server.msg.DeviceInfo.internal_static_OTAProgress_descriptor;
@@ -5117,23 +5148,28 @@ public final class DeviceInfo {
     }
 
     public static final int PROGRESS_FIELD_NUMBER = 1;
-    private int progress_;
+    private int progress_ = 0;
     /**
      * <pre>
      *-1:错误,其它值：进度
      * </pre>
      *
      * <code>int32 progress = 1;</code>
+     * @return The progress.
      */
+    @java.lang.Override
     public int getProgress() {
       return progress_;
     }
 
     public static final int ERRMSG_FIELD_NUMBER = 2;
-    private volatile java.lang.Object errMsg_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object errMsg_ = "";
     /**
      * <code>string errMsg = 2;</code>
+     * @return The errMsg.
      */
+    @java.lang.Override
     public java.lang.String getErrMsg() {
       java.lang.Object ref = errMsg_;
       if (ref instanceof java.lang.String) {
@@ -5148,7 +5184,9 @@ public final class DeviceInfo {
     }
     /**
      * <code>string errMsg = 2;</code>
+     * @return The bytes for errMsg.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getErrMsgBytes() {
       java.lang.Object ref = errMsg_;
@@ -5180,10 +5218,10 @@ public final class DeviceInfo {
       if (progress_ != 0) {
         output.writeInt32(1, progress_);
       }
-      if (!getErrMsgBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(errMsg_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, errMsg_);
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -5196,10 +5234,10 @@ public final class DeviceInfo {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, progress_);
       }
-      if (!getErrMsgBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(errMsg_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, errMsg_);
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -5214,13 +5252,12 @@ public final class DeviceInfo {
       }
       com.qinglan.example.device_point.server.msg.DeviceInfo.OTAProgress other = (com.qinglan.example.device_point.server.msg.DeviceInfo.OTAProgress) obj;
 
-      boolean result = true;
-      result = result && (getProgress()
-          == other.getProgress());
-      result = result && getErrMsg()
-          .equals(other.getErrMsg());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (getProgress()
+          != other.getProgress()) return false;
+      if (!getErrMsg()
+          .equals(other.getErrMsg())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -5234,7 +5271,7 @@ public final class DeviceInfo {
       hash = (53 * hash) + getProgress();
       hash = (37 * hash) + ERRMSG_FIELD_NUMBER;
       hash = (53 * hash) + getErrMsg().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -5356,26 +5393,20 @@ public final class DeviceInfo {
 
       // Construct using com.qinglan.example.device_point.server.msg.DeviceInfo.OTAProgress.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         progress_ = 0;
-
         errMsg_ = "";
-
         return this;
       }
 
@@ -5402,44 +5433,21 @@ public final class DeviceInfo {
       @java.lang.Override
       public com.qinglan.example.device_point.server.msg.DeviceInfo.OTAProgress buildPartial() {
         com.qinglan.example.device_point.server.msg.DeviceInfo.OTAProgress result = new com.qinglan.example.device_point.server.msg.DeviceInfo.OTAProgress(this);
-        result.progress_ = progress_;
-        result.errMsg_ = errMsg_;
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      @java.lang.Override
-      public Builder clone() {
-        return (Builder) super.clone();
+      private void buildPartial0(com.qinglan.example.device_point.server.msg.DeviceInfo.OTAProgress result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.progress_ = progress_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.errMsg_ = errMsg_;
+        }
       }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.qinglan.example.device_point.server.msg.DeviceInfo.OTAProgress) {
@@ -5457,9 +5465,10 @@ public final class DeviceInfo {
         }
         if (!other.getErrMsg().isEmpty()) {
           errMsg_ = other.errMsg_;
+          bitField0_ |= 0x00000002;
           onChanged();
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -5474,19 +5483,43 @@ public final class DeviceInfo {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.qinglan.example.device_point.server.msg.DeviceInfo.OTAProgress parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                progress_ = input.readInt32();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              case 18: {
+                errMsg_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.qinglan.example.device_point.server.msg.DeviceInfo.OTAProgress) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
+      private int bitField0_;
 
       private int progress_ ;
       /**
@@ -5495,7 +5528,9 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>int32 progress = 1;</code>
+       * @return The progress.
        */
+      @java.lang.Override
       public int getProgress() {
         return progress_;
       }
@@ -5505,10 +5540,13 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>int32 progress = 1;</code>
+       * @param value The progress to set.
+       * @return This builder for chaining.
        */
       public Builder setProgress(int value) {
-        
+
         progress_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -5518,9 +5556,10 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>int32 progress = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearProgress() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         progress_ = 0;
         onChanged();
         return this;
@@ -5529,6 +5568,7 @@ public final class DeviceInfo {
       private java.lang.Object errMsg_ = "";
       /**
        * <code>string errMsg = 2;</code>
+       * @return The errMsg.
        */
       public java.lang.String getErrMsg() {
         java.lang.Object ref = errMsg_;
@@ -5544,6 +5584,7 @@ public final class DeviceInfo {
       }
       /**
        * <code>string errMsg = 2;</code>
+       * @return The bytes for errMsg.
        */
       public com.google.protobuf.ByteString
           getErrMsgBytes() {
@@ -5560,44 +5601,45 @@ public final class DeviceInfo {
       }
       /**
        * <code>string errMsg = 2;</code>
+       * @param value The errMsg to set.
+       * @return This builder for chaining.
        */
       public Builder setErrMsg(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         errMsg_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
       /**
        * <code>string errMsg = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearErrMsg() {
-        
         errMsg_ = getDefaultInstance().getErrMsg();
+        bitField0_ = (bitField0_ & ~0x00000002);
         onChanged();
         return this;
       }
       /**
        * <code>string errMsg = 2;</code>
+       * @param value The bytes for errMsg to set.
+       * @return This builder for chaining.
        */
       public Builder setErrMsgBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         errMsg_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -5627,7 +5669,18 @@ public final class DeviceInfo {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new OTAProgress(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -5653,6 +5706,7 @@ public final class DeviceInfo {
 
     /**
      * <code>uint32 seq = 1;</code>
+     * @return The seq.
      */
     int getSeq();
 
@@ -5662,6 +5716,7 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string appid = 2;</code>
+     * @return The appid.
      */
     java.lang.String getAppid();
     /**
@@ -5670,6 +5725,7 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string appid = 2;</code>
+     * @return The bytes for appid.
      */
     com.google.protobuf.ByteString
         getAppidBytes();
@@ -5680,6 +5736,7 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string license = 3;</code>
+     * @return The license.
      */
     java.lang.String getLicense();
     /**
@@ -5688,6 +5745,7 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string license = 3;</code>
+     * @return The bytes for license.
      */
     com.google.protobuf.ByteString
         getLicenseBytes();
@@ -5698,6 +5756,7 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string token = 4;</code>
+     * @return The token.
      */
     java.lang.String getToken();
     /**
@@ -5706,6 +5765,7 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string token = 4;</code>
+     * @return The bytes for token.
      */
     com.google.protobuf.ByteString
         getTokenBytes();
@@ -5716,6 +5776,7 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string channel = 5;</code>
+     * @return The channel.
      */
     java.lang.String getChannel();
     /**
@@ -5724,6 +5785,7 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string channel = 5;</code>
+     * @return The bytes for channel.
      */
     com.google.protobuf.ByteString
         getChannelBytes();
@@ -5737,7 +5799,7 @@ public final class DeviceInfo {
    *
    * Protobuf type {@code StartVoiceReq}
    */
-  public  static final class StartVoiceReq extends
+  public static final class StartVoiceReq extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:StartVoiceReq)
       StartVoiceReqOrBuilder {
@@ -5747,7 +5809,6 @@ public final class DeviceInfo {
       super(builder);
     }
     private StartVoiceReq() {
-      seq_ = 0;
       appid_ = "";
       license_ = "";
       token_ = "";
@@ -5755,77 +5816,12 @@ public final class DeviceInfo {
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new StartVoiceReq();
     }
-    private StartVoiceReq(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
 
-              seq_ = input.readUInt32();
-              break;
-            }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              appid_ = s;
-              break;
-            }
-            case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              license_ = s;
-              break;
-            }
-            case 34: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              token_ = s;
-              break;
-            }
-            case 42: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              channel_ = s;
-              break;
-            }
-            default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.qinglan.example.device_point.server.msg.DeviceInfo.internal_static_StartVoiceReq_descriptor;
@@ -5840,23 +5836,28 @@ public final class DeviceInfo {
     }
 
     public static final int SEQ_FIELD_NUMBER = 1;
-    private int seq_;
+    private int seq_ = 0;
     /**
      * <code>uint32 seq = 1;</code>
+     * @return The seq.
      */
+    @java.lang.Override
     public int getSeq() {
       return seq_;
     }
 
     public static final int APPID_FIELD_NUMBER = 2;
-    private volatile java.lang.Object appid_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object appid_ = "";
     /**
      * <pre>
      *agora app_id
      * </pre>
      *
      * <code>string appid = 2;</code>
+     * @return The appid.
      */
+    @java.lang.Override
     public java.lang.String getAppid() {
       java.lang.Object ref = appid_;
       if (ref instanceof java.lang.String) {
@@ -5875,7 +5876,9 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string appid = 2;</code>
+     * @return The bytes for appid.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getAppidBytes() {
       java.lang.Object ref = appid_;
@@ -5891,14 +5894,17 @@ public final class DeviceInfo {
     }
 
     public static final int LICENSE_FIELD_NUMBER = 3;
-    private volatile java.lang.Object license_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object license_ = "";
     /**
      * <pre>
      *license
      * </pre>
      *
      * <code>string license = 3;</code>
+     * @return The license.
      */
+    @java.lang.Override
     public java.lang.String getLicense() {
       java.lang.Object ref = license_;
       if (ref instanceof java.lang.String) {
@@ -5917,7 +5923,9 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string license = 3;</code>
+     * @return The bytes for license.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getLicenseBytes() {
       java.lang.Object ref = license_;
@@ -5933,14 +5941,17 @@ public final class DeviceInfo {
     }
 
     public static final int TOKEN_FIELD_NUMBER = 4;
-    private volatile java.lang.Object token_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object token_ = "";
     /**
      * <pre>
      *token
      * </pre>
      *
      * <code>string token = 4;</code>
+     * @return The token.
      */
+    @java.lang.Override
     public java.lang.String getToken() {
       java.lang.Object ref = token_;
       if (ref instanceof java.lang.String) {
@@ -5959,7 +5970,9 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string token = 4;</code>
+     * @return The bytes for token.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getTokenBytes() {
       java.lang.Object ref = token_;
@@ -5975,14 +5988,17 @@ public final class DeviceInfo {
     }
 
     public static final int CHANNEL_FIELD_NUMBER = 5;
-    private volatile java.lang.Object channel_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object channel_ = "";
     /**
      * <pre>
      *channel name
      * </pre>
      *
      * <code>string channel = 5;</code>
+     * @return The channel.
      */
+    @java.lang.Override
     public java.lang.String getChannel() {
       java.lang.Object ref = channel_;
       if (ref instanceof java.lang.String) {
@@ -6001,7 +6017,9 @@ public final class DeviceInfo {
      * </pre>
      *
      * <code>string channel = 5;</code>
+     * @return The bytes for channel.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getChannelBytes() {
       java.lang.Object ref = channel_;
@@ -6033,19 +6051,19 @@ public final class DeviceInfo {
       if (seq_ != 0) {
         output.writeUInt32(1, seq_);
       }
-      if (!getAppidBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(appid_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, appid_);
       }
-      if (!getLicenseBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(license_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, license_);
       }
-      if (!getTokenBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(token_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 4, token_);
       }
-      if (!getChannelBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(channel_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 5, channel_);
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -6058,19 +6076,19 @@ public final class DeviceInfo {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(1, seq_);
       }
-      if (!getAppidBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(appid_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, appid_);
       }
-      if (!getLicenseBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(license_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, license_);
       }
-      if (!getTokenBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(token_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, token_);
       }
-      if (!getChannelBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(channel_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, channel_);
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -6085,19 +6103,18 @@ public final class DeviceInfo {
       }
       com.qinglan.example.device_point.server.msg.DeviceInfo.StartVoiceReq other = (com.qinglan.example.device_point.server.msg.DeviceInfo.StartVoiceReq) obj;
 
-      boolean result = true;
-      result = result && (getSeq()
-          == other.getSeq());
-      result = result && getAppid()
-          .equals(other.getAppid());
-      result = result && getLicense()
-          .equals(other.getLicense());
-      result = result && getToken()
-          .equals(other.getToken());
-      result = result && getChannel()
-          .equals(other.getChannel());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (getSeq()
+          != other.getSeq()) return false;
+      if (!getAppid()
+          .equals(other.getAppid())) return false;
+      if (!getLicense()
+          .equals(other.getLicense())) return false;
+      if (!getToken()
+          .equals(other.getToken())) return false;
+      if (!getChannel()
+          .equals(other.getChannel())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -6117,7 +6134,7 @@ public final class DeviceInfo {
       hash = (53 * hash) + getToken().hashCode();
       hash = (37 * hash) + CHANNEL_FIELD_NUMBER;
       hash = (53 * hash) + getChannel().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -6240,32 +6257,23 @@ public final class DeviceInfo {
 
       // Construct using com.qinglan.example.device_point.server.msg.DeviceInfo.StartVoiceReq.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         seq_ = 0;
-
         appid_ = "";
-
         license_ = "";
-
         token_ = "";
-
         channel_ = "";
-
         return this;
       }
 
@@ -6292,47 +6300,30 @@ public final class DeviceInfo {
       @java.lang.Override
       public com.qinglan.example.device_point.server.msg.DeviceInfo.StartVoiceReq buildPartial() {
         com.qinglan.example.device_point.server.msg.DeviceInfo.StartVoiceReq result = new com.qinglan.example.device_point.server.msg.DeviceInfo.StartVoiceReq(this);
-        result.seq_ = seq_;
-        result.appid_ = appid_;
-        result.license_ = license_;
-        result.token_ = token_;
-        result.channel_ = channel_;
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      @java.lang.Override
-      public Builder clone() {
-        return (Builder) super.clone();
+      private void buildPartial0(com.qinglan.example.device_point.server.msg.DeviceInfo.StartVoiceReq result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.seq_ = seq_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.appid_ = appid_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.license_ = license_;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.token_ = token_;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.channel_ = channel_;
+        }
       }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.qinglan.example.device_point.server.msg.DeviceInfo.StartVoiceReq) {
@@ -6350,21 +6341,25 @@ public final class DeviceInfo {
         }
         if (!other.getAppid().isEmpty()) {
           appid_ = other.appid_;
+          bitField0_ |= 0x00000002;
           onChanged();
         }
         if (!other.getLicense().isEmpty()) {
           license_ = other.license_;
+          bitField0_ |= 0x00000004;
           onChanged();
         }
         if (!other.getToken().isEmpty()) {
           token_ = other.token_;
+          bitField0_ |= 0x00000008;
           onChanged();
         }
         if (!other.getChannel().isEmpty()) {
           channel_ = other.channel_;
+          bitField0_ |= 0x00000010;
           onChanged();
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -6379,41 +6374,86 @@ public final class DeviceInfo {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.qinglan.example.device_point.server.msg.DeviceInfo.StartVoiceReq parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                seq_ = input.readUInt32();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              case 18: {
+                appid_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              case 26: {
+                license_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 26
+              case 34: {
+                token_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 34
+              case 42: {
+                channel_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 42
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.qinglan.example.device_point.server.msg.DeviceInfo.StartVoiceReq) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
+      private int bitField0_;
 
       private int seq_ ;
       /**
        * <code>uint32 seq = 1;</code>
+       * @return The seq.
        */
+      @java.lang.Override
       public int getSeq() {
         return seq_;
       }
       /**
        * <code>uint32 seq = 1;</code>
+       * @param value The seq to set.
+       * @return This builder for chaining.
        */
       public Builder setSeq(int value) {
-        
+
         seq_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
       /**
        * <code>uint32 seq = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearSeq() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         seq_ = 0;
         onChanged();
         return this;
@@ -6426,6 +6466,7 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string appid = 2;</code>
+       * @return The appid.
        */
       public java.lang.String getAppid() {
         java.lang.Object ref = appid_;
@@ -6445,6 +6486,7 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string appid = 2;</code>
+       * @return The bytes for appid.
        */
       public com.google.protobuf.ByteString
           getAppidBytes() {
@@ -6465,14 +6507,14 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string appid = 2;</code>
+       * @param value The appid to set.
+       * @return This builder for chaining.
        */
       public Builder setAppid(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         appid_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -6482,10 +6524,11 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string appid = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearAppid() {
-        
         appid_ = getDefaultInstance().getAppid();
+        bitField0_ = (bitField0_ & ~0x00000002);
         onChanged();
         return this;
       }
@@ -6495,15 +6538,15 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string appid = 2;</code>
+       * @param value The bytes for appid to set.
+       * @return This builder for chaining.
        */
       public Builder setAppidBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         appid_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -6515,6 +6558,7 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string license = 3;</code>
+       * @return The license.
        */
       public java.lang.String getLicense() {
         java.lang.Object ref = license_;
@@ -6534,6 +6578,7 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string license = 3;</code>
+       * @return The bytes for license.
        */
       public com.google.protobuf.ByteString
           getLicenseBytes() {
@@ -6554,14 +6599,14 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string license = 3;</code>
+       * @param value The license to set.
+       * @return This builder for chaining.
        */
       public Builder setLicense(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         license_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
@@ -6571,10 +6616,11 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string license = 3;</code>
+       * @return This builder for chaining.
        */
       public Builder clearLicense() {
-        
         license_ = getDefaultInstance().getLicense();
+        bitField0_ = (bitField0_ & ~0x00000004);
         onChanged();
         return this;
       }
@@ -6584,15 +6630,15 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string license = 3;</code>
+       * @param value The bytes for license to set.
+       * @return This builder for chaining.
        */
       public Builder setLicenseBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         license_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
@@ -6604,6 +6650,7 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string token = 4;</code>
+       * @return The token.
        */
       public java.lang.String getToken() {
         java.lang.Object ref = token_;
@@ -6623,6 +6670,7 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string token = 4;</code>
+       * @return The bytes for token.
        */
       public com.google.protobuf.ByteString
           getTokenBytes() {
@@ -6643,14 +6691,14 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string token = 4;</code>
+       * @param value The token to set.
+       * @return This builder for chaining.
        */
       public Builder setToken(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         token_ = value;
+        bitField0_ |= 0x00000008;
         onChanged();
         return this;
       }
@@ -6660,10 +6708,11 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string token = 4;</code>
+       * @return This builder for chaining.
        */
       public Builder clearToken() {
-        
         token_ = getDefaultInstance().getToken();
+        bitField0_ = (bitField0_ & ~0x00000008);
         onChanged();
         return this;
       }
@@ -6673,15 +6722,15 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string token = 4;</code>
+       * @param value The bytes for token to set.
+       * @return This builder for chaining.
        */
       public Builder setTokenBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         token_ = value;
+        bitField0_ |= 0x00000008;
         onChanged();
         return this;
       }
@@ -6693,6 +6742,7 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string channel = 5;</code>
+       * @return The channel.
        */
       public java.lang.String getChannel() {
         java.lang.Object ref = channel_;
@@ -6712,6 +6762,7 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string channel = 5;</code>
+       * @return The bytes for channel.
        */
       public com.google.protobuf.ByteString
           getChannelBytes() {
@@ -6732,14 +6783,14 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string channel = 5;</code>
+       * @param value The channel to set.
+       * @return This builder for chaining.
        */
       public Builder setChannel(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         channel_ = value;
+        bitField0_ |= 0x00000010;
         onChanged();
         return this;
       }
@@ -6749,10 +6800,11 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string channel = 5;</code>
+       * @return This builder for chaining.
        */
       public Builder clearChannel() {
-        
         channel_ = getDefaultInstance().getChannel();
+        bitField0_ = (bitField0_ & ~0x00000010);
         onChanged();
         return this;
       }
@@ -6762,22 +6814,22 @@ public final class DeviceInfo {
        * </pre>
        *
        * <code>string channel = 5;</code>
+       * @param value The bytes for channel to set.
+       * @return This builder for chaining.
        */
       public Builder setChannelBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         channel_ = value;
+        bitField0_ |= 0x00000010;
         onChanged();
         return this;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -6807,7 +6859,18 @@ public final class DeviceInfo {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new StartVoiceReq(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -6833,20 +6896,24 @@ public final class DeviceInfo {
 
     /**
      * <code>uint32 seq = 1;</code>
+     * @return The seq.
      */
     int getSeq();
 
     /**
      * <code>int32 result = 2;</code>
+     * @return The result.
      */
     int getResult();
 
     /**
      * <code>string errmsg = 3;</code>
+     * @return The errmsg.
      */
     java.lang.String getErrmsg();
     /**
      * <code>string errmsg = 3;</code>
+     * @return The bytes for errmsg.
      */
     com.google.protobuf.ByteString
         getErrmsgBytes();
@@ -6860,7 +6927,7 @@ public final class DeviceInfo {
    *
    * Protobuf type {@code StartVoipResponse}
    */
-  public  static final class StartVoipResponse extends
+  public static final class StartVoipResponse extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:StartVoipResponse)
       StartVoipResponseOrBuilder {
@@ -6870,70 +6937,16 @@ public final class DeviceInfo {
       super(builder);
     }
     private StartVoipResponse() {
-      seq_ = 0;
-      result_ = 0;
       errmsg_ = "";
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new StartVoipResponse();
     }
-    private StartVoipResponse(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
 
-              seq_ = input.readUInt32();
-              break;
-            }
-            case 16: {
-
-              result_ = input.readInt32();
-              break;
-            }
-            case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              errmsg_ = s;
-              break;
-            }
-            default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.qinglan.example.device_point.server.msg.DeviceInfo.internal_static_StartVoipResponse_descriptor;
@@ -6948,28 +6961,35 @@ public final class DeviceInfo {
     }
 
     public static final int SEQ_FIELD_NUMBER = 1;
-    private int seq_;
+    private int seq_ = 0;
     /**
      * <code>uint32 seq = 1;</code>
+     * @return The seq.
      */
+    @java.lang.Override
     public int getSeq() {
       return seq_;
     }
 
     public static final int RESULT_FIELD_NUMBER = 2;
-    private int result_;
+    private int result_ = 0;
     /**
      * <code>int32 result = 2;</code>
+     * @return The result.
      */
+    @java.lang.Override
     public int getResult() {
       return result_;
     }
 
     public static final int ERRMSG_FIELD_NUMBER = 3;
-    private volatile java.lang.Object errmsg_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object errmsg_ = "";
     /**
      * <code>string errmsg = 3;</code>
+     * @return The errmsg.
      */
+    @java.lang.Override
     public java.lang.String getErrmsg() {
       java.lang.Object ref = errmsg_;
       if (ref instanceof java.lang.String) {
@@ -6984,7 +7004,9 @@ public final class DeviceInfo {
     }
     /**
      * <code>string errmsg = 3;</code>
+     * @return The bytes for errmsg.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getErrmsgBytes() {
       java.lang.Object ref = errmsg_;
@@ -7019,10 +7041,10 @@ public final class DeviceInfo {
       if (result_ != 0) {
         output.writeInt32(2, result_);
       }
-      if (!getErrmsgBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(errmsg_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, errmsg_);
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -7039,10 +7061,10 @@ public final class DeviceInfo {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(2, result_);
       }
-      if (!getErrmsgBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(errmsg_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, errmsg_);
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -7057,15 +7079,14 @@ public final class DeviceInfo {
       }
       com.qinglan.example.device_point.server.msg.DeviceInfo.StartVoipResponse other = (com.qinglan.example.device_point.server.msg.DeviceInfo.StartVoipResponse) obj;
 
-      boolean result = true;
-      result = result && (getSeq()
-          == other.getSeq());
-      result = result && (getResult()
-          == other.getResult());
-      result = result && getErrmsg()
-          .equals(other.getErrmsg());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (getSeq()
+          != other.getSeq()) return false;
+      if (getResult()
+          != other.getResult()) return false;
+      if (!getErrmsg()
+          .equals(other.getErrmsg())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -7081,7 +7102,7 @@ public final class DeviceInfo {
       hash = (53 * hash) + getResult();
       hash = (37 * hash) + ERRMSG_FIELD_NUMBER;
       hash = (53 * hash) + getErrmsg().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -7204,28 +7225,21 @@ public final class DeviceInfo {
 
       // Construct using com.qinglan.example.device_point.server.msg.DeviceInfo.StartVoipResponse.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         seq_ = 0;
-
         result_ = 0;
-
         errmsg_ = "";
-
         return this;
       }
 
@@ -7252,45 +7266,24 @@ public final class DeviceInfo {
       @java.lang.Override
       public com.qinglan.example.device_point.server.msg.DeviceInfo.StartVoipResponse buildPartial() {
         com.qinglan.example.device_point.server.msg.DeviceInfo.StartVoipResponse result = new com.qinglan.example.device_point.server.msg.DeviceInfo.StartVoipResponse(this);
-        result.seq_ = seq_;
-        result.result_ = result_;
-        result.errmsg_ = errmsg_;
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      @java.lang.Override
-      public Builder clone() {
-        return (Builder) super.clone();
+      private void buildPartial0(com.qinglan.example.device_point.server.msg.DeviceInfo.StartVoipResponse result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.seq_ = seq_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.result_ = result_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.errmsg_ = errmsg_;
+        }
       }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.qinglan.example.device_point.server.msg.DeviceInfo.StartVoipResponse) {
@@ -7311,9 +7304,10 @@ public final class DeviceInfo {
         }
         if (!other.getErrmsg().isEmpty()) {
           errmsg_ = other.errmsg_;
+          bitField0_ |= 0x00000004;
           onChanged();
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -7328,41 +7322,76 @@ public final class DeviceInfo {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.qinglan.example.device_point.server.msg.DeviceInfo.StartVoipResponse parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                seq_ = input.readUInt32();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              case 16: {
+                result_ = input.readInt32();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              case 26: {
+                errmsg_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 26
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.qinglan.example.device_point.server.msg.DeviceInfo.StartVoipResponse) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
+      private int bitField0_;
 
       private int seq_ ;
       /**
        * <code>uint32 seq = 1;</code>
+       * @return The seq.
        */
+      @java.lang.Override
       public int getSeq() {
         return seq_;
       }
       /**
        * <code>uint32 seq = 1;</code>
+       * @param value The seq to set.
+       * @return This builder for chaining.
        */
       public Builder setSeq(int value) {
-        
+
         seq_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
       /**
        * <code>uint32 seq = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearSeq() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         seq_ = 0;
         onChanged();
         return this;
@@ -7371,24 +7400,30 @@ public final class DeviceInfo {
       private int result_ ;
       /**
        * <code>int32 result = 2;</code>
+       * @return The result.
        */
+      @java.lang.Override
       public int getResult() {
         return result_;
       }
       /**
        * <code>int32 result = 2;</code>
+       * @param value The result to set.
+       * @return This builder for chaining.
        */
       public Builder setResult(int value) {
-        
+
         result_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
       /**
        * <code>int32 result = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearResult() {
-        
+        bitField0_ = (bitField0_ & ~0x00000002);
         result_ = 0;
         onChanged();
         return this;
@@ -7397,6 +7432,7 @@ public final class DeviceInfo {
       private java.lang.Object errmsg_ = "";
       /**
        * <code>string errmsg = 3;</code>
+       * @return The errmsg.
        */
       public java.lang.String getErrmsg() {
         java.lang.Object ref = errmsg_;
@@ -7412,6 +7448,7 @@ public final class DeviceInfo {
       }
       /**
        * <code>string errmsg = 3;</code>
+       * @return The bytes for errmsg.
        */
       public com.google.protobuf.ByteString
           getErrmsgBytes() {
@@ -7428,44 +7465,45 @@ public final class DeviceInfo {
       }
       /**
        * <code>string errmsg = 3;</code>
+       * @param value The errmsg to set.
+       * @return This builder for chaining.
        */
       public Builder setErrmsg(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         errmsg_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
       /**
        * <code>string errmsg = 3;</code>
+       * @return This builder for chaining.
        */
       public Builder clearErrmsg() {
-        
         errmsg_ = getDefaultInstance().getErrmsg();
+        bitField0_ = (bitField0_ & ~0x00000004);
         onChanged();
         return this;
       }
       /**
        * <code>string errmsg = 3;</code>
+       * @param value The bytes for errmsg to set.
+       * @return This builder for chaining.
        */
       public Builder setErrmsgBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         errmsg_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -7495,7 +7533,18 @@ public final class DeviceInfo {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new StartVoipResponse(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -7521,20 +7570,24 @@ public final class DeviceInfo {
 
     /**
      * <code>uint32 seq = 1;</code>
+     * @return The seq.
      */
     int getSeq();
 
     /**
      * <code>int32 result = 2;</code>
+     * @return The result.
      */
     int getResult();
 
     /**
      * <code>string errmsg = 3;</code>
+     * @return The errmsg.
      */
     java.lang.String getErrmsg();
     /**
      * <code>string errmsg = 3;</code>
+     * @return The bytes for errmsg.
      */
     com.google.protobuf.ByteString
         getErrmsgBytes();
@@ -7548,7 +7601,7 @@ public final class DeviceInfo {
    *
    * Protobuf type {@code StopVoipResponse}
    */
-  public  static final class StopVoipResponse extends
+  public static final class StopVoipResponse extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:StopVoipResponse)
       StopVoipResponseOrBuilder {
@@ -7558,70 +7611,16 @@ public final class DeviceInfo {
       super(builder);
     }
     private StopVoipResponse() {
-      seq_ = 0;
-      result_ = 0;
       errmsg_ = "";
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new StopVoipResponse();
     }
-    private StopVoipResponse(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
 
-              seq_ = input.readUInt32();
-              break;
-            }
-            case 16: {
-
-              result_ = input.readInt32();
-              break;
-            }
-            case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              errmsg_ = s;
-              break;
-            }
-            default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.qinglan.example.device_point.server.msg.DeviceInfo.internal_static_StopVoipResponse_descriptor;
@@ -7636,28 +7635,35 @@ public final class DeviceInfo {
     }
 
     public static final int SEQ_FIELD_NUMBER = 1;
-    private int seq_;
+    private int seq_ = 0;
     /**
      * <code>uint32 seq = 1;</code>
+     * @return The seq.
      */
+    @java.lang.Override
     public int getSeq() {
       return seq_;
     }
 
     public static final int RESULT_FIELD_NUMBER = 2;
-    private int result_;
+    private int result_ = 0;
     /**
      * <code>int32 result = 2;</code>
+     * @return The result.
      */
+    @java.lang.Override
     public int getResult() {
       return result_;
     }
 
     public static final int ERRMSG_FIELD_NUMBER = 3;
-    private volatile java.lang.Object errmsg_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object errmsg_ = "";
     /**
      * <code>string errmsg = 3;</code>
+     * @return The errmsg.
      */
+    @java.lang.Override
     public java.lang.String getErrmsg() {
       java.lang.Object ref = errmsg_;
       if (ref instanceof java.lang.String) {
@@ -7672,7 +7678,9 @@ public final class DeviceInfo {
     }
     /**
      * <code>string errmsg = 3;</code>
+     * @return The bytes for errmsg.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getErrmsgBytes() {
       java.lang.Object ref = errmsg_;
@@ -7707,10 +7715,10 @@ public final class DeviceInfo {
       if (result_ != 0) {
         output.writeInt32(2, result_);
       }
-      if (!getErrmsgBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(errmsg_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, errmsg_);
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -7727,10 +7735,10 @@ public final class DeviceInfo {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(2, result_);
       }
-      if (!getErrmsgBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(errmsg_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, errmsg_);
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -7745,15 +7753,14 @@ public final class DeviceInfo {
       }
       com.qinglan.example.device_point.server.msg.DeviceInfo.StopVoipResponse other = (com.qinglan.example.device_point.server.msg.DeviceInfo.StopVoipResponse) obj;
 
-      boolean result = true;
-      result = result && (getSeq()
-          == other.getSeq());
-      result = result && (getResult()
-          == other.getResult());
-      result = result && getErrmsg()
-          .equals(other.getErrmsg());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (getSeq()
+          != other.getSeq()) return false;
+      if (getResult()
+          != other.getResult()) return false;
+      if (!getErrmsg()
+          .equals(other.getErrmsg())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -7769,7 +7776,7 @@ public final class DeviceInfo {
       hash = (53 * hash) + getResult();
       hash = (37 * hash) + ERRMSG_FIELD_NUMBER;
       hash = (53 * hash) + getErrmsg().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -7892,28 +7899,21 @@ public final class DeviceInfo {
 
       // Construct using com.qinglan.example.device_point.server.msg.DeviceInfo.StopVoipResponse.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         seq_ = 0;
-
         result_ = 0;
-
         errmsg_ = "";
-
         return this;
       }
 
@@ -7940,45 +7940,24 @@ public final class DeviceInfo {
       @java.lang.Override
       public com.qinglan.example.device_point.server.msg.DeviceInfo.StopVoipResponse buildPartial() {
         com.qinglan.example.device_point.server.msg.DeviceInfo.StopVoipResponse result = new com.qinglan.example.device_point.server.msg.DeviceInfo.StopVoipResponse(this);
-        result.seq_ = seq_;
-        result.result_ = result_;
-        result.errmsg_ = errmsg_;
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      @java.lang.Override
-      public Builder clone() {
-        return (Builder) super.clone();
+      private void buildPartial0(com.qinglan.example.device_point.server.msg.DeviceInfo.StopVoipResponse result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.seq_ = seq_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.result_ = result_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.errmsg_ = errmsg_;
+        }
       }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.qinglan.example.device_point.server.msg.DeviceInfo.StopVoipResponse) {
@@ -7999,9 +7978,10 @@ public final class DeviceInfo {
         }
         if (!other.getErrmsg().isEmpty()) {
           errmsg_ = other.errmsg_;
+          bitField0_ |= 0x00000004;
           onChanged();
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -8016,41 +7996,76 @@ public final class DeviceInfo {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.qinglan.example.device_point.server.msg.DeviceInfo.StopVoipResponse parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                seq_ = input.readUInt32();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              case 16: {
+                result_ = input.readInt32();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              case 26: {
+                errmsg_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 26
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.qinglan.example.device_point.server.msg.DeviceInfo.StopVoipResponse) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
+      private int bitField0_;
 
       private int seq_ ;
       /**
        * <code>uint32 seq = 1;</code>
+       * @return The seq.
        */
+      @java.lang.Override
       public int getSeq() {
         return seq_;
       }
       /**
        * <code>uint32 seq = 1;</code>
+       * @param value The seq to set.
+       * @return This builder for chaining.
        */
       public Builder setSeq(int value) {
-        
+
         seq_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
       /**
        * <code>uint32 seq = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearSeq() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         seq_ = 0;
         onChanged();
         return this;
@@ -8059,24 +8074,30 @@ public final class DeviceInfo {
       private int result_ ;
       /**
        * <code>int32 result = 2;</code>
+       * @return The result.
        */
+      @java.lang.Override
       public int getResult() {
         return result_;
       }
       /**
        * <code>int32 result = 2;</code>
+       * @param value The result to set.
+       * @return This builder for chaining.
        */
       public Builder setResult(int value) {
-        
+
         result_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
       /**
        * <code>int32 result = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearResult() {
-        
+        bitField0_ = (bitField0_ & ~0x00000002);
         result_ = 0;
         onChanged();
         return this;
@@ -8085,6 +8106,7 @@ public final class DeviceInfo {
       private java.lang.Object errmsg_ = "";
       /**
        * <code>string errmsg = 3;</code>
+       * @return The errmsg.
        */
       public java.lang.String getErrmsg() {
         java.lang.Object ref = errmsg_;
@@ -8100,6 +8122,7 @@ public final class DeviceInfo {
       }
       /**
        * <code>string errmsg = 3;</code>
+       * @return The bytes for errmsg.
        */
       public com.google.protobuf.ByteString
           getErrmsgBytes() {
@@ -8116,44 +8139,45 @@ public final class DeviceInfo {
       }
       /**
        * <code>string errmsg = 3;</code>
+       * @param value The errmsg to set.
+       * @return This builder for chaining.
        */
       public Builder setErrmsg(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         errmsg_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
       /**
        * <code>string errmsg = 3;</code>
+       * @return This builder for chaining.
        */
       public Builder clearErrmsg() {
-        
         errmsg_ = getDefaultInstance().getErrmsg();
+        bitField0_ = (bitField0_ & ~0x00000004);
         onChanged();
         return this;
       }
       /**
        * <code>string errmsg = 3;</code>
+       * @param value The bytes for errmsg to set.
+       * @return This builder for chaining.
        */
       public Builder setErrmsgBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         errmsg_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -8183,7 +8207,18 @@ public final class DeviceInfo {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new StopVoipResponse(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -8274,18 +8309,10 @@ public final class DeviceInfo {
       "\tB9\n+com.qinglan.example.device_point.se" +
       "rver.msgB\nDeviceInfob\006proto3"
     };
-    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
-          public com.google.protobuf.ExtensionRegistry assignDescriptors(
-              com.google.protobuf.Descriptors.FileDescriptor root) {
-            descriptor = root;
-            return null;
-          }
-        };
-    com.google.protobuf.Descriptors.FileDescriptor
+    descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-        }, assigner);
+        });
     internal_static_RegisterReq_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_RegisterReq_fieldAccessorTable = new

@@ -57,6 +57,8 @@ public final class ServerLBSInfo {
     }
 
     /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
      * @deprecated Use {@link #forNumber(int)} instead.
      */
     @java.lang.Deprecated
@@ -64,6 +66,10 @@ public final class ServerLBSInfo {
       return forNumber(value);
     }
 
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     */
     public static FallStatus forNumber(int value) {
       switch (value) {
         case 0: return NORMAL;
@@ -87,6 +93,10 @@ public final class ServerLBSInfo {
 
     public final com.google.protobuf.Descriptors.EnumValueDescriptor
         getValueDescriptor() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalStateException(
+            "Can't get the descriptor of an unrecognized enum value.");
+      }
       return getDescriptor().getValues().get(ordinal());
     }
     public final com.google.protobuf.Descriptors.EnumDescriptor
@@ -127,13 +137,14 @@ public final class ServerLBSInfo {
 
     /**
      * <code>uint32 seq = 1;</code>
+     * @return The seq.
      */
     int getSeq();
   }
   /**
    * Protobuf type {@code CommonMessage}
    */
-  public  static final class CommonMessage extends
+  public static final class CommonMessage extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:CommonMessage)
       CommonMessageOrBuilder {
@@ -143,57 +154,15 @@ public final class ServerLBSInfo {
       super(builder);
     }
     private CommonMessage() {
-      seq_ = 0;
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new CommonMessage();
     }
-    private CommonMessage(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
 
-              seq_ = input.readUInt32();
-              break;
-            }
-            default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.qinglan.example.device_point.server.msg.ServerLBSInfo.internal_static_CommonMessage_descriptor;
@@ -208,10 +177,12 @@ public final class ServerLBSInfo {
     }
 
     public static final int SEQ_FIELD_NUMBER = 1;
-    private int seq_;
+    private int seq_ = 0;
     /**
      * <code>uint32 seq = 1;</code>
+     * @return The seq.
      */
+    @java.lang.Override
     public int getSeq() {
       return seq_;
     }
@@ -233,7 +204,7 @@ public final class ServerLBSInfo {
       if (seq_ != 0) {
         output.writeUInt32(1, seq_);
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -246,7 +217,7 @@ public final class ServerLBSInfo {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(1, seq_);
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -261,11 +232,10 @@ public final class ServerLBSInfo {
       }
       com.qinglan.example.device_point.server.msg.ServerLBSInfo.CommonMessage other = (com.qinglan.example.device_point.server.msg.ServerLBSInfo.CommonMessage) obj;
 
-      boolean result = true;
-      result = result && (getSeq()
-          == other.getSeq());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (getSeq()
+          != other.getSeq()) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -277,7 +247,7 @@ public final class ServerLBSInfo {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + SEQ_FIELD_NUMBER;
       hash = (53 * hash) + getSeq();
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -394,24 +364,19 @@ public final class ServerLBSInfo {
 
       // Construct using com.qinglan.example.device_point.server.msg.ServerLBSInfo.CommonMessage.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         seq_ = 0;
-
         return this;
       }
 
@@ -438,43 +403,18 @@ public final class ServerLBSInfo {
       @java.lang.Override
       public com.qinglan.example.device_point.server.msg.ServerLBSInfo.CommonMessage buildPartial() {
         com.qinglan.example.device_point.server.msg.ServerLBSInfo.CommonMessage result = new com.qinglan.example.device_point.server.msg.ServerLBSInfo.CommonMessage(this);
-        result.seq_ = seq_;
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      @java.lang.Override
-      public Builder clone() {
-        return (Builder) super.clone();
+      private void buildPartial0(com.qinglan.example.device_point.server.msg.ServerLBSInfo.CommonMessage result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.seq_ = seq_;
+        }
       }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.qinglan.example.device_point.server.msg.ServerLBSInfo.CommonMessage) {
@@ -490,7 +430,7 @@ public final class ServerLBSInfo {
         if (other.getSeq() != 0) {
           setSeq(other.getSeq());
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -505,41 +445,66 @@ public final class ServerLBSInfo {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.qinglan.example.device_point.server.msg.ServerLBSInfo.CommonMessage parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                seq_ = input.readUInt32();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.qinglan.example.device_point.server.msg.ServerLBSInfo.CommonMessage) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
+      private int bitField0_;
 
       private int seq_ ;
       /**
        * <code>uint32 seq = 1;</code>
+       * @return The seq.
        */
+      @java.lang.Override
       public int getSeq() {
         return seq_;
       }
       /**
        * <code>uint32 seq = 1;</code>
+       * @param value The seq to set.
+       * @return This builder for chaining.
        */
       public Builder setSeq(int value) {
-        
+
         seq_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
       /**
        * <code>uint32 seq = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearSeq() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         seq_ = 0;
         onChanged();
         return this;
@@ -547,7 +512,7 @@ public final class ServerLBSInfo {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -577,7 +542,18 @@ public final class ServerLBSInfo {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new CommonMessage(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -603,20 +579,24 @@ public final class ServerLBSInfo {
 
     /**
      * <code>uint32 seq = 1;</code>
+     * @return The seq.
      */
     int getSeq();
 
     /**
      * <code>int32 result = 2;</code>
+     * @return The result.
      */
     int getResult();
 
     /**
      * <code>string errmsg = 3;</code>
+     * @return The errmsg.
      */
     java.lang.String getErrmsg();
     /**
      * <code>string errmsg = 3;</code>
+     * @return The bytes for errmsg.
      */
     com.google.protobuf.ByteString
         getErrmsgBytes();
@@ -624,7 +604,7 @@ public final class ServerLBSInfo {
   /**
    * Protobuf type {@code CommonResponse}
    */
-  public  static final class CommonResponse extends
+  public static final class CommonResponse extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:CommonResponse)
       CommonResponseOrBuilder {
@@ -634,70 +614,16 @@ public final class ServerLBSInfo {
       super(builder);
     }
     private CommonResponse() {
-      seq_ = 0;
-      result_ = 0;
       errmsg_ = "";
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new CommonResponse();
     }
-    private CommonResponse(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
 
-              seq_ = input.readUInt32();
-              break;
-            }
-            case 16: {
-
-              result_ = input.readInt32();
-              break;
-            }
-            case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              errmsg_ = s;
-              break;
-            }
-            default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.qinglan.example.device_point.server.msg.ServerLBSInfo.internal_static_CommonResponse_descriptor;
@@ -712,28 +638,35 @@ public final class ServerLBSInfo {
     }
 
     public static final int SEQ_FIELD_NUMBER = 1;
-    private int seq_;
+    private int seq_ = 0;
     /**
      * <code>uint32 seq = 1;</code>
+     * @return The seq.
      */
+    @java.lang.Override
     public int getSeq() {
       return seq_;
     }
 
     public static final int RESULT_FIELD_NUMBER = 2;
-    private int result_;
+    private int result_ = 0;
     /**
      * <code>int32 result = 2;</code>
+     * @return The result.
      */
+    @java.lang.Override
     public int getResult() {
       return result_;
     }
 
     public static final int ERRMSG_FIELD_NUMBER = 3;
-    private volatile java.lang.Object errmsg_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object errmsg_ = "";
     /**
      * <code>string errmsg = 3;</code>
+     * @return The errmsg.
      */
+    @java.lang.Override
     public java.lang.String getErrmsg() {
       java.lang.Object ref = errmsg_;
       if (ref instanceof java.lang.String) {
@@ -748,7 +681,9 @@ public final class ServerLBSInfo {
     }
     /**
      * <code>string errmsg = 3;</code>
+     * @return The bytes for errmsg.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getErrmsgBytes() {
       java.lang.Object ref = errmsg_;
@@ -783,10 +718,10 @@ public final class ServerLBSInfo {
       if (result_ != 0) {
         output.writeInt32(2, result_);
       }
-      if (!getErrmsgBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(errmsg_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, errmsg_);
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -803,10 +738,10 @@ public final class ServerLBSInfo {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(2, result_);
       }
-      if (!getErrmsgBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(errmsg_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, errmsg_);
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -821,15 +756,14 @@ public final class ServerLBSInfo {
       }
       com.qinglan.example.device_point.server.msg.ServerLBSInfo.CommonResponse other = (com.qinglan.example.device_point.server.msg.ServerLBSInfo.CommonResponse) obj;
 
-      boolean result = true;
-      result = result && (getSeq()
-          == other.getSeq());
-      result = result && (getResult()
-          == other.getResult());
-      result = result && getErrmsg()
-          .equals(other.getErrmsg());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (getSeq()
+          != other.getSeq()) return false;
+      if (getResult()
+          != other.getResult()) return false;
+      if (!getErrmsg()
+          .equals(other.getErrmsg())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -845,7 +779,7 @@ public final class ServerLBSInfo {
       hash = (53 * hash) + getResult();
       hash = (37 * hash) + ERRMSG_FIELD_NUMBER;
       hash = (53 * hash) + getErrmsg().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -962,28 +896,21 @@ public final class ServerLBSInfo {
 
       // Construct using com.qinglan.example.device_point.server.msg.ServerLBSInfo.CommonResponse.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         seq_ = 0;
-
         result_ = 0;
-
         errmsg_ = "";
-
         return this;
       }
 
@@ -1010,45 +937,24 @@ public final class ServerLBSInfo {
       @java.lang.Override
       public com.qinglan.example.device_point.server.msg.ServerLBSInfo.CommonResponse buildPartial() {
         com.qinglan.example.device_point.server.msg.ServerLBSInfo.CommonResponse result = new com.qinglan.example.device_point.server.msg.ServerLBSInfo.CommonResponse(this);
-        result.seq_ = seq_;
-        result.result_ = result_;
-        result.errmsg_ = errmsg_;
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      @java.lang.Override
-      public Builder clone() {
-        return (Builder) super.clone();
+      private void buildPartial0(com.qinglan.example.device_point.server.msg.ServerLBSInfo.CommonResponse result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.seq_ = seq_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.result_ = result_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.errmsg_ = errmsg_;
+        }
       }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.qinglan.example.device_point.server.msg.ServerLBSInfo.CommonResponse) {
@@ -1069,9 +975,10 @@ public final class ServerLBSInfo {
         }
         if (!other.getErrmsg().isEmpty()) {
           errmsg_ = other.errmsg_;
+          bitField0_ |= 0x00000004;
           onChanged();
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -1086,41 +993,76 @@ public final class ServerLBSInfo {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.qinglan.example.device_point.server.msg.ServerLBSInfo.CommonResponse parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                seq_ = input.readUInt32();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              case 16: {
+                result_ = input.readInt32();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              case 26: {
+                errmsg_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 26
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.qinglan.example.device_point.server.msg.ServerLBSInfo.CommonResponse) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
+      private int bitField0_;
 
       private int seq_ ;
       /**
        * <code>uint32 seq = 1;</code>
+       * @return The seq.
        */
+      @java.lang.Override
       public int getSeq() {
         return seq_;
       }
       /**
        * <code>uint32 seq = 1;</code>
+       * @param value The seq to set.
+       * @return This builder for chaining.
        */
       public Builder setSeq(int value) {
-        
+
         seq_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
       /**
        * <code>uint32 seq = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearSeq() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         seq_ = 0;
         onChanged();
         return this;
@@ -1129,24 +1071,30 @@ public final class ServerLBSInfo {
       private int result_ ;
       /**
        * <code>int32 result = 2;</code>
+       * @return The result.
        */
+      @java.lang.Override
       public int getResult() {
         return result_;
       }
       /**
        * <code>int32 result = 2;</code>
+       * @param value The result to set.
+       * @return This builder for chaining.
        */
       public Builder setResult(int value) {
-        
+
         result_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
       /**
        * <code>int32 result = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearResult() {
-        
+        bitField0_ = (bitField0_ & ~0x00000002);
         result_ = 0;
         onChanged();
         return this;
@@ -1155,6 +1103,7 @@ public final class ServerLBSInfo {
       private java.lang.Object errmsg_ = "";
       /**
        * <code>string errmsg = 3;</code>
+       * @return The errmsg.
        */
       public java.lang.String getErrmsg() {
         java.lang.Object ref = errmsg_;
@@ -1170,6 +1119,7 @@ public final class ServerLBSInfo {
       }
       /**
        * <code>string errmsg = 3;</code>
+       * @return The bytes for errmsg.
        */
       public com.google.protobuf.ByteString
           getErrmsgBytes() {
@@ -1186,44 +1136,45 @@ public final class ServerLBSInfo {
       }
       /**
        * <code>string errmsg = 3;</code>
+       * @param value The errmsg to set.
+       * @return This builder for chaining.
        */
       public Builder setErrmsg(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         errmsg_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
       /**
        * <code>string errmsg = 3;</code>
+       * @return This builder for chaining.
        */
       public Builder clearErrmsg() {
-        
         errmsg_ = getDefaultInstance().getErrmsg();
+        bitField0_ = (bitField0_ & ~0x00000004);
         onChanged();
         return this;
       }
       /**
        * <code>string errmsg = 3;</code>
+       * @param value The bytes for errmsg to set.
+       * @return This builder for chaining.
        */
       public Builder setErrmsgBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         errmsg_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -1253,7 +1204,18 @@ public final class ServerLBSInfo {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new CommonResponse(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -1279,18 +1241,20 @@ public final class ServerLBSInfo {
 
     /**
      * <code>uint32 seq = 1;</code>
+     * @return The seq.
      */
     int getSeq();
 
     /**
      * <code>uint32 seconds = 2;</code>
+     * @return The seconds.
      */
     int getSeconds();
   }
   /**
    * Protobuf type {@code SetModeReq}
    */
-  public  static final class SetModeReq extends
+  public static final class SetModeReq extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:SetModeReq)
       SetModeReqOrBuilder {
@@ -1300,63 +1264,15 @@ public final class ServerLBSInfo {
       super(builder);
     }
     private SetModeReq() {
-      seq_ = 0;
-      seconds_ = 0;
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new SetModeReq();
     }
-    private SetModeReq(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
 
-              seq_ = input.readUInt32();
-              break;
-            }
-            case 16: {
-
-              seconds_ = input.readUInt32();
-              break;
-            }
-            default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.qinglan.example.device_point.server.msg.ServerLBSInfo.internal_static_SetModeReq_descriptor;
@@ -1371,19 +1287,23 @@ public final class ServerLBSInfo {
     }
 
     public static final int SEQ_FIELD_NUMBER = 1;
-    private int seq_;
+    private int seq_ = 0;
     /**
      * <code>uint32 seq = 1;</code>
+     * @return The seq.
      */
+    @java.lang.Override
     public int getSeq() {
       return seq_;
     }
 
     public static final int SECONDS_FIELD_NUMBER = 2;
-    private int seconds_;
+    private int seconds_ = 0;
     /**
      * <code>uint32 seconds = 2;</code>
+     * @return The seconds.
      */
+    @java.lang.Override
     public int getSeconds() {
       return seconds_;
     }
@@ -1408,7 +1328,7 @@ public final class ServerLBSInfo {
       if (seconds_ != 0) {
         output.writeUInt32(2, seconds_);
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -1425,7 +1345,7 @@ public final class ServerLBSInfo {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(2, seconds_);
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -1440,13 +1360,12 @@ public final class ServerLBSInfo {
       }
       com.qinglan.example.device_point.server.msg.ServerLBSInfo.SetModeReq other = (com.qinglan.example.device_point.server.msg.ServerLBSInfo.SetModeReq) obj;
 
-      boolean result = true;
-      result = result && (getSeq()
-          == other.getSeq());
-      result = result && (getSeconds()
-          == other.getSeconds());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (getSeq()
+          != other.getSeq()) return false;
+      if (getSeconds()
+          != other.getSeconds()) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -1460,7 +1379,7 @@ public final class ServerLBSInfo {
       hash = (53 * hash) + getSeq();
       hash = (37 * hash) + SECONDS_FIELD_NUMBER;
       hash = (53 * hash) + getSeconds();
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -1577,26 +1496,20 @@ public final class ServerLBSInfo {
 
       // Construct using com.qinglan.example.device_point.server.msg.ServerLBSInfo.SetModeReq.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         seq_ = 0;
-
         seconds_ = 0;
-
         return this;
       }
 
@@ -1623,44 +1536,21 @@ public final class ServerLBSInfo {
       @java.lang.Override
       public com.qinglan.example.device_point.server.msg.ServerLBSInfo.SetModeReq buildPartial() {
         com.qinglan.example.device_point.server.msg.ServerLBSInfo.SetModeReq result = new com.qinglan.example.device_point.server.msg.ServerLBSInfo.SetModeReq(this);
-        result.seq_ = seq_;
-        result.seconds_ = seconds_;
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      @java.lang.Override
-      public Builder clone() {
-        return (Builder) super.clone();
+      private void buildPartial0(com.qinglan.example.device_point.server.msg.ServerLBSInfo.SetModeReq result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.seq_ = seq_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.seconds_ = seconds_;
+        }
       }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.qinglan.example.device_point.server.msg.ServerLBSInfo.SetModeReq) {
@@ -1679,7 +1569,7 @@ public final class ServerLBSInfo {
         if (other.getSeconds() != 0) {
           setSeconds(other.getSeconds());
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -1694,41 +1584,71 @@ public final class ServerLBSInfo {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.qinglan.example.device_point.server.msg.ServerLBSInfo.SetModeReq parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                seq_ = input.readUInt32();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              case 16: {
+                seconds_ = input.readUInt32();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.qinglan.example.device_point.server.msg.ServerLBSInfo.SetModeReq) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
+      private int bitField0_;
 
       private int seq_ ;
       /**
        * <code>uint32 seq = 1;</code>
+       * @return The seq.
        */
+      @java.lang.Override
       public int getSeq() {
         return seq_;
       }
       /**
        * <code>uint32 seq = 1;</code>
+       * @param value The seq to set.
+       * @return This builder for chaining.
        */
       public Builder setSeq(int value) {
-        
+
         seq_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
       /**
        * <code>uint32 seq = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearSeq() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         seq_ = 0;
         onChanged();
         return this;
@@ -1737,24 +1657,30 @@ public final class ServerLBSInfo {
       private int seconds_ ;
       /**
        * <code>uint32 seconds = 2;</code>
+       * @return The seconds.
        */
+      @java.lang.Override
       public int getSeconds() {
         return seconds_;
       }
       /**
        * <code>uint32 seconds = 2;</code>
+       * @param value The seconds to set.
+       * @return This builder for chaining.
        */
       public Builder setSeconds(int value) {
-        
+
         seconds_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
       /**
        * <code>uint32 seconds = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearSeconds() {
-        
+        bitField0_ = (bitField0_ & ~0x00000002);
         seconds_ = 0;
         onChanged();
         return this;
@@ -1762,7 +1688,7 @@ public final class ServerLBSInfo {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -1792,7 +1718,18 @@ public final class ServerLBSInfo {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new SetModeReq(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -1822,6 +1759,7 @@ public final class ServerLBSInfo {
      * </pre>
      *
      * <code>bytes data = 1;</code>
+     * @return The data.
      */
     com.google.protobuf.ByteString getData();
 
@@ -1831,6 +1769,7 @@ public final class ServerLBSInfo {
      * </pre>
      *
      * <code>int32 seconds = 2;</code>
+     * @return The seconds.
      */
     int getSeconds();
 
@@ -1840,13 +1779,14 @@ public final class ServerLBSInfo {
      * </pre>
      *
      * <code>int32 mseconds = 3;</code>
+     * @return The mseconds.
      */
     int getMseconds();
   }
   /**
    * Protobuf type {@code ObjectData}
    */
-  public  static final class ObjectData extends
+  public static final class ObjectData extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:ObjectData)
       ObjectDataOrBuilder {
@@ -1857,68 +1797,15 @@ public final class ServerLBSInfo {
     }
     private ObjectData() {
       data_ = com.google.protobuf.ByteString.EMPTY;
-      seconds_ = 0;
-      mseconds_ = 0;
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ObjectData();
     }
-    private ObjectData(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
 
-              data_ = input.readBytes();
-              break;
-            }
-            case 16: {
-
-              seconds_ = input.readInt32();
-              break;
-            }
-            case 24: {
-
-              mseconds_ = input.readInt32();
-              break;
-            }
-            default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.qinglan.example.device_point.server.msg.ServerLBSInfo.internal_static_ObjectData_descriptor;
@@ -1933,40 +1820,46 @@ public final class ServerLBSInfo {
     }
 
     public static final int DATA_FIELD_NUMBER = 1;
-    private com.google.protobuf.ByteString data_;
+    private com.google.protobuf.ByteString data_ = com.google.protobuf.ByteString.EMPTY;
     /**
      * <pre>
      *存放轨迹或者心率
      * </pre>
      *
      * <code>bytes data = 1;</code>
+     * @return The data.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString getData() {
       return data_;
     }
 
     public static final int SECONDS_FIELD_NUMBER = 2;
-    private int seconds_;
+    private int seconds_ = 0;
     /**
      * <pre>
      *1970/1/1开始的秒数
      * </pre>
      *
      * <code>int32 seconds = 2;</code>
+     * @return The seconds.
      */
+    @java.lang.Override
     public int getSeconds() {
       return seconds_;
     }
 
     public static final int MSECONDS_FIELD_NUMBER = 3;
-    private int mseconds_;
+    private int mseconds_ = 0;
     /**
      * <pre>
      *毫秒
      * </pre>
      *
      * <code>int32 mseconds = 3;</code>
+     * @return The mseconds.
      */
+    @java.lang.Override
     public int getMseconds() {
       return mseconds_;
     }
@@ -1994,7 +1887,7 @@ public final class ServerLBSInfo {
       if (mseconds_ != 0) {
         output.writeInt32(3, mseconds_);
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -2015,7 +1908,7 @@ public final class ServerLBSInfo {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(3, mseconds_);
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -2030,15 +1923,14 @@ public final class ServerLBSInfo {
       }
       com.qinglan.example.device_point.server.msg.ServerLBSInfo.ObjectData other = (com.qinglan.example.device_point.server.msg.ServerLBSInfo.ObjectData) obj;
 
-      boolean result = true;
-      result = result && getData()
-          .equals(other.getData());
-      result = result && (getSeconds()
-          == other.getSeconds());
-      result = result && (getMseconds()
-          == other.getMseconds());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (!getData()
+          .equals(other.getData())) return false;
+      if (getSeconds()
+          != other.getSeconds()) return false;
+      if (getMseconds()
+          != other.getMseconds()) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -2054,7 +1946,7 @@ public final class ServerLBSInfo {
       hash = (53 * hash) + getSeconds();
       hash = (37 * hash) + MSECONDS_FIELD_NUMBER;
       hash = (53 * hash) + getMseconds();
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -2171,28 +2063,21 @@ public final class ServerLBSInfo {
 
       // Construct using com.qinglan.example.device_point.server.msg.ServerLBSInfo.ObjectData.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         data_ = com.google.protobuf.ByteString.EMPTY;
-
         seconds_ = 0;
-
         mseconds_ = 0;
-
         return this;
       }
 
@@ -2219,45 +2104,24 @@ public final class ServerLBSInfo {
       @java.lang.Override
       public com.qinglan.example.device_point.server.msg.ServerLBSInfo.ObjectData buildPartial() {
         com.qinglan.example.device_point.server.msg.ServerLBSInfo.ObjectData result = new com.qinglan.example.device_point.server.msg.ServerLBSInfo.ObjectData(this);
-        result.data_ = data_;
-        result.seconds_ = seconds_;
-        result.mseconds_ = mseconds_;
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      @java.lang.Override
-      public Builder clone() {
-        return (Builder) super.clone();
+      private void buildPartial0(com.qinglan.example.device_point.server.msg.ServerLBSInfo.ObjectData result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.data_ = data_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.seconds_ = seconds_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.mseconds_ = mseconds_;
+        }
       }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.qinglan.example.device_point.server.msg.ServerLBSInfo.ObjectData) {
@@ -2279,7 +2143,7 @@ public final class ServerLBSInfo {
         if (other.getMseconds() != 0) {
           setMseconds(other.getMseconds());
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -2294,19 +2158,48 @@ public final class ServerLBSInfo {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.qinglan.example.device_point.server.msg.ServerLBSInfo.ObjectData parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                data_ = input.readBytes();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 16: {
+                seconds_ = input.readInt32();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              case 24: {
+                mseconds_ = input.readInt32();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 24
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.qinglan.example.device_point.server.msg.ServerLBSInfo.ObjectData) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
+      private int bitField0_;
 
       private com.google.protobuf.ByteString data_ = com.google.protobuf.ByteString.EMPTY;
       /**
@@ -2315,7 +2208,9 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>bytes data = 1;</code>
+       * @return The data.
        */
+      @java.lang.Override
       public com.google.protobuf.ByteString getData() {
         return data_;
       }
@@ -2325,13 +2220,13 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>bytes data = 1;</code>
+       * @param value The data to set.
+       * @return This builder for chaining.
        */
       public Builder setData(com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         data_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -2341,9 +2236,10 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>bytes data = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearData() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         data_ = getDefaultInstance().getData();
         onChanged();
         return this;
@@ -2356,7 +2252,9 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>int32 seconds = 2;</code>
+       * @return The seconds.
        */
+      @java.lang.Override
       public int getSeconds() {
         return seconds_;
       }
@@ -2366,10 +2264,13 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>int32 seconds = 2;</code>
+       * @param value The seconds to set.
+       * @return This builder for chaining.
        */
       public Builder setSeconds(int value) {
-        
+
         seconds_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -2379,9 +2280,10 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>int32 seconds = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearSeconds() {
-        
+        bitField0_ = (bitField0_ & ~0x00000002);
         seconds_ = 0;
         onChanged();
         return this;
@@ -2394,7 +2296,9 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>int32 mseconds = 3;</code>
+       * @return The mseconds.
        */
+      @java.lang.Override
       public int getMseconds() {
         return mseconds_;
       }
@@ -2404,10 +2308,13 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>int32 mseconds = 3;</code>
+       * @param value The mseconds to set.
+       * @return This builder for chaining.
        */
       public Builder setMseconds(int value) {
-        
+
         mseconds_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
@@ -2417,9 +2324,10 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>int32 mseconds = 3;</code>
+       * @return This builder for chaining.
        */
       public Builder clearMseconds() {
-        
+        bitField0_ = (bitField0_ & ~0x00000004);
         mseconds_ = 0;
         onChanged();
         return this;
@@ -2427,7 +2335,7 @@ public final class ServerLBSInfo {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -2457,7 +2365,18 @@ public final class ServerLBSInfo {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ObjectData(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -2483,6 +2402,7 @@ public final class ServerLBSInfo {
 
     /**
      * <code>uint32 seq = 1;</code>
+     * @return The seq.
      */
     int getSeq();
 
@@ -2492,6 +2412,7 @@ public final class ServerLBSInfo {
      * </pre>
      *
      * <code>string uid = 2;</code>
+     * @return The uid.
      */
     java.lang.String getUid();
     /**
@@ -2500,6 +2421,7 @@ public final class ServerLBSInfo {
      * </pre>
      *
      * <code>string uid = 2;</code>
+     * @return The bytes for uid.
      */
     com.google.protobuf.ByteString
         getUidBytes();
@@ -2510,6 +2432,7 @@ public final class ServerLBSInfo {
      * </pre>
      *
      * <code>string type = 3;</code>
+     * @return The type.
      */
     java.lang.String getType();
     /**
@@ -2518,6 +2441,7 @@ public final class ServerLBSInfo {
      * </pre>
      *
      * <code>string type = 3;</code>
+     * @return The bytes for type.
      */
     com.google.protobuf.ByteString
         getTypeBytes();
@@ -2530,7 +2454,7 @@ public final class ServerLBSInfo {
    *
    * Protobuf type {@code GetServerReq}
    */
-  public  static final class GetServerReq extends
+  public static final class GetServerReq extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:GetServerReq)
       GetServerReqOrBuilder {
@@ -2540,71 +2464,17 @@ public final class ServerLBSInfo {
       super(builder);
     }
     private GetServerReq() {
-      seq_ = 0;
       uid_ = "";
       type_ = "";
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new GetServerReq();
     }
-    private GetServerReq(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
 
-              seq_ = input.readUInt32();
-              break;
-            }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              uid_ = s;
-              break;
-            }
-            case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              type_ = s;
-              break;
-            }
-            default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.qinglan.example.device_point.server.msg.ServerLBSInfo.internal_static_GetServerReq_descriptor;
@@ -2619,23 +2489,28 @@ public final class ServerLBSInfo {
     }
 
     public static final int SEQ_FIELD_NUMBER = 1;
-    private int seq_;
+    private int seq_ = 0;
     /**
      * <code>uint32 seq = 1;</code>
+     * @return The seq.
      */
+    @java.lang.Override
     public int getSeq() {
       return seq_;
     }
 
     public static final int UID_FIELD_NUMBER = 2;
-    private volatile java.lang.Object uid_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object uid_ = "";
     /**
      * <pre>
      *设备UID
      * </pre>
      *
      * <code>string uid = 2;</code>
+     * @return The uid.
      */
+    @java.lang.Override
     public java.lang.String getUid() {
       java.lang.Object ref = uid_;
       if (ref instanceof java.lang.String) {
@@ -2654,7 +2529,9 @@ public final class ServerLBSInfo {
      * </pre>
      *
      * <code>string uid = 2;</code>
+     * @return The bytes for uid.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getUidBytes() {
       java.lang.Object ref = uid_;
@@ -2670,14 +2547,17 @@ public final class ServerLBSInfo {
     }
 
     public static final int TYPE_FIELD_NUMBER = 3;
-    private volatile java.lang.Object type_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object type_ = "";
     /**
      * <pre>
      *设备类型
      * </pre>
      *
      * <code>string type = 3;</code>
+     * @return The type.
      */
+    @java.lang.Override
     public java.lang.String getType() {
       java.lang.Object ref = type_;
       if (ref instanceof java.lang.String) {
@@ -2696,7 +2576,9 @@ public final class ServerLBSInfo {
      * </pre>
      *
      * <code>string type = 3;</code>
+     * @return The bytes for type.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getTypeBytes() {
       java.lang.Object ref = type_;
@@ -2728,13 +2610,13 @@ public final class ServerLBSInfo {
       if (seq_ != 0) {
         output.writeUInt32(1, seq_);
       }
-      if (!getUidBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(uid_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, uid_);
       }
-      if (!getTypeBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(type_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, type_);
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -2747,13 +2629,13 @@ public final class ServerLBSInfo {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(1, seq_);
       }
-      if (!getUidBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(uid_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, uid_);
       }
-      if (!getTypeBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(type_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, type_);
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -2768,15 +2650,14 @@ public final class ServerLBSInfo {
       }
       com.qinglan.example.device_point.server.msg.ServerLBSInfo.GetServerReq other = (com.qinglan.example.device_point.server.msg.ServerLBSInfo.GetServerReq) obj;
 
-      boolean result = true;
-      result = result && (getSeq()
-          == other.getSeq());
-      result = result && getUid()
-          .equals(other.getUid());
-      result = result && getType()
-          .equals(other.getType());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (getSeq()
+          != other.getSeq()) return false;
+      if (!getUid()
+          .equals(other.getUid())) return false;
+      if (!getType()
+          .equals(other.getType())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -2792,7 +2673,7 @@ public final class ServerLBSInfo {
       hash = (53 * hash) + getUid().hashCode();
       hash = (37 * hash) + TYPE_FIELD_NUMBER;
       hash = (53 * hash) + getType().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -2914,28 +2795,21 @@ public final class ServerLBSInfo {
 
       // Construct using com.qinglan.example.device_point.server.msg.ServerLBSInfo.GetServerReq.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         seq_ = 0;
-
         uid_ = "";
-
         type_ = "";
-
         return this;
       }
 
@@ -2962,45 +2836,24 @@ public final class ServerLBSInfo {
       @java.lang.Override
       public com.qinglan.example.device_point.server.msg.ServerLBSInfo.GetServerReq buildPartial() {
         com.qinglan.example.device_point.server.msg.ServerLBSInfo.GetServerReq result = new com.qinglan.example.device_point.server.msg.ServerLBSInfo.GetServerReq(this);
-        result.seq_ = seq_;
-        result.uid_ = uid_;
-        result.type_ = type_;
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      @java.lang.Override
-      public Builder clone() {
-        return (Builder) super.clone();
+      private void buildPartial0(com.qinglan.example.device_point.server.msg.ServerLBSInfo.GetServerReq result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.seq_ = seq_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.uid_ = uid_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.type_ = type_;
+        }
       }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.qinglan.example.device_point.server.msg.ServerLBSInfo.GetServerReq) {
@@ -3018,13 +2871,15 @@ public final class ServerLBSInfo {
         }
         if (!other.getUid().isEmpty()) {
           uid_ = other.uid_;
+          bitField0_ |= 0x00000002;
           onChanged();
         }
         if (!other.getType().isEmpty()) {
           type_ = other.type_;
+          bitField0_ |= 0x00000004;
           onChanged();
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -3039,41 +2894,76 @@ public final class ServerLBSInfo {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.qinglan.example.device_point.server.msg.ServerLBSInfo.GetServerReq parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                seq_ = input.readUInt32();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              case 18: {
+                uid_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              case 26: {
+                type_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 26
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.qinglan.example.device_point.server.msg.ServerLBSInfo.GetServerReq) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
+      private int bitField0_;
 
       private int seq_ ;
       /**
        * <code>uint32 seq = 1;</code>
+       * @return The seq.
        */
+      @java.lang.Override
       public int getSeq() {
         return seq_;
       }
       /**
        * <code>uint32 seq = 1;</code>
+       * @param value The seq to set.
+       * @return This builder for chaining.
        */
       public Builder setSeq(int value) {
-        
+
         seq_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
       /**
        * <code>uint32 seq = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearSeq() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         seq_ = 0;
         onChanged();
         return this;
@@ -3086,6 +2976,7 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>string uid = 2;</code>
+       * @return The uid.
        */
       public java.lang.String getUid() {
         java.lang.Object ref = uid_;
@@ -3105,6 +2996,7 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>string uid = 2;</code>
+       * @return The bytes for uid.
        */
       public com.google.protobuf.ByteString
           getUidBytes() {
@@ -3125,14 +3017,14 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>string uid = 2;</code>
+       * @param value The uid to set.
+       * @return This builder for chaining.
        */
       public Builder setUid(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         uid_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -3142,10 +3034,11 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>string uid = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearUid() {
-        
         uid_ = getDefaultInstance().getUid();
+        bitField0_ = (bitField0_ & ~0x00000002);
         onChanged();
         return this;
       }
@@ -3155,15 +3048,15 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>string uid = 2;</code>
+       * @param value The bytes for uid to set.
+       * @return This builder for chaining.
        */
       public Builder setUidBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         uid_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -3175,6 +3068,7 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>string type = 3;</code>
+       * @return The type.
        */
       public java.lang.String getType() {
         java.lang.Object ref = type_;
@@ -3194,6 +3088,7 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>string type = 3;</code>
+       * @return The bytes for type.
        */
       public com.google.protobuf.ByteString
           getTypeBytes() {
@@ -3214,14 +3109,14 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>string type = 3;</code>
+       * @param value The type to set.
+       * @return This builder for chaining.
        */
       public Builder setType(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         type_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
@@ -3231,10 +3126,11 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>string type = 3;</code>
+       * @return This builder for chaining.
        */
       public Builder clearType() {
-        
         type_ = getDefaultInstance().getType();
+        bitField0_ = (bitField0_ & ~0x00000004);
         onChanged();
         return this;
       }
@@ -3244,22 +3140,22 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>string type = 3;</code>
+       * @param value The bytes for type to set.
+       * @return This builder for chaining.
        */
       public Builder setTypeBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         type_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -3289,7 +3185,18 @@ public final class ServerLBSInfo {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new GetServerReq(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -3315,6 +3222,7 @@ public final class ServerLBSInfo {
 
     /**
      * <code>uint32 seq = 1;</code>
+     * @return The seq.
      */
     int getSeq();
 
@@ -3324,6 +3232,7 @@ public final class ServerLBSInfo {
      * </pre>
      *
      * <code>int32 result = 2;</code>
+     * @return The result.
      */
     int getResult();
 
@@ -3333,6 +3242,7 @@ public final class ServerLBSInfo {
      * </pre>
      *
      * <code>string server = 3;</code>
+     * @return The server.
      */
     java.lang.String getServer();
     /**
@@ -3341,6 +3251,7 @@ public final class ServerLBSInfo {
      * </pre>
      *
      * <code>string server = 3;</code>
+     * @return The bytes for server.
      */
     com.google.protobuf.ByteString
         getServerBytes();
@@ -3351,6 +3262,7 @@ public final class ServerLBSInfo {
      * </pre>
      *
      * <code>uint32 port = 4;</code>
+     * @return The port.
      */
     int getPort();
 
@@ -3360,6 +3272,7 @@ public final class ServerLBSInfo {
      * </pre>
      *
      * <code>string addon = 5;</code>
+     * @return The addon.
      */
     java.lang.String getAddon();
     /**
@@ -3368,6 +3281,7 @@ public final class ServerLBSInfo {
      * </pre>
      *
      * <code>string addon = 5;</code>
+     * @return The bytes for addon.
      */
     com.google.protobuf.ByteString
         getAddonBytes();
@@ -3378,6 +3292,7 @@ public final class ServerLBSInfo {
      * </pre>
      *
      * <code>string errmsg = 6;</code>
+     * @return The errmsg.
      */
     java.lang.String getErrmsg();
     /**
@@ -3386,6 +3301,7 @@ public final class ServerLBSInfo {
      * </pre>
      *
      * <code>string errmsg = 6;</code>
+     * @return The bytes for errmsg.
      */
     com.google.protobuf.ByteString
         getErrmsgBytes();
@@ -3398,7 +3314,7 @@ public final class ServerLBSInfo {
    *
    * Protobuf type {@code GetServerResponse}
    */
-  public  static final class GetServerResponse extends
+  public static final class GetServerResponse extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:GetServerResponse)
       GetServerResponseOrBuilder {
@@ -3408,90 +3324,18 @@ public final class ServerLBSInfo {
       super(builder);
     }
     private GetServerResponse() {
-      seq_ = 0;
-      result_ = 0;
       server_ = "";
-      port_ = 0;
       addon_ = "";
       errmsg_ = "";
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new GetServerResponse();
     }
-    private GetServerResponse(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
 
-              seq_ = input.readUInt32();
-              break;
-            }
-            case 16: {
-
-              result_ = input.readInt32();
-              break;
-            }
-            case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              server_ = s;
-              break;
-            }
-            case 32: {
-
-              port_ = input.readUInt32();
-              break;
-            }
-            case 42: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              addon_ = s;
-              break;
-            }
-            case 50: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              errmsg_ = s;
-              break;
-            }
-            default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.qinglan.example.device_point.server.msg.ServerLBSInfo.internal_static_GetServerResponse_descriptor;
@@ -3506,36 +3350,43 @@ public final class ServerLBSInfo {
     }
 
     public static final int SEQ_FIELD_NUMBER = 1;
-    private int seq_;
+    private int seq_ = 0;
     /**
      * <code>uint32 seq = 1;</code>
+     * @return The seq.
      */
+    @java.lang.Override
     public int getSeq() {
       return seq_;
     }
 
     public static final int RESULT_FIELD_NUMBER = 2;
-    private int result_;
+    private int result_ = 0;
     /**
      * <pre>
      *查询结果，0:成功，其它值，失败
      * </pre>
      *
      * <code>int32 result = 2;</code>
+     * @return The result.
      */
+    @java.lang.Override
     public int getResult() {
       return result_;
     }
 
     public static final int SERVER_FIELD_NUMBER = 3;
-    private volatile java.lang.Object server_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object server_ = "";
     /**
      * <pre>
      *服务器域名或者IP
      * </pre>
      *
      * <code>string server = 3;</code>
+     * @return The server.
      */
+    @java.lang.Override
     public java.lang.String getServer() {
       java.lang.Object ref = server_;
       if (ref instanceof java.lang.String) {
@@ -3554,7 +3405,9 @@ public final class ServerLBSInfo {
      * </pre>
      *
      * <code>string server = 3;</code>
+     * @return The bytes for server.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getServerBytes() {
       java.lang.Object ref = server_;
@@ -3570,27 +3423,32 @@ public final class ServerLBSInfo {
     }
 
     public static final int PORT_FIELD_NUMBER = 4;
-    private int port_;
+    private int port_ = 0;
     /**
      * <pre>
      *服务器端口
      * </pre>
      *
      * <code>uint32 port = 4;</code>
+     * @return The port.
      */
+    @java.lang.Override
     public int getPort() {
       return port_;
     }
 
     public static final int ADDON_FIELD_NUMBER = 5;
-    private volatile java.lang.Object addon_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object addon_ = "";
     /**
      * <pre>
      *服务器附加信息
      * </pre>
      *
      * <code>string addon = 5;</code>
+     * @return The addon.
      */
+    @java.lang.Override
     public java.lang.String getAddon() {
       java.lang.Object ref = addon_;
       if (ref instanceof java.lang.String) {
@@ -3609,7 +3467,9 @@ public final class ServerLBSInfo {
      * </pre>
      *
      * <code>string addon = 5;</code>
+     * @return The bytes for addon.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getAddonBytes() {
       java.lang.Object ref = addon_;
@@ -3625,14 +3485,17 @@ public final class ServerLBSInfo {
     }
 
     public static final int ERRMSG_FIELD_NUMBER = 6;
-    private volatile java.lang.Object errmsg_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object errmsg_ = "";
     /**
      * <pre>
      *错误信息
      * </pre>
      *
      * <code>string errmsg = 6;</code>
+     * @return The errmsg.
      */
+    @java.lang.Override
     public java.lang.String getErrmsg() {
       java.lang.Object ref = errmsg_;
       if (ref instanceof java.lang.String) {
@@ -3651,7 +3514,9 @@ public final class ServerLBSInfo {
      * </pre>
      *
      * <code>string errmsg = 6;</code>
+     * @return The bytes for errmsg.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getErrmsgBytes() {
       java.lang.Object ref = errmsg_;
@@ -3686,19 +3551,19 @@ public final class ServerLBSInfo {
       if (result_ != 0) {
         output.writeInt32(2, result_);
       }
-      if (!getServerBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(server_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, server_);
       }
       if (port_ != 0) {
         output.writeUInt32(4, port_);
       }
-      if (!getAddonBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(addon_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 5, addon_);
       }
-      if (!getErrmsgBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(errmsg_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 6, errmsg_);
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -3715,20 +3580,20 @@ public final class ServerLBSInfo {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(2, result_);
       }
-      if (!getServerBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(server_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, server_);
       }
       if (port_ != 0) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(4, port_);
       }
-      if (!getAddonBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(addon_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, addon_);
       }
-      if (!getErrmsgBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(errmsg_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, errmsg_);
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -3743,21 +3608,20 @@ public final class ServerLBSInfo {
       }
       com.qinglan.example.device_point.server.msg.ServerLBSInfo.GetServerResponse other = (com.qinglan.example.device_point.server.msg.ServerLBSInfo.GetServerResponse) obj;
 
-      boolean result = true;
-      result = result && (getSeq()
-          == other.getSeq());
-      result = result && (getResult()
-          == other.getResult());
-      result = result && getServer()
-          .equals(other.getServer());
-      result = result && (getPort()
-          == other.getPort());
-      result = result && getAddon()
-          .equals(other.getAddon());
-      result = result && getErrmsg()
-          .equals(other.getErrmsg());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (getSeq()
+          != other.getSeq()) return false;
+      if (getResult()
+          != other.getResult()) return false;
+      if (!getServer()
+          .equals(other.getServer())) return false;
+      if (getPort()
+          != other.getPort()) return false;
+      if (!getAddon()
+          .equals(other.getAddon())) return false;
+      if (!getErrmsg()
+          .equals(other.getErrmsg())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -3779,7 +3643,7 @@ public final class ServerLBSInfo {
       hash = (53 * hash) + getAddon().hashCode();
       hash = (37 * hash) + ERRMSG_FIELD_NUMBER;
       hash = (53 * hash) + getErrmsg().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -3901,34 +3765,24 @@ public final class ServerLBSInfo {
 
       // Construct using com.qinglan.example.device_point.server.msg.ServerLBSInfo.GetServerResponse.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         seq_ = 0;
-
         result_ = 0;
-
         server_ = "";
-
         port_ = 0;
-
         addon_ = "";
-
         errmsg_ = "";
-
         return this;
       }
 
@@ -3955,48 +3809,33 @@ public final class ServerLBSInfo {
       @java.lang.Override
       public com.qinglan.example.device_point.server.msg.ServerLBSInfo.GetServerResponse buildPartial() {
         com.qinglan.example.device_point.server.msg.ServerLBSInfo.GetServerResponse result = new com.qinglan.example.device_point.server.msg.ServerLBSInfo.GetServerResponse(this);
-        result.seq_ = seq_;
-        result.result_ = result_;
-        result.server_ = server_;
-        result.port_ = port_;
-        result.addon_ = addon_;
-        result.errmsg_ = errmsg_;
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      @java.lang.Override
-      public Builder clone() {
-        return (Builder) super.clone();
+      private void buildPartial0(com.qinglan.example.device_point.server.msg.ServerLBSInfo.GetServerResponse result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.seq_ = seq_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.result_ = result_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.server_ = server_;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.port_ = port_;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.addon_ = addon_;
+        }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          result.errmsg_ = errmsg_;
+        }
       }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.qinglan.example.device_point.server.msg.ServerLBSInfo.GetServerResponse) {
@@ -4017,6 +3856,7 @@ public final class ServerLBSInfo {
         }
         if (!other.getServer().isEmpty()) {
           server_ = other.server_;
+          bitField0_ |= 0x00000004;
           onChanged();
         }
         if (other.getPort() != 0) {
@@ -4024,13 +3864,15 @@ public final class ServerLBSInfo {
         }
         if (!other.getAddon().isEmpty()) {
           addon_ = other.addon_;
+          bitField0_ |= 0x00000010;
           onChanged();
         }
         if (!other.getErrmsg().isEmpty()) {
           errmsg_ = other.errmsg_;
+          bitField0_ |= 0x00000020;
           onChanged();
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -4045,41 +3887,91 @@ public final class ServerLBSInfo {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.qinglan.example.device_point.server.msg.ServerLBSInfo.GetServerResponse parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                seq_ = input.readUInt32();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              case 16: {
+                result_ = input.readInt32();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              case 26: {
+                server_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 26
+              case 32: {
+                port_ = input.readUInt32();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 32
+              case 42: {
+                addon_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 42
+              case 50: {
+                errmsg_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000020;
+                break;
+              } // case 50
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.qinglan.example.device_point.server.msg.ServerLBSInfo.GetServerResponse) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
+      private int bitField0_;
 
       private int seq_ ;
       /**
        * <code>uint32 seq = 1;</code>
+       * @return The seq.
        */
+      @java.lang.Override
       public int getSeq() {
         return seq_;
       }
       /**
        * <code>uint32 seq = 1;</code>
+       * @param value The seq to set.
+       * @return This builder for chaining.
        */
       public Builder setSeq(int value) {
-        
+
         seq_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
       /**
        * <code>uint32 seq = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearSeq() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         seq_ = 0;
         onChanged();
         return this;
@@ -4092,7 +3984,9 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>int32 result = 2;</code>
+       * @return The result.
        */
+      @java.lang.Override
       public int getResult() {
         return result_;
       }
@@ -4102,10 +3996,13 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>int32 result = 2;</code>
+       * @param value The result to set.
+       * @return This builder for chaining.
        */
       public Builder setResult(int value) {
-        
+
         result_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -4115,9 +4012,10 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>int32 result = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearResult() {
-        
+        bitField0_ = (bitField0_ & ~0x00000002);
         result_ = 0;
         onChanged();
         return this;
@@ -4130,6 +4028,7 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>string server = 3;</code>
+       * @return The server.
        */
       public java.lang.String getServer() {
         java.lang.Object ref = server_;
@@ -4149,6 +4048,7 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>string server = 3;</code>
+       * @return The bytes for server.
        */
       public com.google.protobuf.ByteString
           getServerBytes() {
@@ -4169,14 +4069,14 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>string server = 3;</code>
+       * @param value The server to set.
+       * @return This builder for chaining.
        */
       public Builder setServer(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         server_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
@@ -4186,10 +4086,11 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>string server = 3;</code>
+       * @return This builder for chaining.
        */
       public Builder clearServer() {
-        
         server_ = getDefaultInstance().getServer();
+        bitField0_ = (bitField0_ & ~0x00000004);
         onChanged();
         return this;
       }
@@ -4199,15 +4100,15 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>string server = 3;</code>
+       * @param value The bytes for server to set.
+       * @return This builder for chaining.
        */
       public Builder setServerBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         server_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
@@ -4219,7 +4120,9 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>uint32 port = 4;</code>
+       * @return The port.
        */
+      @java.lang.Override
       public int getPort() {
         return port_;
       }
@@ -4229,10 +4132,13 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>uint32 port = 4;</code>
+       * @param value The port to set.
+       * @return This builder for chaining.
        */
       public Builder setPort(int value) {
-        
+
         port_ = value;
+        bitField0_ |= 0x00000008;
         onChanged();
         return this;
       }
@@ -4242,9 +4148,10 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>uint32 port = 4;</code>
+       * @return This builder for chaining.
        */
       public Builder clearPort() {
-        
+        bitField0_ = (bitField0_ & ~0x00000008);
         port_ = 0;
         onChanged();
         return this;
@@ -4257,6 +4164,7 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>string addon = 5;</code>
+       * @return The addon.
        */
       public java.lang.String getAddon() {
         java.lang.Object ref = addon_;
@@ -4276,6 +4184,7 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>string addon = 5;</code>
+       * @return The bytes for addon.
        */
       public com.google.protobuf.ByteString
           getAddonBytes() {
@@ -4296,14 +4205,14 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>string addon = 5;</code>
+       * @param value The addon to set.
+       * @return This builder for chaining.
        */
       public Builder setAddon(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         addon_ = value;
+        bitField0_ |= 0x00000010;
         onChanged();
         return this;
       }
@@ -4313,10 +4222,11 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>string addon = 5;</code>
+       * @return This builder for chaining.
        */
       public Builder clearAddon() {
-        
         addon_ = getDefaultInstance().getAddon();
+        bitField0_ = (bitField0_ & ~0x00000010);
         onChanged();
         return this;
       }
@@ -4326,15 +4236,15 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>string addon = 5;</code>
+       * @param value The bytes for addon to set.
+       * @return This builder for chaining.
        */
       public Builder setAddonBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         addon_ = value;
+        bitField0_ |= 0x00000010;
         onChanged();
         return this;
       }
@@ -4346,6 +4256,7 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>string errmsg = 6;</code>
+       * @return The errmsg.
        */
       public java.lang.String getErrmsg() {
         java.lang.Object ref = errmsg_;
@@ -4365,6 +4276,7 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>string errmsg = 6;</code>
+       * @return The bytes for errmsg.
        */
       public com.google.protobuf.ByteString
           getErrmsgBytes() {
@@ -4385,14 +4297,14 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>string errmsg = 6;</code>
+       * @param value The errmsg to set.
+       * @return This builder for chaining.
        */
       public Builder setErrmsg(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         errmsg_ = value;
+        bitField0_ |= 0x00000020;
         onChanged();
         return this;
       }
@@ -4402,10 +4314,11 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>string errmsg = 6;</code>
+       * @return This builder for chaining.
        */
       public Builder clearErrmsg() {
-        
         errmsg_ = getDefaultInstance().getErrmsg();
+        bitField0_ = (bitField0_ & ~0x00000020);
         onChanged();
         return this;
       }
@@ -4415,22 +4328,22 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>string errmsg = 6;</code>
+       * @param value The bytes for errmsg to set.
+       * @return This builder for chaining.
        */
       public Builder setErrmsgBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         errmsg_ = value;
+        bitField0_ |= 0x00000020;
         onChanged();
         return this;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -4460,7 +4373,18 @@ public final class ServerLBSInfo {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new GetServerResponse(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -4490,6 +4414,7 @@ public final class ServerLBSInfo {
      * </pre>
      *
      * <code>bytes falls = 1;</code>
+     * @return The falls.
      */
     com.google.protobuf.ByteString getFalls();
 
@@ -4499,6 +4424,7 @@ public final class ServerLBSInfo {
      * </pre>
      *
      * <code>uint32 seconds = 2;</code>
+     * @return The seconds.
      */
     int getSeconds();
 
@@ -4508,6 +4434,7 @@ public final class ServerLBSInfo {
      * </pre>
      *
      * <code>int32 mseconds = 3;</code>
+     * @return The mseconds.
      */
     int getMseconds();
   }
@@ -4519,7 +4446,7 @@ public final class ServerLBSInfo {
    *
    * Protobuf type {@code ObjectFallDown}
    */
-  public  static final class ObjectFallDown extends
+  public static final class ObjectFallDown extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:ObjectFallDown)
       ObjectFallDownOrBuilder {
@@ -4530,68 +4457,15 @@ public final class ServerLBSInfo {
     }
     private ObjectFallDown() {
       falls_ = com.google.protobuf.ByteString.EMPTY;
-      seconds_ = 0;
-      mseconds_ = 0;
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ObjectFallDown();
     }
-    private ObjectFallDown(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
 
-              falls_ = input.readBytes();
-              break;
-            }
-            case 16: {
-
-              seconds_ = input.readUInt32();
-              break;
-            }
-            case 24: {
-
-              mseconds_ = input.readInt32();
-              break;
-            }
-            default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.qinglan.example.device_point.server.msg.ServerLBSInfo.internal_static_ObjectFallDown_descriptor;
@@ -4606,40 +4480,46 @@ public final class ServerLBSInfo {
     }
 
     public static final int FALLS_FIELD_NUMBER = 1;
-    private com.google.protobuf.ByteString falls_;
+    private com.google.protobuf.ByteString falls_ = com.google.protobuf.ByteString.EMPTY;
     /**
      * <pre>
      *长度为两个字节，字节0为id,字节1为FallStatus,定义如下:0:正常，1:疑似跌倒,2:已经跌倒,3:疑似坐姿过低，4：坐姿过低
      * </pre>
      *
      * <code>bytes falls = 1;</code>
+     * @return The falls.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString getFalls() {
       return falls_;
     }
 
     public static final int SECONDS_FIELD_NUMBER = 2;
-    private int seconds_;
+    private int seconds_ = 0;
     /**
      * <pre>
      *1970/1/1开始的秒数
      * </pre>
      *
      * <code>uint32 seconds = 2;</code>
+     * @return The seconds.
      */
+    @java.lang.Override
     public int getSeconds() {
       return seconds_;
     }
 
     public static final int MSECONDS_FIELD_NUMBER = 3;
-    private int mseconds_;
+    private int mseconds_ = 0;
     /**
      * <pre>
      *毫秒
      * </pre>
      *
      * <code>int32 mseconds = 3;</code>
+     * @return The mseconds.
      */
+    @java.lang.Override
     public int getMseconds() {
       return mseconds_;
     }
@@ -4667,7 +4547,7 @@ public final class ServerLBSInfo {
       if (mseconds_ != 0) {
         output.writeInt32(3, mseconds_);
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -4688,7 +4568,7 @@ public final class ServerLBSInfo {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(3, mseconds_);
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -4703,15 +4583,14 @@ public final class ServerLBSInfo {
       }
       com.qinglan.example.device_point.server.msg.ServerLBSInfo.ObjectFallDown other = (com.qinglan.example.device_point.server.msg.ServerLBSInfo.ObjectFallDown) obj;
 
-      boolean result = true;
-      result = result && getFalls()
-          .equals(other.getFalls());
-      result = result && (getSeconds()
-          == other.getSeconds());
-      result = result && (getMseconds()
-          == other.getMseconds());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (!getFalls()
+          .equals(other.getFalls())) return false;
+      if (getSeconds()
+          != other.getSeconds()) return false;
+      if (getMseconds()
+          != other.getMseconds()) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -4727,7 +4606,7 @@ public final class ServerLBSInfo {
       hash = (53 * hash) + getSeconds();
       hash = (37 * hash) + MSECONDS_FIELD_NUMBER;
       hash = (53 * hash) + getMseconds();
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -4849,28 +4728,21 @@ public final class ServerLBSInfo {
 
       // Construct using com.qinglan.example.device_point.server.msg.ServerLBSInfo.ObjectFallDown.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         falls_ = com.google.protobuf.ByteString.EMPTY;
-
         seconds_ = 0;
-
         mseconds_ = 0;
-
         return this;
       }
 
@@ -4897,45 +4769,24 @@ public final class ServerLBSInfo {
       @java.lang.Override
       public com.qinglan.example.device_point.server.msg.ServerLBSInfo.ObjectFallDown buildPartial() {
         com.qinglan.example.device_point.server.msg.ServerLBSInfo.ObjectFallDown result = new com.qinglan.example.device_point.server.msg.ServerLBSInfo.ObjectFallDown(this);
-        result.falls_ = falls_;
-        result.seconds_ = seconds_;
-        result.mseconds_ = mseconds_;
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      @java.lang.Override
-      public Builder clone() {
-        return (Builder) super.clone();
+      private void buildPartial0(com.qinglan.example.device_point.server.msg.ServerLBSInfo.ObjectFallDown result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.falls_ = falls_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.seconds_ = seconds_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.mseconds_ = mseconds_;
+        }
       }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.qinglan.example.device_point.server.msg.ServerLBSInfo.ObjectFallDown) {
@@ -4957,7 +4808,7 @@ public final class ServerLBSInfo {
         if (other.getMseconds() != 0) {
           setMseconds(other.getMseconds());
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -4972,19 +4823,48 @@ public final class ServerLBSInfo {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.qinglan.example.device_point.server.msg.ServerLBSInfo.ObjectFallDown parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                falls_ = input.readBytes();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 16: {
+                seconds_ = input.readUInt32();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              case 24: {
+                mseconds_ = input.readInt32();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 24
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.qinglan.example.device_point.server.msg.ServerLBSInfo.ObjectFallDown) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
+      private int bitField0_;
 
       private com.google.protobuf.ByteString falls_ = com.google.protobuf.ByteString.EMPTY;
       /**
@@ -4993,7 +4873,9 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>bytes falls = 1;</code>
+       * @return The falls.
        */
+      @java.lang.Override
       public com.google.protobuf.ByteString getFalls() {
         return falls_;
       }
@@ -5003,13 +4885,13 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>bytes falls = 1;</code>
+       * @param value The falls to set.
+       * @return This builder for chaining.
        */
       public Builder setFalls(com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         falls_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -5019,9 +4901,10 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>bytes falls = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearFalls() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         falls_ = getDefaultInstance().getFalls();
         onChanged();
         return this;
@@ -5034,7 +4917,9 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>uint32 seconds = 2;</code>
+       * @return The seconds.
        */
+      @java.lang.Override
       public int getSeconds() {
         return seconds_;
       }
@@ -5044,10 +4929,13 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>uint32 seconds = 2;</code>
+       * @param value The seconds to set.
+       * @return This builder for chaining.
        */
       public Builder setSeconds(int value) {
-        
+
         seconds_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -5057,9 +4945,10 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>uint32 seconds = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearSeconds() {
-        
+        bitField0_ = (bitField0_ & ~0x00000002);
         seconds_ = 0;
         onChanged();
         return this;
@@ -5072,7 +4961,9 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>int32 mseconds = 3;</code>
+       * @return The mseconds.
        */
+      @java.lang.Override
       public int getMseconds() {
         return mseconds_;
       }
@@ -5082,10 +4973,13 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>int32 mseconds = 3;</code>
+       * @param value The mseconds to set.
+       * @return This builder for chaining.
        */
       public Builder setMseconds(int value) {
-        
+
         mseconds_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
@@ -5095,9 +4989,10 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>int32 mseconds = 3;</code>
+       * @return This builder for chaining.
        */
       public Builder clearMseconds() {
-        
+        bitField0_ = (bitField0_ & ~0x00000004);
         mseconds_ = 0;
         onChanged();
         return this;
@@ -5105,7 +5000,7 @@ public final class ServerLBSInfo {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -5135,7 +5030,18 @@ public final class ServerLBSInfo {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ObjectFallDown(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -5161,6 +5067,7 @@ public final class ServerLBSInfo {
 
     /**
      * <code>uint32 seq = 1;</code>
+     * @return The seq.
      */
     int getSeq();
 
@@ -5170,6 +5077,7 @@ public final class ServerLBSInfo {
      * </pre>
      *
      * <code>string key = 2;</code>
+     * @return The key.
      */
     java.lang.String getKey();
     /**
@@ -5178,6 +5086,7 @@ public final class ServerLBSInfo {
      * </pre>
      *
      * <code>string key = 2;</code>
+     * @return The bytes for key.
      */
     com.google.protobuf.ByteString
         getKeyBytes();
@@ -5188,6 +5097,7 @@ public final class ServerLBSInfo {
      * </pre>
      *
      * <code>string value = 3;</code>
+     * @return The value.
      */
     java.lang.String getValue();
     /**
@@ -5196,6 +5106,7 @@ public final class ServerLBSInfo {
      * </pre>
      *
      * <code>string value = 3;</code>
+     * @return The bytes for value.
      */
     com.google.protobuf.ByteString
         getValueBytes();
@@ -5209,7 +5120,7 @@ public final class ServerLBSInfo {
    *
    * Protobuf type {@code SetDeviceProperty}
    */
-  public  static final class SetDeviceProperty extends
+  public static final class SetDeviceProperty extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:SetDeviceProperty)
       SetDevicePropertyOrBuilder {
@@ -5219,71 +5130,17 @@ public final class ServerLBSInfo {
       super(builder);
     }
     private SetDeviceProperty() {
-      seq_ = 0;
       key_ = "";
       value_ = "";
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new SetDeviceProperty();
     }
-    private SetDeviceProperty(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
 
-              seq_ = input.readUInt32();
-              break;
-            }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              key_ = s;
-              break;
-            }
-            case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              value_ = s;
-              break;
-            }
-            default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.qinglan.example.device_point.server.msg.ServerLBSInfo.internal_static_SetDeviceProperty_descriptor;
@@ -5298,23 +5155,28 @@ public final class ServerLBSInfo {
     }
 
     public static final int SEQ_FIELD_NUMBER = 1;
-    private int seq_;
+    private int seq_ = 0;
     /**
      * <code>uint32 seq = 1;</code>
+     * @return The seq.
      */
+    @java.lang.Override
     public int getSeq() {
       return seq_;
     }
 
     public static final int KEY_FIELD_NUMBER = 2;
-    private volatile java.lang.Object key_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object key_ = "";
     /**
      * <pre>
      *属性key
      * </pre>
      *
      * <code>string key = 2;</code>
+     * @return The key.
      */
+    @java.lang.Override
     public java.lang.String getKey() {
       java.lang.Object ref = key_;
       if (ref instanceof java.lang.String) {
@@ -5333,7 +5195,9 @@ public final class ServerLBSInfo {
      * </pre>
      *
      * <code>string key = 2;</code>
+     * @return The bytes for key.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getKeyBytes() {
       java.lang.Object ref = key_;
@@ -5349,14 +5213,17 @@ public final class ServerLBSInfo {
     }
 
     public static final int VALUE_FIELD_NUMBER = 3;
-    private volatile java.lang.Object value_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object value_ = "";
     /**
      * <pre>
      *值
      * </pre>
      *
      * <code>string value = 3;</code>
+     * @return The value.
      */
+    @java.lang.Override
     public java.lang.String getValue() {
       java.lang.Object ref = value_;
       if (ref instanceof java.lang.String) {
@@ -5375,7 +5242,9 @@ public final class ServerLBSInfo {
      * </pre>
      *
      * <code>string value = 3;</code>
+     * @return The bytes for value.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getValueBytes() {
       java.lang.Object ref = value_;
@@ -5407,13 +5276,13 @@ public final class ServerLBSInfo {
       if (seq_ != 0) {
         output.writeUInt32(1, seq_);
       }
-      if (!getKeyBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(key_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, key_);
       }
-      if (!getValueBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(value_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, value_);
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -5426,13 +5295,13 @@ public final class ServerLBSInfo {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(1, seq_);
       }
-      if (!getKeyBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(key_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, key_);
       }
-      if (!getValueBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(value_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, value_);
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -5447,15 +5316,14 @@ public final class ServerLBSInfo {
       }
       com.qinglan.example.device_point.server.msg.ServerLBSInfo.SetDeviceProperty other = (com.qinglan.example.device_point.server.msg.ServerLBSInfo.SetDeviceProperty) obj;
 
-      boolean result = true;
-      result = result && (getSeq()
-          == other.getSeq());
-      result = result && getKey()
-          .equals(other.getKey());
-      result = result && getValue()
-          .equals(other.getValue());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (getSeq()
+          != other.getSeq()) return false;
+      if (!getKey()
+          .equals(other.getKey())) return false;
+      if (!getValue()
+          .equals(other.getValue())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -5471,7 +5339,7 @@ public final class ServerLBSInfo {
       hash = (53 * hash) + getKey().hashCode();
       hash = (37 * hash) + VALUE_FIELD_NUMBER;
       hash = (53 * hash) + getValue().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -5594,28 +5462,21 @@ public final class ServerLBSInfo {
 
       // Construct using com.qinglan.example.device_point.server.msg.ServerLBSInfo.SetDeviceProperty.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         seq_ = 0;
-
         key_ = "";
-
         value_ = "";
-
         return this;
       }
 
@@ -5642,45 +5503,24 @@ public final class ServerLBSInfo {
       @java.lang.Override
       public com.qinglan.example.device_point.server.msg.ServerLBSInfo.SetDeviceProperty buildPartial() {
         com.qinglan.example.device_point.server.msg.ServerLBSInfo.SetDeviceProperty result = new com.qinglan.example.device_point.server.msg.ServerLBSInfo.SetDeviceProperty(this);
-        result.seq_ = seq_;
-        result.key_ = key_;
-        result.value_ = value_;
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      @java.lang.Override
-      public Builder clone() {
-        return (Builder) super.clone();
+      private void buildPartial0(com.qinglan.example.device_point.server.msg.ServerLBSInfo.SetDeviceProperty result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.seq_ = seq_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.key_ = key_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.value_ = value_;
+        }
       }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.qinglan.example.device_point.server.msg.ServerLBSInfo.SetDeviceProperty) {
@@ -5698,13 +5538,15 @@ public final class ServerLBSInfo {
         }
         if (!other.getKey().isEmpty()) {
           key_ = other.key_;
+          bitField0_ |= 0x00000002;
           onChanged();
         }
         if (!other.getValue().isEmpty()) {
           value_ = other.value_;
+          bitField0_ |= 0x00000004;
           onChanged();
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -5719,41 +5561,76 @@ public final class ServerLBSInfo {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.qinglan.example.device_point.server.msg.ServerLBSInfo.SetDeviceProperty parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                seq_ = input.readUInt32();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              case 18: {
+                key_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              case 26: {
+                value_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 26
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.qinglan.example.device_point.server.msg.ServerLBSInfo.SetDeviceProperty) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
+      private int bitField0_;
 
       private int seq_ ;
       /**
        * <code>uint32 seq = 1;</code>
+       * @return The seq.
        */
+      @java.lang.Override
       public int getSeq() {
         return seq_;
       }
       /**
        * <code>uint32 seq = 1;</code>
+       * @param value The seq to set.
+       * @return This builder for chaining.
        */
       public Builder setSeq(int value) {
-        
+
         seq_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
       /**
        * <code>uint32 seq = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearSeq() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         seq_ = 0;
         onChanged();
         return this;
@@ -5766,6 +5643,7 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>string key = 2;</code>
+       * @return The key.
        */
       public java.lang.String getKey() {
         java.lang.Object ref = key_;
@@ -5785,6 +5663,7 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>string key = 2;</code>
+       * @return The bytes for key.
        */
       public com.google.protobuf.ByteString
           getKeyBytes() {
@@ -5805,14 +5684,14 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>string key = 2;</code>
+       * @param value The key to set.
+       * @return This builder for chaining.
        */
       public Builder setKey(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         key_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -5822,10 +5701,11 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>string key = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearKey() {
-        
         key_ = getDefaultInstance().getKey();
+        bitField0_ = (bitField0_ & ~0x00000002);
         onChanged();
         return this;
       }
@@ -5835,15 +5715,15 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>string key = 2;</code>
+       * @param value The bytes for key to set.
+       * @return This builder for chaining.
        */
       public Builder setKeyBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         key_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -5855,6 +5735,7 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>string value = 3;</code>
+       * @return The value.
        */
       public java.lang.String getValue() {
         java.lang.Object ref = value_;
@@ -5874,6 +5755,7 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>string value = 3;</code>
+       * @return The bytes for value.
        */
       public com.google.protobuf.ByteString
           getValueBytes() {
@@ -5894,14 +5776,14 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>string value = 3;</code>
+       * @param value The value to set.
+       * @return This builder for chaining.
        */
       public Builder setValue(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         value_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
@@ -5911,10 +5793,11 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>string value = 3;</code>
+       * @return This builder for chaining.
        */
       public Builder clearValue() {
-        
         value_ = getDefaultInstance().getValue();
+        bitField0_ = (bitField0_ & ~0x00000004);
         onChanged();
         return this;
       }
@@ -5924,22 +5807,22 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>string value = 3;</code>
+       * @param value The bytes for value to set.
+       * @return This builder for chaining.
        */
       public Builder setValueBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         value_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -5969,7 +5852,18 @@ public final class ServerLBSInfo {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new SetDeviceProperty(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -5995,20 +5889,24 @@ public final class ServerLBSInfo {
 
     /**
      * <code>uint32 seq = 1;</code>
+     * @return The seq.
      */
     int getSeq();
 
     /**
      * <code>int32 result = 2;</code>
+     * @return The result.
      */
     int getResult();
 
     /**
      * <code>string errmsg = 3;</code>
+     * @return The errmsg.
      */
     java.lang.String getErrmsg();
     /**
      * <code>string errmsg = 3;</code>
+     * @return The bytes for errmsg.
      */
     com.google.protobuf.ByteString
         getErrmsgBytes();
@@ -6021,7 +5919,7 @@ public final class ServerLBSInfo {
    *
    * Protobuf type {@code SetPropResponse}
    */
-  public  static final class SetPropResponse extends
+  public static final class SetPropResponse extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:SetPropResponse)
       SetPropResponseOrBuilder {
@@ -6031,70 +5929,16 @@ public final class ServerLBSInfo {
       super(builder);
     }
     private SetPropResponse() {
-      seq_ = 0;
-      result_ = 0;
       errmsg_ = "";
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new SetPropResponse();
     }
-    private SetPropResponse(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
 
-              seq_ = input.readUInt32();
-              break;
-            }
-            case 16: {
-
-              result_ = input.readInt32();
-              break;
-            }
-            case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              errmsg_ = s;
-              break;
-            }
-            default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.qinglan.example.device_point.server.msg.ServerLBSInfo.internal_static_SetPropResponse_descriptor;
@@ -6109,28 +5953,35 @@ public final class ServerLBSInfo {
     }
 
     public static final int SEQ_FIELD_NUMBER = 1;
-    private int seq_;
+    private int seq_ = 0;
     /**
      * <code>uint32 seq = 1;</code>
+     * @return The seq.
      */
+    @java.lang.Override
     public int getSeq() {
       return seq_;
     }
 
     public static final int RESULT_FIELD_NUMBER = 2;
-    private int result_;
+    private int result_ = 0;
     /**
      * <code>int32 result = 2;</code>
+     * @return The result.
      */
+    @java.lang.Override
     public int getResult() {
       return result_;
     }
 
     public static final int ERRMSG_FIELD_NUMBER = 3;
-    private volatile java.lang.Object errmsg_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object errmsg_ = "";
     /**
      * <code>string errmsg = 3;</code>
+     * @return The errmsg.
      */
+    @java.lang.Override
     public java.lang.String getErrmsg() {
       java.lang.Object ref = errmsg_;
       if (ref instanceof java.lang.String) {
@@ -6145,7 +5996,9 @@ public final class ServerLBSInfo {
     }
     /**
      * <code>string errmsg = 3;</code>
+     * @return The bytes for errmsg.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getErrmsgBytes() {
       java.lang.Object ref = errmsg_;
@@ -6180,10 +6033,10 @@ public final class ServerLBSInfo {
       if (result_ != 0) {
         output.writeInt32(2, result_);
       }
-      if (!getErrmsgBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(errmsg_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, errmsg_);
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -6200,10 +6053,10 @@ public final class ServerLBSInfo {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(2, result_);
       }
-      if (!getErrmsgBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(errmsg_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, errmsg_);
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -6218,15 +6071,14 @@ public final class ServerLBSInfo {
       }
       com.qinglan.example.device_point.server.msg.ServerLBSInfo.SetPropResponse other = (com.qinglan.example.device_point.server.msg.ServerLBSInfo.SetPropResponse) obj;
 
-      boolean result = true;
-      result = result && (getSeq()
-          == other.getSeq());
-      result = result && (getResult()
-          == other.getResult());
-      result = result && getErrmsg()
-          .equals(other.getErrmsg());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (getSeq()
+          != other.getSeq()) return false;
+      if (getResult()
+          != other.getResult()) return false;
+      if (!getErrmsg()
+          .equals(other.getErrmsg())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -6242,7 +6094,7 @@ public final class ServerLBSInfo {
       hash = (53 * hash) + getResult();
       hash = (37 * hash) + ERRMSG_FIELD_NUMBER;
       hash = (53 * hash) + getErrmsg().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -6364,28 +6216,21 @@ public final class ServerLBSInfo {
 
       // Construct using com.qinglan.example.device_point.server.msg.ServerLBSInfo.SetPropResponse.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         seq_ = 0;
-
         result_ = 0;
-
         errmsg_ = "";
-
         return this;
       }
 
@@ -6412,45 +6257,24 @@ public final class ServerLBSInfo {
       @java.lang.Override
       public com.qinglan.example.device_point.server.msg.ServerLBSInfo.SetPropResponse buildPartial() {
         com.qinglan.example.device_point.server.msg.ServerLBSInfo.SetPropResponse result = new com.qinglan.example.device_point.server.msg.ServerLBSInfo.SetPropResponse(this);
-        result.seq_ = seq_;
-        result.result_ = result_;
-        result.errmsg_ = errmsg_;
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      @java.lang.Override
-      public Builder clone() {
-        return (Builder) super.clone();
+      private void buildPartial0(com.qinglan.example.device_point.server.msg.ServerLBSInfo.SetPropResponse result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.seq_ = seq_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.result_ = result_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.errmsg_ = errmsg_;
+        }
       }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.qinglan.example.device_point.server.msg.ServerLBSInfo.SetPropResponse) {
@@ -6471,9 +6295,10 @@ public final class ServerLBSInfo {
         }
         if (!other.getErrmsg().isEmpty()) {
           errmsg_ = other.errmsg_;
+          bitField0_ |= 0x00000004;
           onChanged();
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -6488,41 +6313,76 @@ public final class ServerLBSInfo {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.qinglan.example.device_point.server.msg.ServerLBSInfo.SetPropResponse parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                seq_ = input.readUInt32();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              case 16: {
+                result_ = input.readInt32();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              case 26: {
+                errmsg_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 26
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.qinglan.example.device_point.server.msg.ServerLBSInfo.SetPropResponse) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
+      private int bitField0_;
 
       private int seq_ ;
       /**
        * <code>uint32 seq = 1;</code>
+       * @return The seq.
        */
+      @java.lang.Override
       public int getSeq() {
         return seq_;
       }
       /**
        * <code>uint32 seq = 1;</code>
+       * @param value The seq to set.
+       * @return This builder for chaining.
        */
       public Builder setSeq(int value) {
-        
+
         seq_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
       /**
        * <code>uint32 seq = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearSeq() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         seq_ = 0;
         onChanged();
         return this;
@@ -6531,24 +6391,30 @@ public final class ServerLBSInfo {
       private int result_ ;
       /**
        * <code>int32 result = 2;</code>
+       * @return The result.
        */
+      @java.lang.Override
       public int getResult() {
         return result_;
       }
       /**
        * <code>int32 result = 2;</code>
+       * @param value The result to set.
+       * @return This builder for chaining.
        */
       public Builder setResult(int value) {
-        
+
         result_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
       /**
        * <code>int32 result = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearResult() {
-        
+        bitField0_ = (bitField0_ & ~0x00000002);
         result_ = 0;
         onChanged();
         return this;
@@ -6557,6 +6423,7 @@ public final class ServerLBSInfo {
       private java.lang.Object errmsg_ = "";
       /**
        * <code>string errmsg = 3;</code>
+       * @return The errmsg.
        */
       public java.lang.String getErrmsg() {
         java.lang.Object ref = errmsg_;
@@ -6572,6 +6439,7 @@ public final class ServerLBSInfo {
       }
       /**
        * <code>string errmsg = 3;</code>
+       * @return The bytes for errmsg.
        */
       public com.google.protobuf.ByteString
           getErrmsgBytes() {
@@ -6588,44 +6456,45 @@ public final class ServerLBSInfo {
       }
       /**
        * <code>string errmsg = 3;</code>
+       * @param value The errmsg to set.
+       * @return This builder for chaining.
        */
       public Builder setErrmsg(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         errmsg_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
       /**
        * <code>string errmsg = 3;</code>
+       * @return This builder for chaining.
        */
       public Builder clearErrmsg() {
-        
         errmsg_ = getDefaultInstance().getErrmsg();
+        bitField0_ = (bitField0_ & ~0x00000004);
         onChanged();
         return this;
       }
       /**
        * <code>string errmsg = 3;</code>
+       * @param value The bytes for errmsg to set.
+       * @return This builder for chaining.
        */
       public Builder setErrmsgBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         errmsg_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -6655,7 +6524,18 @@ public final class ServerLBSInfo {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new SetPropResponse(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -6681,20 +6561,24 @@ public final class ServerLBSInfo {
 
     /**
      * <code>string key = 1;</code>
+     * @return The key.
      */
     java.lang.String getKey();
     /**
      * <code>string key = 1;</code>
+     * @return The bytes for key.
      */
     com.google.protobuf.ByteString
         getKeyBytes();
 
     /**
      * <code>string value = 2;</code>
+     * @return The value.
      */
     java.lang.String getValue();
     /**
      * <code>string value = 2;</code>
+     * @return The bytes for value.
      */
     com.google.protobuf.ByteString
         getValueBytes();
@@ -6702,7 +6586,7 @@ public final class ServerLBSInfo {
   /**
    * Protobuf type {@code ProPertyItem}
    */
-  public  static final class ProPertyItem extends
+  public static final class ProPertyItem extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:ProPertyItem)
       ProPertyItemOrBuilder {
@@ -6717,60 +6601,12 @@ public final class ServerLBSInfo {
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ProPertyItem();
     }
-    private ProPertyItem(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
 
-              key_ = s;
-              break;
-            }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              value_ = s;
-              break;
-            }
-            default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.qinglan.example.device_point.server.msg.ServerLBSInfo.internal_static_ProPertyItem_descriptor;
@@ -6785,10 +6621,13 @@ public final class ServerLBSInfo {
     }
 
     public static final int KEY_FIELD_NUMBER = 1;
-    private volatile java.lang.Object key_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object key_ = "";
     /**
      * <code>string key = 1;</code>
+     * @return The key.
      */
+    @java.lang.Override
     public java.lang.String getKey() {
       java.lang.Object ref = key_;
       if (ref instanceof java.lang.String) {
@@ -6803,7 +6642,9 @@ public final class ServerLBSInfo {
     }
     /**
      * <code>string key = 1;</code>
+     * @return The bytes for key.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getKeyBytes() {
       java.lang.Object ref = key_;
@@ -6819,10 +6660,13 @@ public final class ServerLBSInfo {
     }
 
     public static final int VALUE_FIELD_NUMBER = 2;
-    private volatile java.lang.Object value_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object value_ = "";
     /**
      * <code>string value = 2;</code>
+     * @return The value.
      */
+    @java.lang.Override
     public java.lang.String getValue() {
       java.lang.Object ref = value_;
       if (ref instanceof java.lang.String) {
@@ -6837,7 +6681,9 @@ public final class ServerLBSInfo {
     }
     /**
      * <code>string value = 2;</code>
+     * @return The bytes for value.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getValueBytes() {
       java.lang.Object ref = value_;
@@ -6866,13 +6712,13 @@ public final class ServerLBSInfo {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getKeyBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(key_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, key_);
       }
-      if (!getValueBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(value_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, value_);
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -6881,13 +6727,13 @@ public final class ServerLBSInfo {
       if (size != -1) return size;
 
       size = 0;
-      if (!getKeyBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(key_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, key_);
       }
-      if (!getValueBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(value_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, value_);
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -6902,13 +6748,12 @@ public final class ServerLBSInfo {
       }
       com.qinglan.example.device_point.server.msg.ServerLBSInfo.ProPertyItem other = (com.qinglan.example.device_point.server.msg.ServerLBSInfo.ProPertyItem) obj;
 
-      boolean result = true;
-      result = result && getKey()
-          .equals(other.getKey());
-      result = result && getValue()
-          .equals(other.getValue());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (!getKey()
+          .equals(other.getKey())) return false;
+      if (!getValue()
+          .equals(other.getValue())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -6922,7 +6767,7 @@ public final class ServerLBSInfo {
       hash = (53 * hash) + getKey().hashCode();
       hash = (37 * hash) + VALUE_FIELD_NUMBER;
       hash = (53 * hash) + getValue().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -7039,26 +6884,20 @@ public final class ServerLBSInfo {
 
       // Construct using com.qinglan.example.device_point.server.msg.ServerLBSInfo.ProPertyItem.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         key_ = "";
-
         value_ = "";
-
         return this;
       }
 
@@ -7085,44 +6924,21 @@ public final class ServerLBSInfo {
       @java.lang.Override
       public com.qinglan.example.device_point.server.msg.ServerLBSInfo.ProPertyItem buildPartial() {
         com.qinglan.example.device_point.server.msg.ServerLBSInfo.ProPertyItem result = new com.qinglan.example.device_point.server.msg.ServerLBSInfo.ProPertyItem(this);
-        result.key_ = key_;
-        result.value_ = value_;
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      @java.lang.Override
-      public Builder clone() {
-        return (Builder) super.clone();
+      private void buildPartial0(com.qinglan.example.device_point.server.msg.ServerLBSInfo.ProPertyItem result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.key_ = key_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.value_ = value_;
+        }
       }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.qinglan.example.device_point.server.msg.ServerLBSInfo.ProPertyItem) {
@@ -7137,13 +6953,15 @@ public final class ServerLBSInfo {
         if (other == com.qinglan.example.device_point.server.msg.ServerLBSInfo.ProPertyItem.getDefaultInstance()) return this;
         if (!other.getKey().isEmpty()) {
           key_ = other.key_;
+          bitField0_ |= 0x00000001;
           onChanged();
         }
         if (!other.getValue().isEmpty()) {
           value_ = other.value_;
+          bitField0_ |= 0x00000002;
           onChanged();
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -7158,23 +6976,48 @@ public final class ServerLBSInfo {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.qinglan.example.device_point.server.msg.ServerLBSInfo.ProPertyItem parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                key_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 18: {
+                value_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.qinglan.example.device_point.server.msg.ServerLBSInfo.ProPertyItem) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
+      private int bitField0_;
 
       private java.lang.Object key_ = "";
       /**
        * <code>string key = 1;</code>
+       * @return The key.
        */
       public java.lang.String getKey() {
         java.lang.Object ref = key_;
@@ -7190,6 +7033,7 @@ public final class ServerLBSInfo {
       }
       /**
        * <code>string key = 1;</code>
+       * @return The bytes for key.
        */
       public com.google.protobuf.ByteString
           getKeyBytes() {
@@ -7206,37 +7050,38 @@ public final class ServerLBSInfo {
       }
       /**
        * <code>string key = 1;</code>
+       * @param value The key to set.
+       * @return This builder for chaining.
        */
       public Builder setKey(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         key_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
       /**
        * <code>string key = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearKey() {
-        
         key_ = getDefaultInstance().getKey();
+        bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
       /**
        * <code>string key = 1;</code>
+       * @param value The bytes for key to set.
+       * @return This builder for chaining.
        */
       public Builder setKeyBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         key_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -7244,6 +7089,7 @@ public final class ServerLBSInfo {
       private java.lang.Object value_ = "";
       /**
        * <code>string value = 2;</code>
+       * @return The value.
        */
       public java.lang.String getValue() {
         java.lang.Object ref = value_;
@@ -7259,6 +7105,7 @@ public final class ServerLBSInfo {
       }
       /**
        * <code>string value = 2;</code>
+       * @return The bytes for value.
        */
       public com.google.protobuf.ByteString
           getValueBytes() {
@@ -7275,44 +7122,45 @@ public final class ServerLBSInfo {
       }
       /**
        * <code>string value = 2;</code>
+       * @param value The value to set.
+       * @return This builder for chaining.
        */
       public Builder setValue(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         value_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
       /**
        * <code>string value = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearValue() {
-        
         value_ = getDefaultInstance().getValue();
+        bitField0_ = (bitField0_ & ~0x00000002);
         onChanged();
         return this;
       }
       /**
        * <code>string value = 2;</code>
+       * @param value The bytes for value to set.
+       * @return This builder for chaining.
        */
       public Builder setValueBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         value_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -7342,7 +7190,18 @@ public final class ServerLBSInfo {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ProPertyItem(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -7393,7 +7252,7 @@ public final class ServerLBSInfo {
   /**
    * Protobuf type {@code ProPertyItems}
    */
-  public  static final class ProPertyItems extends
+  public static final class ProPertyItems extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:ProPertyItems)
       ProPertyItemsOrBuilder {
@@ -7407,60 +7266,12 @@ public final class ServerLBSInfo {
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ProPertyItems();
     }
-    private ProPertyItems(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                properties_ = new java.util.ArrayList<com.qinglan.example.device_point.server.msg.ServerLBSInfo.ProPertyItem>();
-                mutable_bitField0_ |= 0x00000001;
-              }
-              properties_.add(
-                  input.readMessage(com.qinglan.example.device_point.server.msg.ServerLBSInfo.ProPertyItem.parser(), extensionRegistry));
-              break;
-            }
-            default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-          properties_ = java.util.Collections.unmodifiableList(properties_);
-        }
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
+
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.qinglan.example.device_point.server.msg.ServerLBSInfo.internal_static_ProPertyItems_descriptor;
@@ -7475,16 +7286,19 @@ public final class ServerLBSInfo {
     }
 
     public static final int PROPERTIES_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
     private java.util.List<com.qinglan.example.device_point.server.msg.ServerLBSInfo.ProPertyItem> properties_;
     /**
      * <code>repeated .ProPertyItem Properties = 1;</code>
      */
+    @java.lang.Override
     public java.util.List<com.qinglan.example.device_point.server.msg.ServerLBSInfo.ProPertyItem> getPropertiesList() {
       return properties_;
     }
     /**
      * <code>repeated .ProPertyItem Properties = 1;</code>
      */
+    @java.lang.Override
     public java.util.List<? extends com.qinglan.example.device_point.server.msg.ServerLBSInfo.ProPertyItemOrBuilder> 
         getPropertiesOrBuilderList() {
       return properties_;
@@ -7492,18 +7306,21 @@ public final class ServerLBSInfo {
     /**
      * <code>repeated .ProPertyItem Properties = 1;</code>
      */
+    @java.lang.Override
     public int getPropertiesCount() {
       return properties_.size();
     }
     /**
      * <code>repeated .ProPertyItem Properties = 1;</code>
      */
+    @java.lang.Override
     public com.qinglan.example.device_point.server.msg.ServerLBSInfo.ProPertyItem getProperties(int index) {
       return properties_.get(index);
     }
     /**
      * <code>repeated .ProPertyItem Properties = 1;</code>
      */
+    @java.lang.Override
     public com.qinglan.example.device_point.server.msg.ServerLBSInfo.ProPertyItemOrBuilder getPropertiesOrBuilder(
         int index) {
       return properties_.get(index);
@@ -7526,7 +7343,7 @@ public final class ServerLBSInfo {
       for (int i = 0; i < properties_.size(); i++) {
         output.writeMessage(1, properties_.get(i));
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -7539,7 +7356,7 @@ public final class ServerLBSInfo {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, properties_.get(i));
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -7554,11 +7371,10 @@ public final class ServerLBSInfo {
       }
       com.qinglan.example.device_point.server.msg.ServerLBSInfo.ProPertyItems other = (com.qinglan.example.device_point.server.msg.ServerLBSInfo.ProPertyItems) obj;
 
-      boolean result = true;
-      result = result && getPropertiesList()
-          .equals(other.getPropertiesList());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (!getPropertiesList()
+          .equals(other.getPropertiesList())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -7572,7 +7388,7 @@ public final class ServerLBSInfo {
         hash = (37 * hash) + PROPERTIES_FIELD_NUMBER;
         hash = (53 * hash) + getPropertiesList().hashCode();
       }
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -7689,29 +7505,25 @@ public final class ServerLBSInfo {
 
       // Construct using com.qinglan.example.device_point.server.msg.ServerLBSInfo.ProPertyItems.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-          getPropertiesFieldBuilder();
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         if (propertiesBuilder_ == null) {
           properties_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
         } else {
+          properties_ = null;
           propertiesBuilder_.clear();
         }
+        bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
 
@@ -7738,9 +7550,15 @@ public final class ServerLBSInfo {
       @java.lang.Override
       public com.qinglan.example.device_point.server.msg.ServerLBSInfo.ProPertyItems buildPartial() {
         com.qinglan.example.device_point.server.msg.ServerLBSInfo.ProPertyItems result = new com.qinglan.example.device_point.server.msg.ServerLBSInfo.ProPertyItems(this);
-        int from_bitField0_ = bitField0_;
+        buildPartialRepeatedFields(result);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartialRepeatedFields(com.qinglan.example.device_point.server.msg.ServerLBSInfo.ProPertyItems result) {
         if (propertiesBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+          if (((bitField0_ & 0x00000001) != 0)) {
             properties_ = java.util.Collections.unmodifiableList(properties_);
             bitField0_ = (bitField0_ & ~0x00000001);
           }
@@ -7748,42 +7566,12 @@ public final class ServerLBSInfo {
         } else {
           result.properties_ = propertiesBuilder_.build();
         }
-        onBuilt();
-        return result;
       }
 
-      @java.lang.Override
-      public Builder clone() {
-        return (Builder) super.clone();
+      private void buildPartial0(com.qinglan.example.device_point.server.msg.ServerLBSInfo.ProPertyItems result) {
+        int from_bitField0_ = bitField0_;
       }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.qinglan.example.device_point.server.msg.ServerLBSInfo.ProPertyItems) {
@@ -7822,7 +7610,7 @@ public final class ServerLBSInfo {
             }
           }
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -7837,17 +7625,43 @@ public final class ServerLBSInfo {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.qinglan.example.device_point.server.msg.ServerLBSInfo.ProPertyItems parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                com.qinglan.example.device_point.server.msg.ServerLBSInfo.ProPertyItem m =
+                    input.readMessage(
+                        com.qinglan.example.device_point.server.msg.ServerLBSInfo.ProPertyItem.parser(),
+                        extensionRegistry);
+                if (propertiesBuilder_ == null) {
+                  ensurePropertiesIsMutable();
+                  properties_.add(m);
+                } else {
+                  propertiesBuilder_.addMessage(m);
+                }
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.qinglan.example.device_point.server.msg.ServerLBSInfo.ProPertyItems) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
       private int bitField0_;
@@ -7855,7 +7669,7 @@ public final class ServerLBSInfo {
       private java.util.List<com.qinglan.example.device_point.server.msg.ServerLBSInfo.ProPertyItem> properties_ =
         java.util.Collections.emptyList();
       private void ensurePropertiesIsMutable() {
-        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+        if (!((bitField0_ & 0x00000001) != 0)) {
           properties_ = new java.util.ArrayList<com.qinglan.example.device_point.server.msg.ServerLBSInfo.ProPertyItem>(properties_);
           bitField0_ |= 0x00000001;
          }
@@ -8084,7 +7898,7 @@ public final class ServerLBSInfo {
           propertiesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               com.qinglan.example.device_point.server.msg.ServerLBSInfo.ProPertyItem, com.qinglan.example.device_point.server.msg.ServerLBSInfo.ProPertyItem.Builder, com.qinglan.example.device_point.server.msg.ServerLBSInfo.ProPertyItemOrBuilder>(
                   properties_,
-                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  ((bitField0_ & 0x00000001) != 0),
                   getParentForChildren(),
                   isClean());
           properties_ = null;
@@ -8094,7 +7908,7 @@ public final class ServerLBSInfo {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -8124,7 +7938,18 @@ public final class ServerLBSInfo {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ProPertyItems(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -8154,6 +7979,7 @@ public final class ServerLBSInfo {
      * </pre>
      *
      * <code>bytes data = 1;</code>
+     * @return The data.
      */
     com.google.protobuf.ByteString getData();
 
@@ -8163,6 +7989,7 @@ public final class ServerLBSInfo {
      * </pre>
      *
      * <code>int32 seconds = 2;</code>
+     * @return The seconds.
      */
     int getSeconds();
 
@@ -8172,6 +7999,7 @@ public final class ServerLBSInfo {
      * </pre>
      *
      * <code>int32 mseconds = 3;</code>
+     * @return The mseconds.
      */
     int getMseconds();
   }
@@ -8184,7 +8012,7 @@ public final class ServerLBSInfo {
    *
    * Protobuf type {@code PositionData}
    */
-  public  static final class PositionData extends
+  public static final class PositionData extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:PositionData)
       PositionDataOrBuilder {
@@ -8195,68 +8023,15 @@ public final class ServerLBSInfo {
     }
     private PositionData() {
       data_ = com.google.protobuf.ByteString.EMPTY;
-      seconds_ = 0;
-      mseconds_ = 0;
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new PositionData();
     }
-    private PositionData(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
 
-              data_ = input.readBytes();
-              break;
-            }
-            case 16: {
-
-              seconds_ = input.readInt32();
-              break;
-            }
-            case 24: {
-
-              mseconds_ = input.readInt32();
-              break;
-            }
-            default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.qinglan.example.device_point.server.msg.ServerLBSInfo.internal_static_PositionData_descriptor;
@@ -8271,40 +8046,46 @@ public final class ServerLBSInfo {
     }
 
     public static final int DATA_FIELD_NUMBER = 1;
-    private com.google.protobuf.ByteString data_;
+    private com.google.protobuf.ByteString data_ = com.google.protobuf.ByteString.EMPTY;
     /**
      * <pre>
      *存放轨迹或者心率
      * </pre>
      *
      * <code>bytes data = 1;</code>
+     * @return The data.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString getData() {
       return data_;
     }
 
     public static final int SECONDS_FIELD_NUMBER = 2;
-    private int seconds_;
+    private int seconds_ = 0;
     /**
      * <pre>
      *1970/1/1开始的秒数
      * </pre>
      *
      * <code>int32 seconds = 2;</code>
+     * @return The seconds.
      */
+    @java.lang.Override
     public int getSeconds() {
       return seconds_;
     }
 
     public static final int MSECONDS_FIELD_NUMBER = 3;
-    private int mseconds_;
+    private int mseconds_ = 0;
     /**
      * <pre>
      *毫秒
      * </pre>
      *
      * <code>int32 mseconds = 3;</code>
+     * @return The mseconds.
      */
+    @java.lang.Override
     public int getMseconds() {
       return mseconds_;
     }
@@ -8332,7 +8113,7 @@ public final class ServerLBSInfo {
       if (mseconds_ != 0) {
         output.writeInt32(3, mseconds_);
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -8353,7 +8134,7 @@ public final class ServerLBSInfo {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(3, mseconds_);
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -8368,15 +8149,14 @@ public final class ServerLBSInfo {
       }
       com.qinglan.example.device_point.server.msg.ServerLBSInfo.PositionData other = (com.qinglan.example.device_point.server.msg.ServerLBSInfo.PositionData) obj;
 
-      boolean result = true;
-      result = result && getData()
-          .equals(other.getData());
-      result = result && (getSeconds()
-          == other.getSeconds());
-      result = result && (getMseconds()
-          == other.getMseconds());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (!getData()
+          .equals(other.getData())) return false;
+      if (getSeconds()
+          != other.getSeconds()) return false;
+      if (getMseconds()
+          != other.getMseconds()) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -8392,7 +8172,7 @@ public final class ServerLBSInfo {
       hash = (53 * hash) + getSeconds();
       hash = (37 * hash) + MSECONDS_FIELD_NUMBER;
       hash = (53 * hash) + getMseconds();
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -8515,28 +8295,21 @@ public final class ServerLBSInfo {
 
       // Construct using com.qinglan.example.device_point.server.msg.ServerLBSInfo.PositionData.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         data_ = com.google.protobuf.ByteString.EMPTY;
-
         seconds_ = 0;
-
         mseconds_ = 0;
-
         return this;
       }
 
@@ -8563,45 +8336,24 @@ public final class ServerLBSInfo {
       @java.lang.Override
       public com.qinglan.example.device_point.server.msg.ServerLBSInfo.PositionData buildPartial() {
         com.qinglan.example.device_point.server.msg.ServerLBSInfo.PositionData result = new com.qinglan.example.device_point.server.msg.ServerLBSInfo.PositionData(this);
-        result.data_ = data_;
-        result.seconds_ = seconds_;
-        result.mseconds_ = mseconds_;
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      @java.lang.Override
-      public Builder clone() {
-        return (Builder) super.clone();
+      private void buildPartial0(com.qinglan.example.device_point.server.msg.ServerLBSInfo.PositionData result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.data_ = data_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.seconds_ = seconds_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.mseconds_ = mseconds_;
+        }
       }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.qinglan.example.device_point.server.msg.ServerLBSInfo.PositionData) {
@@ -8623,7 +8375,7 @@ public final class ServerLBSInfo {
         if (other.getMseconds() != 0) {
           setMseconds(other.getMseconds());
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -8638,19 +8390,48 @@ public final class ServerLBSInfo {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.qinglan.example.device_point.server.msg.ServerLBSInfo.PositionData parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                data_ = input.readBytes();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 16: {
+                seconds_ = input.readInt32();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              case 24: {
+                mseconds_ = input.readInt32();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 24
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.qinglan.example.device_point.server.msg.ServerLBSInfo.PositionData) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
+      private int bitField0_;
 
       private com.google.protobuf.ByteString data_ = com.google.protobuf.ByteString.EMPTY;
       /**
@@ -8659,7 +8440,9 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>bytes data = 1;</code>
+       * @return The data.
        */
+      @java.lang.Override
       public com.google.protobuf.ByteString getData() {
         return data_;
       }
@@ -8669,13 +8452,13 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>bytes data = 1;</code>
+       * @param value The data to set.
+       * @return This builder for chaining.
        */
       public Builder setData(com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         data_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -8685,9 +8468,10 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>bytes data = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearData() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         data_ = getDefaultInstance().getData();
         onChanged();
         return this;
@@ -8700,7 +8484,9 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>int32 seconds = 2;</code>
+       * @return The seconds.
        */
+      @java.lang.Override
       public int getSeconds() {
         return seconds_;
       }
@@ -8710,10 +8496,13 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>int32 seconds = 2;</code>
+       * @param value The seconds to set.
+       * @return This builder for chaining.
        */
       public Builder setSeconds(int value) {
-        
+
         seconds_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -8723,9 +8512,10 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>int32 seconds = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearSeconds() {
-        
+        bitField0_ = (bitField0_ & ~0x00000002);
         seconds_ = 0;
         onChanged();
         return this;
@@ -8738,7 +8528,9 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>int32 mseconds = 3;</code>
+       * @return The mseconds.
        */
+      @java.lang.Override
       public int getMseconds() {
         return mseconds_;
       }
@@ -8748,10 +8540,13 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>int32 mseconds = 3;</code>
+       * @param value The mseconds to set.
+       * @return This builder for chaining.
        */
       public Builder setMseconds(int value) {
-        
+
         mseconds_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
@@ -8761,9 +8556,10 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>int32 mseconds = 3;</code>
+       * @return This builder for chaining.
        */
       public Builder clearMseconds() {
-        
+        bitField0_ = (bitField0_ & ~0x00000004);
         mseconds_ = 0;
         onChanged();
         return this;
@@ -8771,7 +8567,7 @@ public final class ServerLBSInfo {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -8801,7 +8597,18 @@ public final class ServerLBSInfo {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new PositionData(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -8831,6 +8638,7 @@ public final class ServerLBSInfo {
      * </pre>
      *
      * <code>bytes events = 1;</code>
+     * @return The events.
      */
     com.google.protobuf.ByteString getEvents();
 
@@ -8840,6 +8648,7 @@ public final class ServerLBSInfo {
      * </pre>
      *
      * <code>bytes areas = 2;</code>
+     * @return The areas.
      */
     com.google.protobuf.ByteString getAreas();
 
@@ -8849,6 +8658,7 @@ public final class ServerLBSInfo {
      * </pre>
      *
      * <code>uint32 seconds = 3;</code>
+     * @return The seconds.
      */
     int getSeconds();
 
@@ -8858,6 +8668,7 @@ public final class ServerLBSInfo {
      * </pre>
      *
      * <code>int32 mseconds = 4;</code>
+     * @return The mseconds.
      */
     int getMseconds();
   }
@@ -8870,7 +8681,7 @@ public final class ServerLBSInfo {
    *
    * Protobuf type {@code PositionStatusEvent}
    */
-  public  static final class PositionStatusEvent extends
+  public static final class PositionStatusEvent extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:PositionStatusEvent)
       PositionStatusEventOrBuilder {
@@ -8882,73 +8693,15 @@ public final class ServerLBSInfo {
     private PositionStatusEvent() {
       events_ = com.google.protobuf.ByteString.EMPTY;
       areas_ = com.google.protobuf.ByteString.EMPTY;
-      seconds_ = 0;
-      mseconds_ = 0;
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new PositionStatusEvent();
     }
-    private PositionStatusEvent(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
 
-              events_ = input.readBytes();
-              break;
-            }
-            case 18: {
-
-              areas_ = input.readBytes();
-              break;
-            }
-            case 24: {
-
-              seconds_ = input.readUInt32();
-              break;
-            }
-            case 32: {
-
-              mseconds_ = input.readInt32();
-              break;
-            }
-            default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.qinglan.example.device_point.server.msg.ServerLBSInfo.internal_static_PositionStatusEvent_descriptor;
@@ -8963,53 +8716,61 @@ public final class ServerLBSInfo {
     }
 
     public static final int EVENTS_FIELD_NUMBER = 1;
-    private com.google.protobuf.ByteString events_;
+    private com.google.protobuf.ByteString events_ = com.google.protobuf.ByteString.EMPTY;
     /**
      * <pre>
      *8个字节,第n字节对应的相应ID的事件值,0：无事件 1：进入房间 2：离开房间 3：进入区域 4：离开区域 5:  进入监护 6:  退出监护
      * </pre>
      *
      * <code>bytes events = 1;</code>
+     * @return The events.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString getEvents() {
       return events_;
     }
 
     public static final int AREAS_FIELD_NUMBER = 2;
-    private com.google.protobuf.ByteString areas_;
+    private com.google.protobuf.ByteString areas_ = com.google.protobuf.ByteString.EMPTY;
     /**
      * <pre>
      *前8个字节,进入该区域事件,对应areaid,后8个字节，对应区域类型
      * </pre>
      *
      * <code>bytes areas = 2;</code>
+     * @return The areas.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString getAreas() {
       return areas_;
     }
 
     public static final int SECONDS_FIELD_NUMBER = 3;
-    private int seconds_;
+    private int seconds_ = 0;
     /**
      * <pre>
      *1970/1/1开始的秒数
      * </pre>
      *
      * <code>uint32 seconds = 3;</code>
+     * @return The seconds.
      */
+    @java.lang.Override
     public int getSeconds() {
       return seconds_;
     }
 
     public static final int MSECONDS_FIELD_NUMBER = 4;
-    private int mseconds_;
+    private int mseconds_ = 0;
     /**
      * <pre>
      *毫秒
      * </pre>
      *
      * <code>int32 mseconds = 4;</code>
+     * @return The mseconds.
      */
+    @java.lang.Override
     public int getMseconds() {
       return mseconds_;
     }
@@ -9040,7 +8801,7 @@ public final class ServerLBSInfo {
       if (mseconds_ != 0) {
         output.writeInt32(4, mseconds_);
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -9065,7 +8826,7 @@ public final class ServerLBSInfo {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(4, mseconds_);
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -9080,17 +8841,16 @@ public final class ServerLBSInfo {
       }
       com.qinglan.example.device_point.server.msg.ServerLBSInfo.PositionStatusEvent other = (com.qinglan.example.device_point.server.msg.ServerLBSInfo.PositionStatusEvent) obj;
 
-      boolean result = true;
-      result = result && getEvents()
-          .equals(other.getEvents());
-      result = result && getAreas()
-          .equals(other.getAreas());
-      result = result && (getSeconds()
-          == other.getSeconds());
-      result = result && (getMseconds()
-          == other.getMseconds());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (!getEvents()
+          .equals(other.getEvents())) return false;
+      if (!getAreas()
+          .equals(other.getAreas())) return false;
+      if (getSeconds()
+          != other.getSeconds()) return false;
+      if (getMseconds()
+          != other.getMseconds()) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -9108,7 +8868,7 @@ public final class ServerLBSInfo {
       hash = (53 * hash) + getSeconds();
       hash = (37 * hash) + MSECONDS_FIELD_NUMBER;
       hash = (53 * hash) + getMseconds();
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -9231,30 +8991,22 @@ public final class ServerLBSInfo {
 
       // Construct using com.qinglan.example.device_point.server.msg.ServerLBSInfo.PositionStatusEvent.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         events_ = com.google.protobuf.ByteString.EMPTY;
-
         areas_ = com.google.protobuf.ByteString.EMPTY;
-
         seconds_ = 0;
-
         mseconds_ = 0;
-
         return this;
       }
 
@@ -9281,46 +9033,27 @@ public final class ServerLBSInfo {
       @java.lang.Override
       public com.qinglan.example.device_point.server.msg.ServerLBSInfo.PositionStatusEvent buildPartial() {
         com.qinglan.example.device_point.server.msg.ServerLBSInfo.PositionStatusEvent result = new com.qinglan.example.device_point.server.msg.ServerLBSInfo.PositionStatusEvent(this);
-        result.events_ = events_;
-        result.areas_ = areas_;
-        result.seconds_ = seconds_;
-        result.mseconds_ = mseconds_;
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      @java.lang.Override
-      public Builder clone() {
-        return (Builder) super.clone();
+      private void buildPartial0(com.qinglan.example.device_point.server.msg.ServerLBSInfo.PositionStatusEvent result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.events_ = events_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.areas_ = areas_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.seconds_ = seconds_;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.mseconds_ = mseconds_;
+        }
       }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.qinglan.example.device_point.server.msg.ServerLBSInfo.PositionStatusEvent) {
@@ -9345,7 +9078,7 @@ public final class ServerLBSInfo {
         if (other.getMseconds() != 0) {
           setMseconds(other.getMseconds());
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -9360,19 +9093,53 @@ public final class ServerLBSInfo {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.qinglan.example.device_point.server.msg.ServerLBSInfo.PositionStatusEvent parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                events_ = input.readBytes();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 18: {
+                areas_ = input.readBytes();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              case 24: {
+                seconds_ = input.readUInt32();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 24
+              case 32: {
+                mseconds_ = input.readInt32();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 32
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.qinglan.example.device_point.server.msg.ServerLBSInfo.PositionStatusEvent) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
+      private int bitField0_;
 
       private com.google.protobuf.ByteString events_ = com.google.protobuf.ByteString.EMPTY;
       /**
@@ -9381,7 +9148,9 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>bytes events = 1;</code>
+       * @return The events.
        */
+      @java.lang.Override
       public com.google.protobuf.ByteString getEvents() {
         return events_;
       }
@@ -9391,13 +9160,13 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>bytes events = 1;</code>
+       * @param value The events to set.
+       * @return This builder for chaining.
        */
       public Builder setEvents(com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         events_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -9407,9 +9176,10 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>bytes events = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearEvents() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         events_ = getDefaultInstance().getEvents();
         onChanged();
         return this;
@@ -9422,7 +9192,9 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>bytes areas = 2;</code>
+       * @return The areas.
        */
+      @java.lang.Override
       public com.google.protobuf.ByteString getAreas() {
         return areas_;
       }
@@ -9432,13 +9204,13 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>bytes areas = 2;</code>
+       * @param value The areas to set.
+       * @return This builder for chaining.
        */
       public Builder setAreas(com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         areas_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -9448,9 +9220,10 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>bytes areas = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearAreas() {
-        
+        bitField0_ = (bitField0_ & ~0x00000002);
         areas_ = getDefaultInstance().getAreas();
         onChanged();
         return this;
@@ -9463,7 +9236,9 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>uint32 seconds = 3;</code>
+       * @return The seconds.
        */
+      @java.lang.Override
       public int getSeconds() {
         return seconds_;
       }
@@ -9473,10 +9248,13 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>uint32 seconds = 3;</code>
+       * @param value The seconds to set.
+       * @return This builder for chaining.
        */
       public Builder setSeconds(int value) {
-        
+
         seconds_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
@@ -9486,9 +9264,10 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>uint32 seconds = 3;</code>
+       * @return This builder for chaining.
        */
       public Builder clearSeconds() {
-        
+        bitField0_ = (bitField0_ & ~0x00000004);
         seconds_ = 0;
         onChanged();
         return this;
@@ -9501,7 +9280,9 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>int32 mseconds = 4;</code>
+       * @return The mseconds.
        */
+      @java.lang.Override
       public int getMseconds() {
         return mseconds_;
       }
@@ -9511,10 +9292,13 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>int32 mseconds = 4;</code>
+       * @param value The mseconds to set.
+       * @return This builder for chaining.
        */
       public Builder setMseconds(int value) {
-        
+
         mseconds_ = value;
+        bitField0_ |= 0x00000008;
         onChanged();
         return this;
       }
@@ -9524,9 +9308,10 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>int32 mseconds = 4;</code>
+       * @return This builder for chaining.
        */
       public Builder clearMseconds() {
-        
+        bitField0_ = (bitField0_ & ~0x00000008);
         mseconds_ = 0;
         onChanged();
         return this;
@@ -9534,7 +9319,7 @@ public final class ServerLBSInfo {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -9564,7 +9349,18 @@ public final class ServerLBSInfo {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new PositionStatusEvent(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -9594,6 +9390,7 @@ public final class ServerLBSInfo {
      * </pre>
      *
      * <code>bytes data = 1;</code>
+     * @return The data.
      */
     com.google.protobuf.ByteString getData();
 
@@ -9603,6 +9400,7 @@ public final class ServerLBSInfo {
      * </pre>
      *
      * <code>int32 seconds = 2;</code>
+     * @return The seconds.
      */
     int getSeconds();
 
@@ -9612,6 +9410,7 @@ public final class ServerLBSInfo {
      * </pre>
      *
      * <code>int32 mseconds = 3;</code>
+     * @return The mseconds.
      */
     int getMseconds();
   }
@@ -9624,7 +9423,7 @@ public final class ServerLBSInfo {
    *
    * Protobuf type {@code NumberOfPeopleData}
    */
-  public  static final class NumberOfPeopleData extends
+  public static final class NumberOfPeopleData extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:NumberOfPeopleData)
       NumberOfPeopleDataOrBuilder {
@@ -9635,68 +9434,15 @@ public final class ServerLBSInfo {
     }
     private NumberOfPeopleData() {
       data_ = com.google.protobuf.ByteString.EMPTY;
-      seconds_ = 0;
-      mseconds_ = 0;
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new NumberOfPeopleData();
     }
-    private NumberOfPeopleData(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
 
-              data_ = input.readBytes();
-              break;
-            }
-            case 16: {
-
-              seconds_ = input.readInt32();
-              break;
-            }
-            case 24: {
-
-              mseconds_ = input.readInt32();
-              break;
-            }
-            default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.qinglan.example.device_point.server.msg.ServerLBSInfo.internal_static_NumberOfPeopleData_descriptor;
@@ -9711,40 +9457,46 @@ public final class ServerLBSInfo {
     }
 
     public static final int DATA_FIELD_NUMBER = 1;
-    private com.google.protobuf.ByteString data_;
+    private com.google.protobuf.ByteString data_ = com.google.protobuf.ByteString.EMPTY;
     /**
      * <pre>
      *data[0]为人数
      * </pre>
      *
      * <code>bytes data = 1;</code>
+     * @return The data.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString getData() {
       return data_;
     }
 
     public static final int SECONDS_FIELD_NUMBER = 2;
-    private int seconds_;
+    private int seconds_ = 0;
     /**
      * <pre>
      *1970/1/1开始的秒数
      * </pre>
      *
      * <code>int32 seconds = 2;</code>
+     * @return The seconds.
      */
+    @java.lang.Override
     public int getSeconds() {
       return seconds_;
     }
 
     public static final int MSECONDS_FIELD_NUMBER = 3;
-    private int mseconds_;
+    private int mseconds_ = 0;
     /**
      * <pre>
      *毫秒
      * </pre>
      *
      * <code>int32 mseconds = 3;</code>
+     * @return The mseconds.
      */
+    @java.lang.Override
     public int getMseconds() {
       return mseconds_;
     }
@@ -9772,7 +9524,7 @@ public final class ServerLBSInfo {
       if (mseconds_ != 0) {
         output.writeInt32(3, mseconds_);
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -9793,7 +9545,7 @@ public final class ServerLBSInfo {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(3, mseconds_);
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -9808,15 +9560,14 @@ public final class ServerLBSInfo {
       }
       com.qinglan.example.device_point.server.msg.ServerLBSInfo.NumberOfPeopleData other = (com.qinglan.example.device_point.server.msg.ServerLBSInfo.NumberOfPeopleData) obj;
 
-      boolean result = true;
-      result = result && getData()
-          .equals(other.getData());
-      result = result && (getSeconds()
-          == other.getSeconds());
-      result = result && (getMseconds()
-          == other.getMseconds());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (!getData()
+          .equals(other.getData())) return false;
+      if (getSeconds()
+          != other.getSeconds()) return false;
+      if (getMseconds()
+          != other.getMseconds()) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -9832,7 +9583,7 @@ public final class ServerLBSInfo {
       hash = (53 * hash) + getSeconds();
       hash = (37 * hash) + MSECONDS_FIELD_NUMBER;
       hash = (53 * hash) + getMseconds();
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -9955,28 +9706,21 @@ public final class ServerLBSInfo {
 
       // Construct using com.qinglan.example.device_point.server.msg.ServerLBSInfo.NumberOfPeopleData.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         data_ = com.google.protobuf.ByteString.EMPTY;
-
         seconds_ = 0;
-
         mseconds_ = 0;
-
         return this;
       }
 
@@ -10003,45 +9747,24 @@ public final class ServerLBSInfo {
       @java.lang.Override
       public com.qinglan.example.device_point.server.msg.ServerLBSInfo.NumberOfPeopleData buildPartial() {
         com.qinglan.example.device_point.server.msg.ServerLBSInfo.NumberOfPeopleData result = new com.qinglan.example.device_point.server.msg.ServerLBSInfo.NumberOfPeopleData(this);
-        result.data_ = data_;
-        result.seconds_ = seconds_;
-        result.mseconds_ = mseconds_;
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      @java.lang.Override
-      public Builder clone() {
-        return (Builder) super.clone();
+      private void buildPartial0(com.qinglan.example.device_point.server.msg.ServerLBSInfo.NumberOfPeopleData result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.data_ = data_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.seconds_ = seconds_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.mseconds_ = mseconds_;
+        }
       }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.qinglan.example.device_point.server.msg.ServerLBSInfo.NumberOfPeopleData) {
@@ -10063,7 +9786,7 @@ public final class ServerLBSInfo {
         if (other.getMseconds() != 0) {
           setMseconds(other.getMseconds());
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -10078,19 +9801,48 @@ public final class ServerLBSInfo {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.qinglan.example.device_point.server.msg.ServerLBSInfo.NumberOfPeopleData parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                data_ = input.readBytes();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 16: {
+                seconds_ = input.readInt32();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              case 24: {
+                mseconds_ = input.readInt32();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 24
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.qinglan.example.device_point.server.msg.ServerLBSInfo.NumberOfPeopleData) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
+      private int bitField0_;
 
       private com.google.protobuf.ByteString data_ = com.google.protobuf.ByteString.EMPTY;
       /**
@@ -10099,7 +9851,9 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>bytes data = 1;</code>
+       * @return The data.
        */
+      @java.lang.Override
       public com.google.protobuf.ByteString getData() {
         return data_;
       }
@@ -10109,13 +9863,13 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>bytes data = 1;</code>
+       * @param value The data to set.
+       * @return This builder for chaining.
        */
       public Builder setData(com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         data_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -10125,9 +9879,10 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>bytes data = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearData() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         data_ = getDefaultInstance().getData();
         onChanged();
         return this;
@@ -10140,7 +9895,9 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>int32 seconds = 2;</code>
+       * @return The seconds.
        */
+      @java.lang.Override
       public int getSeconds() {
         return seconds_;
       }
@@ -10150,10 +9907,13 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>int32 seconds = 2;</code>
+       * @param value The seconds to set.
+       * @return This builder for chaining.
        */
       public Builder setSeconds(int value) {
-        
+
         seconds_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -10163,9 +9923,10 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>int32 seconds = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearSeconds() {
-        
+        bitField0_ = (bitField0_ & ~0x00000002);
         seconds_ = 0;
         onChanged();
         return this;
@@ -10178,7 +9939,9 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>int32 mseconds = 3;</code>
+       * @return The mseconds.
        */
+      @java.lang.Override
       public int getMseconds() {
         return mseconds_;
       }
@@ -10188,10 +9951,13 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>int32 mseconds = 3;</code>
+       * @param value The mseconds to set.
+       * @return This builder for chaining.
        */
       public Builder setMseconds(int value) {
-        
+
         mseconds_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
@@ -10201,9 +9967,10 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>int32 mseconds = 3;</code>
+       * @return This builder for chaining.
        */
       public Builder clearMseconds() {
-        
+        bitField0_ = (bitField0_ & ~0x00000004);
         mseconds_ = 0;
         onChanged();
         return this;
@@ -10211,7 +9978,7 @@ public final class ServerLBSInfo {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -10241,7 +10008,18 @@ public final class ServerLBSInfo {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new NumberOfPeopleData(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -10271,6 +10049,7 @@ public final class ServerLBSInfo {
      * </pre>
      *
      * <code>bytes data = 1;</code>
+     * @return The data.
      */
     com.google.protobuf.ByteString getData();
 
@@ -10280,6 +10059,7 @@ public final class ServerLBSInfo {
      * </pre>
      *
      * <code>int32 seconds = 2;</code>
+     * @return The seconds.
      */
     int getSeconds();
 
@@ -10289,6 +10069,7 @@ public final class ServerLBSInfo {
      * </pre>
      *
      * <code>int32 mseconds = 3;</code>
+     * @return The mseconds.
      */
     int getMseconds();
   }
@@ -10301,7 +10082,7 @@ public final class ServerLBSInfo {
    *
    * Protobuf type {@code PositionStatisticReport}
    */
-  public  static final class PositionStatisticReport extends
+  public static final class PositionStatisticReport extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:PositionStatisticReport)
       PositionStatisticReportOrBuilder {
@@ -10312,68 +10093,15 @@ public final class ServerLBSInfo {
     }
     private PositionStatisticReport() {
       data_ = com.google.protobuf.ByteString.EMPTY;
-      seconds_ = 0;
-      mseconds_ = 0;
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new PositionStatisticReport();
     }
-    private PositionStatisticReport(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
 
-              data_ = input.readBytes();
-              break;
-            }
-            case 16: {
-
-              seconds_ = input.readInt32();
-              break;
-            }
-            case 24: {
-
-              mseconds_ = input.readInt32();
-              break;
-            }
-            default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.qinglan.example.device_point.server.msg.ServerLBSInfo.internal_static_PositionStatisticReport_descriptor;
@@ -10388,40 +10116,46 @@ public final class ServerLBSInfo {
     }
 
     public static final int DATA_FIELD_NUMBER = 1;
-    private com.google.protobuf.ByteString data_;
+    private com.google.protobuf.ByteString data_ = com.google.protobuf.ByteString.EMPTY;
     /**
      * <pre>
      *存放轨迹或者心率
      * </pre>
      *
      * <code>bytes data = 1;</code>
+     * @return The data.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString getData() {
       return data_;
     }
 
     public static final int SECONDS_FIELD_NUMBER = 2;
-    private int seconds_;
+    private int seconds_ = 0;
     /**
      * <pre>
      *1970/1/1开始的秒数
      * </pre>
      *
      * <code>int32 seconds = 2;</code>
+     * @return The seconds.
      */
+    @java.lang.Override
     public int getSeconds() {
       return seconds_;
     }
 
     public static final int MSECONDS_FIELD_NUMBER = 3;
-    private int mseconds_;
+    private int mseconds_ = 0;
     /**
      * <pre>
      *毫秒
      * </pre>
      *
      * <code>int32 mseconds = 3;</code>
+     * @return The mseconds.
      */
+    @java.lang.Override
     public int getMseconds() {
       return mseconds_;
     }
@@ -10449,7 +10183,7 @@ public final class ServerLBSInfo {
       if (mseconds_ != 0) {
         output.writeInt32(3, mseconds_);
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -10470,7 +10204,7 @@ public final class ServerLBSInfo {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(3, mseconds_);
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -10485,15 +10219,14 @@ public final class ServerLBSInfo {
       }
       com.qinglan.example.device_point.server.msg.ServerLBSInfo.PositionStatisticReport other = (com.qinglan.example.device_point.server.msg.ServerLBSInfo.PositionStatisticReport) obj;
 
-      boolean result = true;
-      result = result && getData()
-          .equals(other.getData());
-      result = result && (getSeconds()
-          == other.getSeconds());
-      result = result && (getMseconds()
-          == other.getMseconds());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (!getData()
+          .equals(other.getData())) return false;
+      if (getSeconds()
+          != other.getSeconds()) return false;
+      if (getMseconds()
+          != other.getMseconds()) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -10509,7 +10242,7 @@ public final class ServerLBSInfo {
       hash = (53 * hash) + getSeconds();
       hash = (37 * hash) + MSECONDS_FIELD_NUMBER;
       hash = (53 * hash) + getMseconds();
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -10632,28 +10365,21 @@ public final class ServerLBSInfo {
 
       // Construct using com.qinglan.example.device_point.server.msg.ServerLBSInfo.PositionStatisticReport.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         data_ = com.google.protobuf.ByteString.EMPTY;
-
         seconds_ = 0;
-
         mseconds_ = 0;
-
         return this;
       }
 
@@ -10680,45 +10406,24 @@ public final class ServerLBSInfo {
       @java.lang.Override
       public com.qinglan.example.device_point.server.msg.ServerLBSInfo.PositionStatisticReport buildPartial() {
         com.qinglan.example.device_point.server.msg.ServerLBSInfo.PositionStatisticReport result = new com.qinglan.example.device_point.server.msg.ServerLBSInfo.PositionStatisticReport(this);
-        result.data_ = data_;
-        result.seconds_ = seconds_;
-        result.mseconds_ = mseconds_;
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      @java.lang.Override
-      public Builder clone() {
-        return (Builder) super.clone();
+      private void buildPartial0(com.qinglan.example.device_point.server.msg.ServerLBSInfo.PositionStatisticReport result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.data_ = data_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.seconds_ = seconds_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.mseconds_ = mseconds_;
+        }
       }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.qinglan.example.device_point.server.msg.ServerLBSInfo.PositionStatisticReport) {
@@ -10740,7 +10445,7 @@ public final class ServerLBSInfo {
         if (other.getMseconds() != 0) {
           setMseconds(other.getMseconds());
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -10755,19 +10460,48 @@ public final class ServerLBSInfo {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.qinglan.example.device_point.server.msg.ServerLBSInfo.PositionStatisticReport parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                data_ = input.readBytes();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 16: {
+                seconds_ = input.readInt32();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              case 24: {
+                mseconds_ = input.readInt32();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 24
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.qinglan.example.device_point.server.msg.ServerLBSInfo.PositionStatisticReport) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
+      private int bitField0_;
 
       private com.google.protobuf.ByteString data_ = com.google.protobuf.ByteString.EMPTY;
       /**
@@ -10776,7 +10510,9 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>bytes data = 1;</code>
+       * @return The data.
        */
+      @java.lang.Override
       public com.google.protobuf.ByteString getData() {
         return data_;
       }
@@ -10786,13 +10522,13 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>bytes data = 1;</code>
+       * @param value The data to set.
+       * @return This builder for chaining.
        */
       public Builder setData(com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         data_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -10802,9 +10538,10 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>bytes data = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearData() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         data_ = getDefaultInstance().getData();
         onChanged();
         return this;
@@ -10817,7 +10554,9 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>int32 seconds = 2;</code>
+       * @return The seconds.
        */
+      @java.lang.Override
       public int getSeconds() {
         return seconds_;
       }
@@ -10827,10 +10566,13 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>int32 seconds = 2;</code>
+       * @param value The seconds to set.
+       * @return This builder for chaining.
        */
       public Builder setSeconds(int value) {
-        
+
         seconds_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -10840,9 +10582,10 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>int32 seconds = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearSeconds() {
-        
+        bitField0_ = (bitField0_ & ~0x00000002);
         seconds_ = 0;
         onChanged();
         return this;
@@ -10855,7 +10598,9 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>int32 mseconds = 3;</code>
+       * @return The mseconds.
        */
+      @java.lang.Override
       public int getMseconds() {
         return mseconds_;
       }
@@ -10865,10 +10610,13 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>int32 mseconds = 3;</code>
+       * @param value The mseconds to set.
+       * @return This builder for chaining.
        */
       public Builder setMseconds(int value) {
-        
+
         mseconds_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
@@ -10878,9 +10626,10 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>int32 mseconds = 3;</code>
+       * @return This builder for chaining.
        */
       public Builder clearMseconds() {
-        
+        bitField0_ = (bitField0_ & ~0x00000004);
         mseconds_ = 0;
         onChanged();
         return this;
@@ -10888,7 +10637,7 @@ public final class ServerLBSInfo {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -10918,7 +10667,18 @@ public final class ServerLBSInfo {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new PositionStatisticReport(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -10948,6 +10708,7 @@ public final class ServerLBSInfo {
      * </pre>
      *
      * <code>string message = 1;</code>
+     * @return The message.
      */
     java.lang.String getMessage();
     /**
@@ -10956,6 +10717,7 @@ public final class ServerLBSInfo {
      * </pre>
      *
      * <code>string message = 1;</code>
+     * @return The bytes for message.
      */
     com.google.protobuf.ByteString
         getMessageBytes();
@@ -10966,6 +10728,7 @@ public final class ServerLBSInfo {
      * </pre>
      *
      * <code>uint32 seconds = 2;</code>
+     * @return The seconds.
      */
     int getSeconds();
 
@@ -10975,6 +10738,7 @@ public final class ServerLBSInfo {
      * </pre>
      *
      * <code>int32 mseconds = 3;</code>
+     * @return The mseconds.
      */
     int getMseconds();
   }
@@ -10987,7 +10751,7 @@ public final class ServerLBSInfo {
    *
    * Protobuf type {@code NotifyMessage}
    */
-  public  static final class NotifyMessage extends
+  public static final class NotifyMessage extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:NotifyMessage)
       NotifyMessageOrBuilder {
@@ -10998,69 +10762,15 @@ public final class ServerLBSInfo {
     }
     private NotifyMessage() {
       message_ = "";
-      seconds_ = 0;
-      mseconds_ = 0;
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new NotifyMessage();
     }
-    private NotifyMessage(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
 
-              message_ = s;
-              break;
-            }
-            case 16: {
-
-              seconds_ = input.readUInt32();
-              break;
-            }
-            case 24: {
-
-              mseconds_ = input.readInt32();
-              break;
-            }
-            default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.qinglan.example.device_point.server.msg.ServerLBSInfo.internal_static_NotifyMessage_descriptor;
@@ -11075,14 +10785,17 @@ public final class ServerLBSInfo {
     }
 
     public static final int MESSAGE_FIELD_NUMBER = 1;
-    private volatile java.lang.Object message_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object message_ = "";
     /**
      * <pre>
      *NotContinuouSeq:expect:xx,recieved:xx   雷达包不连续,resetRadar   雷达重启,accelaError  读取加速度异常,radarDate:xxx,radarVer:xx,appDate:xxx,appVer:xx   雷达板和通讯板日期和版本上报
      * </pre>
      *
      * <code>string message = 1;</code>
+     * @return The message.
      */
+    @java.lang.Override
     public java.lang.String getMessage() {
       java.lang.Object ref = message_;
       if (ref instanceof java.lang.String) {
@@ -11101,7 +10814,9 @@ public final class ServerLBSInfo {
      * </pre>
      *
      * <code>string message = 1;</code>
+     * @return The bytes for message.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getMessageBytes() {
       java.lang.Object ref = message_;
@@ -11117,27 +10832,31 @@ public final class ServerLBSInfo {
     }
 
     public static final int SECONDS_FIELD_NUMBER = 2;
-    private int seconds_;
+    private int seconds_ = 0;
     /**
      * <pre>
      *1970/1/1开始的秒数
      * </pre>
      *
      * <code>uint32 seconds = 2;</code>
+     * @return The seconds.
      */
+    @java.lang.Override
     public int getSeconds() {
       return seconds_;
     }
 
     public static final int MSECONDS_FIELD_NUMBER = 3;
-    private int mseconds_;
+    private int mseconds_ = 0;
     /**
      * <pre>
      *毫秒
      * </pre>
      *
      * <code>int32 mseconds = 3;</code>
+     * @return The mseconds.
      */
+    @java.lang.Override
     public int getMseconds() {
       return mseconds_;
     }
@@ -11156,7 +10875,7 @@ public final class ServerLBSInfo {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getMessageBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(message_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, message_);
       }
       if (seconds_ != 0) {
@@ -11165,7 +10884,7 @@ public final class ServerLBSInfo {
       if (mseconds_ != 0) {
         output.writeInt32(3, mseconds_);
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -11174,7 +10893,7 @@ public final class ServerLBSInfo {
       if (size != -1) return size;
 
       size = 0;
-      if (!getMessageBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(message_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, message_);
       }
       if (seconds_ != 0) {
@@ -11185,7 +10904,7 @@ public final class ServerLBSInfo {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(3, mseconds_);
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -11200,15 +10919,14 @@ public final class ServerLBSInfo {
       }
       com.qinglan.example.device_point.server.msg.ServerLBSInfo.NotifyMessage other = (com.qinglan.example.device_point.server.msg.ServerLBSInfo.NotifyMessage) obj;
 
-      boolean result = true;
-      result = result && getMessage()
-          .equals(other.getMessage());
-      result = result && (getSeconds()
-          == other.getSeconds());
-      result = result && (getMseconds()
-          == other.getMseconds());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (!getMessage()
+          .equals(other.getMessage())) return false;
+      if (getSeconds()
+          != other.getSeconds()) return false;
+      if (getMseconds()
+          != other.getMseconds()) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -11224,7 +10942,7 @@ public final class ServerLBSInfo {
       hash = (53 * hash) + getSeconds();
       hash = (37 * hash) + MSECONDS_FIELD_NUMBER;
       hash = (53 * hash) + getMseconds();
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -11347,28 +11065,21 @@ public final class ServerLBSInfo {
 
       // Construct using com.qinglan.example.device_point.server.msg.ServerLBSInfo.NotifyMessage.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         message_ = "";
-
         seconds_ = 0;
-
         mseconds_ = 0;
-
         return this;
       }
 
@@ -11395,45 +11106,24 @@ public final class ServerLBSInfo {
       @java.lang.Override
       public com.qinglan.example.device_point.server.msg.ServerLBSInfo.NotifyMessage buildPartial() {
         com.qinglan.example.device_point.server.msg.ServerLBSInfo.NotifyMessage result = new com.qinglan.example.device_point.server.msg.ServerLBSInfo.NotifyMessage(this);
-        result.message_ = message_;
-        result.seconds_ = seconds_;
-        result.mseconds_ = mseconds_;
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      @java.lang.Override
-      public Builder clone() {
-        return (Builder) super.clone();
+      private void buildPartial0(com.qinglan.example.device_point.server.msg.ServerLBSInfo.NotifyMessage result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.message_ = message_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.seconds_ = seconds_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.mseconds_ = mseconds_;
+        }
       }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.qinglan.example.device_point.server.msg.ServerLBSInfo.NotifyMessage) {
@@ -11448,6 +11138,7 @@ public final class ServerLBSInfo {
         if (other == com.qinglan.example.device_point.server.msg.ServerLBSInfo.NotifyMessage.getDefaultInstance()) return this;
         if (!other.getMessage().isEmpty()) {
           message_ = other.message_;
+          bitField0_ |= 0x00000001;
           onChanged();
         }
         if (other.getSeconds() != 0) {
@@ -11456,7 +11147,7 @@ public final class ServerLBSInfo {
         if (other.getMseconds() != 0) {
           setMseconds(other.getMseconds());
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -11471,19 +11162,48 @@ public final class ServerLBSInfo {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.qinglan.example.device_point.server.msg.ServerLBSInfo.NotifyMessage parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                message_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 16: {
+                seconds_ = input.readUInt32();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              case 24: {
+                mseconds_ = input.readInt32();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 24
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.qinglan.example.device_point.server.msg.ServerLBSInfo.NotifyMessage) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
+      private int bitField0_;
 
       private java.lang.Object message_ = "";
       /**
@@ -11492,6 +11212,7 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>string message = 1;</code>
+       * @return The message.
        */
       public java.lang.String getMessage() {
         java.lang.Object ref = message_;
@@ -11511,6 +11232,7 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>string message = 1;</code>
+       * @return The bytes for message.
        */
       public com.google.protobuf.ByteString
           getMessageBytes() {
@@ -11531,14 +11253,14 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>string message = 1;</code>
+       * @param value The message to set.
+       * @return This builder for chaining.
        */
       public Builder setMessage(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         message_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -11548,10 +11270,11 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>string message = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearMessage() {
-        
         message_ = getDefaultInstance().getMessage();
+        bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
@@ -11561,15 +11284,15 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>string message = 1;</code>
+       * @param value The bytes for message to set.
+       * @return This builder for chaining.
        */
       public Builder setMessageBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         message_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -11581,7 +11304,9 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>uint32 seconds = 2;</code>
+       * @return The seconds.
        */
+      @java.lang.Override
       public int getSeconds() {
         return seconds_;
       }
@@ -11591,10 +11316,13 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>uint32 seconds = 2;</code>
+       * @param value The seconds to set.
+       * @return This builder for chaining.
        */
       public Builder setSeconds(int value) {
-        
+
         seconds_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -11604,9 +11332,10 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>uint32 seconds = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearSeconds() {
-        
+        bitField0_ = (bitField0_ & ~0x00000002);
         seconds_ = 0;
         onChanged();
         return this;
@@ -11619,7 +11348,9 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>int32 mseconds = 3;</code>
+       * @return The mseconds.
        */
+      @java.lang.Override
       public int getMseconds() {
         return mseconds_;
       }
@@ -11629,10 +11360,13 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>int32 mseconds = 3;</code>
+       * @param value The mseconds to set.
+       * @return This builder for chaining.
        */
       public Builder setMseconds(int value) {
-        
+
         mseconds_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
@@ -11642,9 +11376,10 @@ public final class ServerLBSInfo {
        * </pre>
        *
        * <code>int32 mseconds = 3;</code>
+       * @return This builder for chaining.
        */
       public Builder clearMseconds() {
-        
+        bitField0_ = (bitField0_ & ~0x00000004);
         mseconds_ = 0;
         onChanged();
         return this;
@@ -11652,7 +11387,7 @@ public final class ServerLBSInfo {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -11682,7 +11417,18 @@ public final class ServerLBSInfo {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new NotifyMessage(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -11822,18 +11568,10 @@ public final class ServerLBSInfo {
       "le.device_point.server.msgB\rServerLBSInf" +
       "ob\006proto3"
     };
-    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
-          public com.google.protobuf.ExtensionRegistry assignDescriptors(
-              com.google.protobuf.Descriptors.FileDescriptor root) {
-            descriptor = root;
-            return null;
-          }
-        };
-    com.google.protobuf.Descriptors.FileDescriptor
+    descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-        }, assigner);
+        });
     internal_static_CommonMessage_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_CommonMessage_fieldAccessorTable = new

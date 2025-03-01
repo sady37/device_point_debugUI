@@ -32,7 +32,9 @@ public class RegistResponseHandler extends SimpleChannelInboundHandler<DeviceInf
         uids.add("F59D3E873F57");
         uids.add("F59D3E873F58");
         uids.add("F59D3E873F59");
-        uids.add("CBAA7C29E9A4A0D");
+        uids.add("25A859B8333B");
+		uids.add("*");
+		uids.add("CBAA7C29E9A4A0D");
     }
 
     /**
@@ -48,7 +50,8 @@ public class RegistResponseHandler extends SimpleChannelInboundHandler<DeviceInf
         try {
             DeviceInfo.RegisterResponse.Builder response = DeviceInfo.RegisterResponse.newBuilder();
             boolean regFlag = false;
-            if (uids.contains(msg.getUid())) {
+    
+			if (uids.contains(msg.getUid()) || uids.contains("*")) {
                 response.setSeq(4);
                 // 0-成功 其它失败
                 response.setResult(0);

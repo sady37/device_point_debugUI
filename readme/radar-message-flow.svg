@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600">
+  <!-- Background -->
+  <rect width="900" height="600" fill="#f8f9fa" />
+  
+  <!-- Title -->
+  <text x="450" y="30" text-anchor="middle" font-family="Arial" font-size="24" font-weight="bold" fill="#333">
+    Radar Device Message Processing Flow
+  </text>
+  
+  <!-- Flow diagram -->
+  <!-- Radar Device -->
+  <rect x="100" y="80" width="120" height="60" rx="10" fill="#f8d7da" stroke="#dc3545" stroke-width="2" />
+  <text x="160" y="115" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#333">
+    Radar Device
+  </text>
+  
+  <!-- Network -->
+  <rect x="390" y="80" width="120" height="60" rx="10" fill="#f1f8ff" stroke="#0366d6" stroke-width="2" />
+  <text x="450" y="115" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#333">
+    Network
+  </text>
+  
+  <!-- Server -->
+  <rect x="680" y="80" width="120" height="60" rx="10" fill="#d1e7dd" stroke="#198754" stroke-width="2" />
+  <text x="740" y="115" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#333">
+    Server
+  </text>
+  
+  <!-- Arrows -->
+  <line x1="220" y1="110" x2="390" y2="110" stroke="#333" stroke-width="2" />
+  <polygon points="385,105 395,110 385,115" fill="#333" />
+  
+  <line x1="510" y1="110" x2="680" y2="110" stroke="#333" stroke-width="2" />
+  <polygon points="675,105 685,110 675,115" fill="#333" />
+  
+  <!-- Frame Decoder Box -->
+  <rect x="320" y="180" width="260" height="60" rx="5" fill="#e2e3e5" stroke="#6c757d" stroke-width="2" />
+  <text x="450" y="215" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#333">
+    ProcotolFrameDecoder
+  </text>
+  
+  <!-- Protobuf Codec Box -->
+  <rect x="320" y="280" width="260" height="60" rx="5" fill="#cfe2ff" stroke="#0d6efd" stroke-width="2" />
+  <text x="450" y="315" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#333">
+    ProtoBufCodecSharable
+  </text>
+  
+  <!-- Message Handler Box -->
+  <rect x="320" y="380" width="260" height="60" rx="5" fill="#d1e7dd" stroke="#198754" stroke-width="2" />
+  <text x="450" y="415" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#333">
+    Type-Specific Handler
+  </text>
+  
+  <!-- Session Box -->
+  <rect x="320" y="480" width="260" height="60" rx="5" fill="#fff3cd" stroke="#ffc107" stroke-width="2" />
+  <text x="450" y="515" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#333">
+    DeviceRegSession
+  </text>
+  
+  <!-- Vertical Flow Arrows -->
+  <line x1="450" y1="140" x2="450" y2="180" stroke="#333" stroke-width="2" />
+  <polygon points="445,175 450,180 455,175" fill="#333" />
+  
+  <line x1="450" y1="240" x2="450" y2="280" stroke="#333" stroke-width="2" />
+  <polygon points="445,275 450,280 455,275" fill="#333" />
+  
+  <line x1="450" y1="340" x2="450" y2="380" stroke="#333" stroke-width="2" />
+  <polygon points="445,375 450,380 455,375" fill="#333" />
+  
+  <line x1="450" y1="440" x2="450" y2="480" stroke="#333" stroke-width="2" />
+  <polygon points="445,475 450,480 455,475" fill="#333" />
+  
+  <!-- Process Descriptions -->
+  <rect x="600" y="180" width="200" height="60" rx="5" fill="none" stroke="#6c757d" stroke-width="1" />
+  <text x="700" y="205" text-anchor="middle" font-family="Arial" font-size="12" fill="#333">
+    1. Decode Frame Format
+  </text>
+  <text x="700" y="225" text-anchor="middle" font-family="Arial" font-size="12" fill="#333">
+    Extract frame length & type
+  </text>
+  
+  <rect x="600" y="280" width="200" height="60" rx="5" fill="none" stroke="#6c757d" stroke-width="1" />
+  <text x="700" y="305" text-anchor="middle" font-family="Arial" font-size="12" fill="#333">
+    2. Deserialize Message
+  </text>
+  <text x="700" y="325" text-anchor="middle" font-family="Arial" font-size="12" fill="#333">
+    Convert bytes to Protocol Buffers
+  </text>
+  
+  <rect x="600" y="380" width="200" height="60" rx="5" fill="none" stroke="#6c757d" stroke-width="1" />
+  <text x="700" y="405" text-anchor="middle" font-family="Arial" font-size="12" fill="#333">
+    3. Process Message
+  </text>
+  <text x="700" y="425" text-anchor="middle" font-family="Arial" font-size="12" fill="#333">
+    Based on message type
+  </text>
+  
+  <rect x="600" y="480" width="200" height="60" rx="5" fill="none" stroke="#6c757d" stroke-width="1" />
+  <text x="700" y="505" text-anchor="middle" font-family="Arial" font-size="12" fill="#333">
+    4. Manage Device Session
+  </text>
+  <text x="700" y="525" text-anchor="middle" font-family="Arial" font-size="12" fill="#333">
+    Track connections & properties
+  </text>
+  
+  <!-- Message Types Box -->
+  <rect x="100" y="280" width="200" height="200" rx="5" fill="#e2e3e5" stroke="#6c757d" stroke-width="1" />
+  <text x="200" y="305" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#333">
+    Common Message Types
+  </text>
+  
+  <text x="110" y="335" font-family="Arial" font-size="12" fill="#333">• Type 1: GetServerReq</text>
+  <text x="110" y="355" font-family="Arial" font-size="12" fill="#333">• Type 3: RegisterReq</text>
+  <text x="110" y="375" font-family="Arial" font-size="12" fill="#333">• Type 5: ObjectFallDown</text>
+  <text x="110" y="395" font-family="Arial" font-size="12" fill="#333">• Type 7: Heartbeat</text>
+  <text x="110" y="415" font-family="Arial" font-size="12" fill="#333">• Type 13: PositionData</text>
+  <text x="110" y="435" font-family="Arial" font-size="12" fill="#333">• Type 14: BreathingData</text>
+  <text x="110" y="455" font-family="Arial" font-size="12" fill="#333">• Type 16: NumberOfPeople</text>
+  
+  <!-- Frame Format Box -->
+  <rect x="100" y="180" width="200" height="80" rx="5" fill="#f1f8ff" stroke="#0366d6" stroke-width="1" />
+  <text x="200" y="205" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#333">
+    Frame Format
+  </text>
+  
+  <text x="110" y="235" font-family="Arial" font-size="12" fill="#333">Bytes 0-1: Length (2 bytes)</text>
+  <text x="110" y="255" font-family="Arial" font-size="12" fill="#333">Byte 2: Message Type (1 byte)</text>
+  <text x="110" y="255" font-family="Arial" font-size="12" fill="#333">Bytes 3+: Protobuf Data</text>
+</svg>

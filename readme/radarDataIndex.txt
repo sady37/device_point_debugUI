@@ -1,0 +1,95 @@
+数据结构与字典
+1. 报文格式
+字节	名称	含义
+0-1	Length	报文长度，单位为字节（仅包括data的长度，不包括Length和type）
+2	type	报文类型，指示当前传输的报文类型
+3-N	data	报文内容，采用protobuf格式编码
+2. 报文类型及数据内容定义
+type	功能	data格式（protobuf编码）
+1	请求获取服务器IP	message GetServerReq { uint32 seq = 1; string uid = 2; string type = 3; }
+2	获取服务器IP响应	message GetServerResponse { uint32 seq = 1; int32 result = 2; string server = 3; ... }
+3	设备注册	message RegisterReq { uint32 seq = 1; string hwver = 2; string sfver = 3; ... }
+4	注册响应	message RegisterResponse { uint32 seq = 1; int32 result = 2; ... }
+5	上报跌倒告警	message ObjectFallDown { Bytes falls = 1; uint32 seconds = 2; int32 mseconds = 3; }
+7	心跳请求	message CommonMessage { uint32 seq = 1; }
+8	心跳响应	message CommonMessage { uint32 seq = 1; }
+9	设置设备属性	message SetDeviceProperty { uint32 seq = 1; string key = 2; string value = 3; }
+10	设置设备属性响应	message CommonResponse { uint32 seq = 1; int32 result = 2; string errmsg = 3; }
+11	获取设备属性	空
+12	获取设备属性响应	message ProPertyItem { string key = 1; string value = 2; }
+13	实时轨迹上报	message ObjectData { bytes data = 1; int32 seconds = 2; int32 mseconds = 3; }
+14	呼吸心率或睡眠数据	message ObjectData { bytes data = 1; int32 seconds = 2; int32 mseconds = 3; }
+15	进出事件上报	message PositionStatusEvent { bytes events = 1; bytes areas = 2; ... }
+16	人数变化上报	message ObjectData { bytes data = 1; int32 seconds = 2; int32 mseconds = 3; }
+17	OTA推送	message OTAReq { uint32 seq = 1; string espsfver = 2; ... }
+18	OTA推送响应	message CommonResponse { uint32 seq = 1; int32 result = 2; ... }
+19	轨迹统计数据上报	message ObjectData { bytes data = 1; int32 seconds = 2; int32 mseconds = 3; }
+24	重启设备	message CommonMessage { uint32 seq = 1; }
+25	重启设备响应	空
+26	订阅实时呼吸心率	message SetModeReq { uint32 seq = 1; uint32 seconds = 2; }
+27	订阅实时呼吸心率响应	message CommonResponse { uint32 seq = 1; int32 result = 2; ... }
+28	服务器心跳请求	空
+29	服务器心跳请求响应	空
+35	设备调试信息	内部保留，不做解析和处理
+50	启动通话	message StartVoiceReq { uint32 seq = 1; string appid = 2; ... }
+51	启动通话响应	message CommonResponse { uint32 seq = 1; int32 result = 2; ... }
+52	停止通话	空
+53	停止通话响应	message CommonResponse { uint32 seq = 1; int32 result = 2; ... }
+3. 设备属性定义
+属性	Key	Value格式
+工作模式	radar_func_ctrl	3：人数轨迹 7：跌倒检测 11：呼吸睡眠 15：全功能（床位监护）
+安装方式	radar_install_style	0：顶装 1：侧装
+安装高度	radar_install_height	单位为分米，取值范围：15-33
+检测边界	rectangle	{x1, y1; x2, y2, x3, y3, x4, y4}，单位为分米
+设置区域	declare_area	{area-id, area-type,x1, y1; x2, y2, x3, y3, x4, y4}
+跌倒参数	fall_param	16字节数组，BASE64编码
+呼吸心率参数	heart_breath_param	16字节数组，BASE64编码
+通讯固件编译时间	app_compile_time	示例: Apr 22 2024-14:36:29
+雷达固件编译时间	radar_compile_time	示例: Mar 18 2024 10:41:11
+雷达倾角	accelera	示例: 36.74:9.97:-38.52:0，最后的0表示未校准过，1表示校准过
+设备类型	type	Wi-Fi版本HC2设备或TK2设备取值TSL60G442；4G版本HC2设备取值TSL60G4G
+主控版本	sfver	HC2设备取值2.0，TK2设备取值2.6
+雷达版本	radarsfver	取值1.0或2.3
+MAC地址	mac	设备MAC地址
+平台地址	ip_port	格式为"服务器域名或IP地址:端口号"
+Wifi信息	ssid_password	格式为"SSID:密码"
+4. 实时轨迹数据定义
+字节	属性名称	定义
+0	目标ID	有人状态时，数值取值0-7，代表人员编号；无人状态时，数值固定为88
+1-3	轨迹坐标	1-3字节分别为x/y/z坐标，x和y单位为分米，z单位为厘米
+4-11	预留字段	预留调试使用
+12	剩余时间	单位为秒，取值0-60，仅在自动测量边界时使用
+13	人员姿态	0: 初始化 1: 行走 2: 疑似跌倒 3: 蹲坐 4: 站立 5：跌倒确认 6: 躺卧
+14	人员事件	0：无事件 1：进入房间 2：离开房间 3：进入区域 4：离开区域
+15	区域ID	在14字节内容为3或4时，此字段标识人员进出的区域ID
+5. 实时呼吸心率数据定义
+字节	属性名称	定义
+0	标识符	0表示为实时呼吸心率；0xff表示睡眠数据
+1	呼吸值	单位：次/分钟
+2	心率值	单位：次/分钟
+3-12	预留字段	预留调试使用
+13	状态	bit 6 & bit 7：00: 未定义 01: 浅睡 10: 深睡 11: 清醒状态
+6. 睡眠统计数据定义
+字节	属性名称	定义
+0	标识符	固定为0xff，表示为睡眠统计
+1	实时呼吸值	单位：次/分钟
+2	实时心率值	单位：次/分钟
+3-4	睡眠统计信息	睡眠算法未公开
+5	分钟级平均呼吸	单位：次/分钟
+6	分钟级平均心率	单位：次/分钟
+7-12	睡眠统计信息	睡眠算法未公开
+13	呼吸心率事件	bit 0 & bit 1：呼吸状态；bit 2 & bit 3：心率状态；bit 4 & bit 5：生命状态
+14-15	睡眠统计信息	睡眠算法未公开
+7. 轨迹统计数据定义
+字节	属性名称	定义
+0	版本标识符	当前取值1或2
+1	人数	当前上报时刻雷达检测到的人数，取值0-8
+2-3	行走距离	过去一分钟统计的行走距离，单位为米
+4	行走时长	过去一分钟统计的行走时间，单位为秒
+5	静坐时长	未开放使用
+6	躺卧时长	未开放使用
+7	站立时长	过去一分钟统计的静止时间，单位为秒
+8	多人时长	过去一分钟统计的有多人存在的时间，单位为秒
+9-15	预留字段	未开放使用
+总结
+以上是清澜雷达设备对接文档中的数据结构和字典的简化版本，涵盖了报文格式、设备属性、实时轨迹、呼吸心率、睡眠统计等关键数据定义

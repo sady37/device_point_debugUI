@@ -1,0 +1,11 @@
+{
+	"properties": {
+	  "radar_func_ctrl": "15",
+	  "radar_install_style": "0",
+	  "radar_install_height": "28",
+	  "rectangle": "{-30,-20; 30,-20; -30,20; 30,20}",
+	  "declare_area": "{}",
+	  "fall_param": "AAAAAAAAAAAAAAAAAAAA",
+	  "heart_breath_param": "GFoIAQAAAAAAAAAAAA=="
+	}
+  }

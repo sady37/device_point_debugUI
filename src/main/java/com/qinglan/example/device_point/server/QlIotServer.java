@@ -3,6 +3,11 @@ package com.qinglan.example.device_point.server;
 import com.qinglan.example.device_point.server.handle.*;
 import com.qinglan.example.device_point.server.protocol.ProcotolFrameDecoder;
 import com.qinglan.example.device_point.server.protocol.ProtoBufCodecSharable;
+import com.qinglan.example.device_point.server.session.DeviceRegSession;
+import com.qinglan.example.device_point.ui.DeviceSessionListener;
+import com.qinglan.example.device_point.ui.EventBus;
+import com.qinglan.example.device_point.ui.RadarDebugUI;
+
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelDuplexHandler;
@@ -18,9 +23,110 @@ import io.netty.handler.timeout.IdleStateEvent;
 import io.netty.handler.timeout.IdleStateHandler;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.atomic.AtomicBoolean;
+
 @Slf4j
 public class QlIotServer {
+    // 添加UI界面引用，便于管理
+    private RadarDebugUI debugUI;
+    
+    // 添加设备会话
+    private DeviceRegSession deviceSession;
+    
+    // 监听器列表
+    private final List<DeviceSessionListener> sessionListeners = new ArrayList<>();
+    
+    // 服务器启动状态
+    private final AtomicBoolean isRunning = new AtomicBoolean(false);
+    
+    // 服务器线程
+    private Thread serverThread;
+    
+    /**
+     * 构造函数，初始化设备会话
+     */
+    public QlIotServer() {
+        this.deviceSession = new DeviceRegSession();
+    }
+    
+    /**
+     * 添加设备会话监听器
+     * 
+     * @param listener 监听器
+     */
+    public void addSessionListener(DeviceSessionListener listener) {
+        sessionListeners.add(listener);
+        deviceSession.addSessionListener(listener);
+    }
+    
+    /**
+     * 移除设备会话监听器
+     * 
+     * @param listener 监听器
+     */
+    public void removeSessionListener(DeviceSessionListener listener) {
+        sessionListeners.remove(listener);
+        deviceSession.removeSessionListener(listener);
+    }
+    
+    /**
+     * 设置调试UI
+     * 
+     * @param debugUI UI组件
+     */
+    public void setDebugUI(RadarDebugUI debugUI) {
+        this.debugUI = debugUI;
+    }
+    
+    /**
+     * 异步启动服务器
+     * 
+     * @param inetPort 端口号
+     * @return CompletableFuture<Void> 异步结果
+     */
+    public CompletableFuture<Void> startQLServerAsync(int inetPort) {
+        CompletableFuture<Void> future = new CompletableFuture<>();
+        
+        if (isRunning.get()) {
+            future.completeExceptionally(new IllegalStateException("Server is already running"));
+            return future;
+        }
+        
+        serverThread = new Thread(() -> {
+            try {
+                startQLServer(inetPort);
+                future.complete(null);
+            } catch (Exception e) {
+                future.completeExceptionally(e);
+            }
+        });
+        
+        serverThread.setName("QlIotServer-Thread");
+        serverThread.start();
+        
+        return future;
+    }
+    
+    /**
+     * 停止服务器
+     */
+    public void stopServer() {
+        if (isRunning.get()) {
+            isRunning.set(false);
+            if (serverThread != null) {
+                serverThread.interrupt();
+            }
+            log.info("Server stopping...");
+        }
+    }
+
     public void startQLServer(int inetPort){
+        // 设置运行状态
+        isRunning.set(true);
+        
         NioEventLoopGroup boss = new NioEventLoopGroup();
         NioEventLoopGroup worker = new NioEventLoopGroup();
         ProtoBufCodecSharable MESSAGE_CODEC = new ProtoBufCodecSharable();
@@ -91,13 +197,63 @@ public class QlIotServer {
             });
             Channel channel = serverBootstrap.bind(inetPort).sync().channel();
             log.info("----------------start----qlServer----port:{}--------", inetPort);
+            
+            // 通知UI服务器启动
+            notifyServerStarted(inetPort);
+            
             channel.closeFuture().sync();
         } catch (InterruptedException e) {
             log.error("server error", e);
         } finally {
+            // 更新服务器状态
+            isRunning.set(false);
             boss.shutdownGracefully();
             worker.shutdownGracefully();
+            
+            // 通知UI服务器停止
+            notifyServerStopped();
         }
     }
-
+    
+    /**
+     * 通知服务器启动事件
+     * 
+     * @param port 服务器端口
+     */
+    private void notifyServerStarted(int port) {
+        // 通过EventBus通知UI
+        EventBus.getInstance().post(new EventBus.Event(EventBus.EventType.MESSAGE_RECEIVED)
+            .addData("deviceId", "System")
+            .addData("messageType", "INFO")
+            .addData("message", "Server started on port " + port));
+    }
+    
+    /**
+     * 通知服务器停止事件
+     */
+    private void notifyServerStopped() {
+        // 通过EventBus通知UI
+        EventBus.getInstance().post(new EventBus.Event(EventBus.EventType.MESSAGE_RECEIVED)
+            .addData("deviceId", "System")
+            .addData("messageType", "INFO")
+            .addData("message", "Server stopped"));
+    }
+    
+    /**
+     * 获取设备会话
+     * 
+     * @return DeviceRegSession
+     */
+    public DeviceRegSession getDeviceSession() {
+        return deviceSession;
+    }
+    
+    /**
+     * 获取服务器运行状态
+     * 
+     * @return 是否在运行
+     */
+    public boolean isRunning() {
+        return isRunning.get();
+    }
 }
