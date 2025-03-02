@@ -1,0 +1,12 @@
+{
+	"properties": {
+	  "radar_func_ctrl": "7",
+	  "radar_install_style": "1",
+	  "radar_install_height": "16",
+	  "rectangle": "-21, 0; 18, 0; -21, 40; -18, 40",
+	  "declare_area": "1, 4, -5, 35; 5, 35; -5, 40; 5, 40",
+	  "declare_area2": "2, 2, 0, 0; 9, 0; 0, 12; 9, 12"
+	}
+  }
+
+  

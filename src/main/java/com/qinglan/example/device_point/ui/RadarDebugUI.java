@@ -1,43 +1,30 @@
 package com.qinglan.example.device_point.ui;
 
-// Java Swing 相关
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
-// Java AWT 相关
 import java.awt.*;
-import java.awt.event.ActionEvent; // 处理按钮点击事件
+import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-// 文件操作
 import java.io.File;
-
-// 时间格式化
 import java.text.SimpleDateFormat;
-
-// 日期和时间
 import java.util.Date;
-
-// 存储设备信息
-import java.util.HashMap;
-import java.util.Map;
-
-// 日志记录
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
-// 自定义类和包
-import com.qinglan.example.device_point.server.QlIotServer;
-import com.qinglan.example.device_point.server.session.DeviceRegSession;
-import com.qinglan.example.device_point.ui.EventBus.Event;
-import com.qinglan.example.device_point.ui.EventBus.EventListener;
+import com.qinglan.example.device_point.server.handle.ProItemsHandler;
+
 /**
  * Radar Debug UI - Main window for radar device debugging
+ * with integrated DevicePropertiesViewer
  */
 public class RadarDebugUI extends JFrame {
 
     private static final long serialVersionUID = 1L;
+    private static final Logger logger = Logger.getLogger(RadarDebugUI.class.getName());
 
     // UI Components
     private JTable deviceTable;
@@ -52,6 +39,10 @@ public class RadarDebugUI extends JFrame {
     private JButton sendConfigButton;
     private JButton acceptButton;
     private JButton disconnectButton;
+    private boolean hideHeartbeatMessages = false;
+    
+    // Properties viewer component
+    private DevicePropertiesViewer propertiesViewer;
 
     // Controller
     private RadarUIController controller;
@@ -65,8 +56,8 @@ public class RadarDebugUI extends JFrame {
 
             // Set up the main window
             setTitle("Radar Debug Console");
-            setSize(900, 700);
-            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 修复：改为 EXIT_ON_CLOSE
+            setSize(1100, 800);
+            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             addWindowListener(new WindowAdapter() {
                 @Override
                 public void windowClosing(WindowEvent e) {
@@ -77,38 +68,83 @@ public class RadarDebugUI extends JFrame {
             // Create the main layout
             setLayout(new BorderLayout());
 
-            // Add components
-			JSplitPane mainSplitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
-			JSplitPane upperSplitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
-			
-			upperSplitPane.setTopComponent(createDevicePanel());
-			upperSplitPane.setBottomComponent(createMessagesPanel());
-			upperSplitPane.setResizeWeight(0.2); // 设备面板占20%高度
-			
-			mainSplitPane.setTopComponent(upperSplitPane);
-			mainSplitPane.setBottomComponent(createConfigPanel());
-			mainSplitPane.setResizeWeight(0.8); // 上部面板占80%高度
-			
-			add(mainSplitPane, BorderLayout.CENTER);
+            // Initialize the properties viewer
+            propertiesViewer = new DevicePropertiesViewer();
+
+            // Create split panes for layout management
+            JSplitPane mainSplitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+            JSplitPane upperSplitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+            JSplitPane lowerSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+            
+            // Set up the upper section - devices and messages
+            upperSplitPane.setTopComponent(createDevicePanel());
+            upperSplitPane.setBottomComponent(createMessagesPanel());
+            upperSplitPane.setResizeWeight(0.2); // Device panel gets 20% of height
+            
+            // Set up the lower section - config and properties
+            lowerSplitPane.setLeftComponent(createConfigPanel());
+            lowerSplitPane.setRightComponent(propertiesViewer);
+            lowerSplitPane.setResizeWeight(0.5); // Equal space for both panels
+            
+            // Combine into main layout
+            mainSplitPane.setTopComponent(upperSplitPane);
+            mainSplitPane.setBottomComponent(lowerSplitPane);
+            mainSplitPane.setResizeWeight(0.7); // Upper section gets 70% of height
+            
+            add(mainSplitPane, BorderLayout.CENTER);
 
             // Register with event bus
             EventBus.getInstance().register(controller);
 
+            // Add device selection listener to update properties view
+            setupDeviceSelectionListener();
+
             // Set visible
             setLocationRelativeTo(null);
-            setVisible(true); // 确保 UI 可见
+            setVisible(true);
 
-	        // 在 UI 可见后设置确切的分割位置
-	        SwingUtilities.invokeLater(() -> {
-	            int height = getHeight();
-	            upperSplitPane.setDividerLocation((int)(height * 0.2));
-	            mainSplitPane.setDividerLocation((int)(height * 0.8));
-	        });
+            // Adjust divider locations after UI is visible
+            SwingUtilities.invokeLater(() -> {
+                int height = getHeight();
+                int width = getWidth();
+                upperSplitPane.setDividerLocation((int)(height * 0.2));
+                mainSplitPane.setDividerLocation((int)(height * 0.7));
+                lowerSplitPane.setDividerLocation((int)(width * 0.5));
+            });
 
             System.out.println("RadarDebugUI initialization completed.");
         } catch (Exception e) {
             System.err.println("Error in RadarDebugUI constructor: " + e.getMessage());
             e.printStackTrace();
+        }
+    }
+
+    /**
+     * Set up a listener for device selection to update the properties view
+     */
+    private void setupDeviceSelectionListener() {
+        deviceTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                if (!e.getValueIsAdjusting()) {
+                    updateSelectedDeviceProperties();
+                }
+            }
+        });
+    }
+
+    /**
+     * Update the properties viewer with the selected device's properties
+     */
+    private void updateSelectedDeviceProperties() {
+        String selectedDeviceId = getSelectedDeviceId();
+        if (selectedDeviceId != null) {
+            // Update the properties viewer with the selected device
+            // Auto-refresh to load the latest properties
+            propertiesViewer.setDevice(selectedDeviceId, true);
+        } else {
+            // Clear the properties viewer when no device is selected
+            propertiesViewer.setDevice(null, false);
         }
     }
 
@@ -143,12 +179,15 @@ public class RadarDebugUI extends JFrame {
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         acceptButton = new JButton("Accept New");
         disconnectButton = new JButton("Disconnect");
+        JButton refreshPropsButton = new JButton("Refresh Properties");
 
         acceptButton.addActionListener(this::handleAcceptDevice);
         disconnectButton.addActionListener(this::handleDisconnectDevice);
+        refreshPropsButton.addActionListener(e -> updateSelectedDeviceProperties());
 
         buttonPanel.add(acceptButton);
         buttonPanel.add(disconnectButton);
+        buttonPanel.add(refreshPropsButton);
         panel.add(buttonPanel, BorderLayout.SOUTH);
 
         return panel;
@@ -181,6 +220,12 @@ public class RadarDebugUI extends JFrame {
 
         // Add control buttons
         JPanel controlPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+
+        // Add heartbeat filter checkbox
+        JCheckBox hideHeartbeatCheckbox = new JCheckBox("Hide Heartbeat Messages");
+        hideHeartbeatCheckbox.addActionListener(e -> toggleHeartbeatMessages(hideHeartbeatCheckbox.isSelected()));
+        controlPanel.add(hideHeartbeatCheckbox);
+
         JButton clearButton = new JButton("Clear Log");
         clearButton.addActionListener(e -> clearMessageLogs());
         controlPanel.add(clearButton);
@@ -233,8 +278,15 @@ public class RadarDebugUI extends JFrame {
         sendConfigButton.setEnabled(false);
         sendConfigButton.addActionListener(this::handleSendConfig);
 
-        panel.add(inputPanel, BorderLayout.CENTER);
-        panel.add(sendConfigButton, BorderLayout.SOUTH);
+        panel.add(inputPanel, BorderLayout.NORTH);
+        
+        // Create a panel for config options
+        JPanel configOptionsPanel = new JPanel(new BorderLayout());
+        configOptionsPanel.add(sendConfigButton, BorderLayout.NORTH);
+        
+        // Here we could add more configuration options if needed
+        
+        panel.add(configOptionsPanel, BorderLayout.CENTER);
 
         return panel;
     }
@@ -247,6 +299,10 @@ public class RadarDebugUI extends JFrame {
             try {
                 System.out.println("Adding device: " + deviceId);
 
+                // Format current time for the connected time column
+                SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+                String timeStamp = dateFormat.format(new Date());
+
                 // Check if device already exists
                 for (int i = 0; i < deviceTableModel.getRowCount(); i++) {
                     if (deviceTableModel.getValueAt(i, 0).equals(deviceId)) {
@@ -257,8 +313,14 @@ public class RadarDebugUI extends JFrame {
                     }
                 }
 
-                // Add new row
-                deviceTableModel.addRow(new Object[]{deviceId, status, ipAddress});
+                // Add new row with timestamp
+                deviceTableModel.addRow(new Object[]{deviceId, status, ipAddress, timeStamp});
+                
+                // If this is the first device, select it
+                if (deviceTableModel.getRowCount() == 1) {
+                    deviceTable.setRowSelectionInterval(0, 0);
+                    updateSelectedDeviceProperties();
+                }
             } catch (Exception e) {
                 System.err.println("Error adding device: " + e.getMessage());
             }
@@ -275,7 +337,23 @@ public class RadarDebugUI extends JFrame {
 
                 for (int i = 0; i < deviceTableModel.getRowCount(); i++) {
                     if (deviceTableModel.getValueAt(i, 0).equals(deviceId)) {
+                        // Check if this is the currently selected device
+                        boolean wasSelected = deviceTable.isRowSelected(i);
+                        
+                        // Remove the device
                         deviceTableModel.removeRow(i);
+                        
+                        // Clear properties viewer if the selected device was removed
+                        if (wasSelected) {
+                            propertiesViewer.setDevice(null, false);
+                            
+                            // If there are other devices, select the first one
+                            if (deviceTableModel.getRowCount() > 0) {
+                                deviceTable.setRowSelectionInterval(0, 0);
+                                updateSelectedDeviceProperties();
+                            }
+                        }
+                        
                         return;
                     }
                 }
@@ -285,99 +363,74 @@ public class RadarDebugUI extends JFrame {
         });
     }
 
-	/**
-	 * Add a message to the logs
-	 */
-	/*
-	public void addMessage(String type, String deviceId, String message) {
-		SwingUtilities.invokeLater(() -> {
-			try {
-				String logEntry = String.format("[%s] %s: %s\n", type, deviceId, message);
-				JTextArea logArea = getLogAreaForType(type);
-				logArea.append(logEntry);
+    /**
+     * Add a message to the logs
+     */
+    public void addMessage(String type, String deviceId, String message) {
+        SwingUtilities.invokeLater(() -> {
+            try {
+                // Get current time
+                SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+                String timeStamp = dateFormat.format(new Date());
+                
+                // Add to all messages table
+                DefaultTableModel allModel = (DefaultTableModel) allMessagesTable.getModel();
+                allModel.addRow(new Object[]{timeStamp, type, deviceId, message});
+                
+                // Add to specific message type table
+                JTable targetTable;
+                switch (type) {
+                    case "RECV":
+                        targetTable = receivedMessagesTable;
+                        break;
+                    case "SEND":
+                        targetTable = sentMessagesTable;
+                        break;
+                    case "HEART":
+                        targetTable = heartbeatMessagesTable;
+                        break;
+                    default:
+                        targetTable = allMessagesTable;
+                        break;
+                }
+                
+                // Add message to the appropriate table
+                DefaultTableModel targetModel = (DefaultTableModel) targetTable.getModel();
+                targetModel.addRow(new Object[]{timeStamp, type, deviceId, message});
+                
+                // Scroll to bottom of the table
+                scrollToBottom(targetTable);
+                scrollToBottom(allMessagesTable);
 
-				// Auto-scroll to the bottom
-				logArea.setCaretPosition(logArea.getDocument().getLength());
-			} catch (Exception e) {
-				System.err.println("Error adding message: " + e.getMessage());
-			}
-		});
-	}
-	*/
-	/**
- * Add a message to the logs
- */
-	public void addMessage(String type, String deviceId, String message) {
-	    SwingUtilities.invokeLater(() -> {
-	        try {
-	            // Get current time
-	            SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
-	            String timeStamp = dateFormat.format(new Date());
-	            
-	            // Add to all messages table
-	            DefaultTableModel allModel = (DefaultTableModel) allMessagesTable.getModel();
-	            allModel.addRow(new Object[]{timeStamp, type, deviceId, message});
-	            
-	            // Add to specific message type table
-	            JTable targetTable;
-	            switch (type) {
-	                case "RECV":
-	                    targetTable = receivedMessagesTable;
-	                    break;
-	                case "SEND":
-	                    targetTable = sentMessagesTable;
-	                    break;
-	                case "HEART":
-	                    targetTable = heartbeatMessagesTable;
-	                    break;
-	                default:
-	                    targetTable = allMessagesTable;
-	                    break;
-	            }
-	            
-	            // Add message to the appropriate table
-	            DefaultTableModel targetModel = (DefaultTableModel) targetTable.getModel();
-	            targetModel.addRow(new Object[]{timeStamp, type, deviceId, message});
-	            
-	            // Scroll to bottom of the table
-	            scrollToBottom(targetTable);
-	            scrollToBottom(allMessagesTable);
-	            
-	        } catch (Exception e) {
-	            System.err.println("Error adding message: " + e.getMessage());
-	            e.printStackTrace();
-	        }
-	    });
-	}
-
-	/**
-	 * Scroll the table to show the latest row
-	 */
-	private void scrollToBottom(JTable table) {
-	    SwingUtilities.invokeLater(() -> {
-	        if (table.getRowCount() > 0) {
-	            int lastRow = table.getRowCount() - 1;
-	            table.scrollRectToVisible(table.getCellRect(lastRow, 0, true));
-	        }
-	    });
-	}
-
-
+                // Apply filtering if needed
+                if (hideHeartbeatMessages) {
+                    filterMessages(allMessagesTable);
+                    if ("RECV".equals(type)) {
+                        filterMessages(receivedMessagesTable);
+                    } else if ("SEND".equals(type)) {
+                        filterMessages(sentMessagesTable);
+                    } else if ("HEART".equals(type)) {
+                        filterMessages(heartbeatMessagesTable);
+                    }
+                }
+                
+            } catch (Exception e) {
+                System.err.println("Error adding message: " + e.getMessage());
+                e.printStackTrace();
+            }
+        });
+    }
 
     /**
-     * Get the log area for a specific message type
+     * Scroll the table to show the latest row
      */
-    private JTextArea getLogAreaForType(String type) {
-        switch (type) {
-            case "RECV":
-                return (JTextArea) ((JScrollPane) receivedMessagesTable.getParent().getParent()).getViewport().getView();
-            case "SEND":
-                return (JTextArea) ((JScrollPane) sentMessagesTable.getParent().getParent()).getViewport().getView();
-            case "HEART":
-                return (JTextArea) ((JScrollPane) heartbeatMessagesTable.getParent().getParent()).getViewport().getView();
-            default:
-                return (JTextArea) ((JScrollPane) allMessagesTable.getParent().getParent()).getViewport().getView();
-        }
+    private void scrollToBottom(JTable table) {
+        SwingUtilities.invokeLater(() -> {
+            if (table.getRowCount() > 0) {
+                int lastRow = table.getRowCount() - 1;
+                table.scrollRectToVisible(table.getCellRect(lastRow, 0, true));
+            }
+        });
     }
 
     /**
@@ -390,6 +443,47 @@ public class RadarDebugUI extends JFrame {
             clearTable(sentMessagesTable);
             clearTable(heartbeatMessagesTable);
         });
+    }
+
+    /**
+     * Toggle whether to show or hide heartbeat messages
+     * 
+     * @param hideHeartbeat whether to hide heartbeat messages
+     */
+    private void toggleHeartbeatMessages(boolean hideHeartbeat) {
+        // Save the current selection
+        this.hideHeartbeatMessages = hideHeartbeat;
+        
+        // Refilter all message tables
+        filterMessages(allMessagesTable);
+        filterMessages(receivedMessagesTable);
+        filterMessages(sentMessagesTable);
+    }
+
+    /**
+     * Filter messages in a table based on hideHeartbeatMessages setting
+     * 
+     * @param table the table to filter
+     */
+    private void filterMessages(JTable table) {
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        javax.swing.table.TableRowSorter<DefaultTableModel> sorter = new javax.swing.table.TableRowSorter<>(model);
+        table.setRowSorter(sorter);
+        
+        if (hideHeartbeatMessages) {
+            // Create filter to exclude rows with "HEART" type
+            javax.swing.RowFilter<DefaultTableModel, Integer> filter = new javax.swing.RowFilter<DefaultTableModel, Integer>() {
+                @Override
+                public boolean include(Entry<? extends DefaultTableModel, ? extends Integer> entry) {
+                    String type = (String) entry.getValue(1); // Type column index is 1
+                    return !"HEART".equals(type);
+                }
+            };
+            sorter.setRowFilter(filter);
+        } else {
+            // Clear filter to show all rows
+            sorter.setRowFilter(null);
+        }
     }
 
     /**
@@ -407,6 +501,12 @@ public class RadarDebugUI extends JFrame {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Select Configuration File");
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        
+        // Set filter for JSON files
+        javax.swing.filechooser.FileFilter jsonFilter = new javax.swing.filechooser.FileNameExtensionFilter(
+            "JSON Files (*.json)", "json");
+        fileChooser.addChoosableFileFilter(jsonFilter);
+        fileChooser.setFileFilter(jsonFilter);
 
         int result = fileChooser.showOpenDialog(this);
         if (result == JFileChooser.APPROVE_OPTION) {
@@ -421,6 +521,9 @@ public class RadarDebugUI extends JFrame {
                 JOptionPane.showMessageDialog(this,
                     "Failed to load configuration file",
                     "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                // Add log message
+                addMessage("INFO", "System", "Configuration loaded: " + selectedFile.getName());
             }
         }
     }
@@ -437,11 +540,37 @@ public class RadarDebugUI extends JFrame {
             return;
         }
 
+        // Confirm sending configuration
+        int confirm = JOptionPane.showConfirmDialog(this,
+            "Send configuration to device " + selectedDeviceId + "?",
+            "Confirm Configuration", JOptionPane.YES_NO_OPTION);
+            
+        if (confirm != JOptionPane.YES_OPTION) {
+            return;
+        }
+
+        // Add log message
+        addMessage("INFO", "System", "Sending configuration to " + selectedDeviceId + "...");
+        
         boolean sent = controller.sendConfiguration(selectedDeviceId);
         if (!sent) {
             JOptionPane.showMessageDialog(this,
-                "Failed to send configuration",
+                "Failed to send configuration to " + selectedDeviceId,
                 "Error", JOptionPane.ERROR_MESSAGE);
+            addMessage("ERROR", "System", "Failed to send configuration to " + selectedDeviceId);
+        } else {
+            addMessage("INFO", "System", "Configuration sent successfully to " + selectedDeviceId);
+            
+            // Refresh properties after configuration is sent
+            SwingUtilities.invokeLater(() -> {
+                try {
+                    // Give some time for the device to process the configuration
+                    Thread.sleep(500);
+                    updateSelectedDeviceProperties();
+                } catch (InterruptedException ex) {
+                    Thread.currentThread().interrupt();
+                }
+            });
         }
     }
 
@@ -467,11 +596,24 @@ public class RadarDebugUI extends JFrame {
             return;
         }
 
+        // Confirm disconnection
+        int confirm = JOptionPane.showConfirmDialog(this,
+            "Disconnect device " + selectedDeviceId + "?",
+            "Confirm Disconnection", JOptionPane.YES_NO_OPTION);
+            
+        if (confirm != JOptionPane.YES_OPTION) {
+            return;
+        }
+
+        // Add log message
+        addMessage("INFO", "System", "Disconnecting " + selectedDeviceId + "...");
+        
         boolean disconnected = controller.disconnectDevice(selectedDeviceId);
         if (!disconnected) {
             JOptionPane.showMessageDialog(this,
-                "Failed to disconnect device",
+                "Failed to disconnect device " + selectedDeviceId,
                 "Error", JOptionPane.ERROR_MESSAGE);
+            addMessage("ERROR", "System", "Failed to disconnect " + selectedDeviceId);
         }
     }
 
@@ -499,12 +641,15 @@ public class RadarDebugUI extends JFrame {
             // Unregister from event bus
             EventBus.getInstance().unregister(controller);
 
+            // Clean up any cached properties
+            ProItemsHandler.clearCachedProperties(null); // Clear all
+
             // Dispose the window
             dispose();
         }
     }
 
-	    /**
+    /**
      * Main method to start the UI
      */
     public static void main(String[] args) {
@@ -518,6 +663,4 @@ public class RadarDebugUI extends JFrame {
         // Start UI on EDT
         SwingUtilities.invokeLater(() -> new RadarDebugUI());
     }
-
-
 }
