@@ -46,8 +46,18 @@ New-Item -Path "src/main/java/com/qinglan/example/device_point/ui/ConfigurationM
 New-Item -Path "src/main/java/com/qinglan/example/device_point/ui/resources" -ItemType Directory -Force
 New-Item -Path "src/main/java/com/qinglan/example/device_point/ui/resources/default-config.json" -ItemType File -Force
 
-mvn clean install
+mvn clean install -e
 java "-Djava.awt.headless=false" -jar target/device_point-0.0.1-SNAPSHOT.jar --ui
 
 ===20250301 00:35
 v0.1  完成debugUI,设备注册、接收心跳
+
+
+===20250302
+message CommonMessage   与  CommonMessage方法是两个独立的，只是名字一样；
+message CommonMessage {
+uint32 seq = 1; //包序列号  这个序列号即是type值
+
+v0.2 实现了设备属性设置，设备返回设置状态， 查询设备属性
+
+

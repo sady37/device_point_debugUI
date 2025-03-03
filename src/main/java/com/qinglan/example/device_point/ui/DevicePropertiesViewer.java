@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 /**
  * UI component for viewing and editing device properties
  */
-public class DevicePropertiesViewer extends JPanel {
+public class DevicePropertiesViewer extends JPanel implements EventBus.EventListener {
     private static final Logger logger = Logger.getLogger(DevicePropertiesViewer.class.getName());
     
     // UI Components
@@ -29,6 +29,11 @@ public class DevicePropertiesViewer extends JPanel {
     
     // Current device ID being viewed
     private String currentDeviceId;
+    
+    // 记录当前正在处理的属性编辑请求
+    private String pendingPropertyKey;
+    private String pendingPropertyValue;
+    private int pendingPropertyRow = -1;
     
     /**
      * Constructor
@@ -72,6 +77,53 @@ public class DevicePropertiesViewer extends JPanel {
         buttonPanel.add(statusLabel);
         
         add(buttonPanel, BorderLayout.SOUTH);
+        
+        // 注册监听事件总线
+        EventBus.getInstance().register(EventBus.EventType.MESSAGE_RECEIVED, this);
+    }
+    
+    /**
+     * 处理从EventBus接收的事件
+     */
+    @Override
+    public void onEvent(EventBus.Event event) {
+        // 只处理消息接收事件
+        if (event.getType() != EventBus.EventType.MESSAGE_RECEIVED) {
+            return;
+        }
+        
+        String deviceId = event.getStringData("deviceId");
+        String messageType = event.getStringData("messageType");
+        String message = event.getStringData("message");
+        
+        // 只处理当前设备的属性设置响应消息
+        if (deviceId != null && deviceId.equals(currentDeviceId) && 
+            "RECV".equals(messageType) && message != null && 
+            message.contains("Property Setting") && 
+            pendingPropertyKey != null && pendingPropertyRow >= 0) {
+            
+            SwingUtilities.invokeLater(() -> {
+                // 检查消息是否表示成功
+                boolean success = message.contains("Successful");
+                
+                if (success) {
+                    // 更新表格中的值
+                    propertiesTableModel.setValueAt(pendingPropertyValue, pendingPropertyRow, 1);
+                    statusLabel.setText("Property " + pendingPropertyKey + " updated successfully");
+                } else {
+                    statusLabel.setText("Failed to update property " + pendingPropertyKey);
+                }
+                
+                // 清除待处理状态
+                pendingPropertyKey = null;
+                pendingPropertyValue = null;
+                pendingPropertyRow = -1;
+                
+                // 重新启用按钮
+                refreshButton.setEnabled(true);
+                editButton.setEnabled(true);
+            });
+        }
     }
     
     /**
@@ -223,6 +275,11 @@ public class DevicePropertiesViewer extends JPanel {
         String newValue = showEditPropertyDialog(key, currentValue, description);
         
         if (newValue != null && !newValue.equals(currentValue)) {
+            // 保存当前的编辑请求
+            pendingPropertyKey = key;
+            pendingPropertyValue = newValue;
+            pendingPropertyRow = selectedRow;
+            
             // Update status
             statusLabel.setText("Setting property " + key + " on " + currentDeviceId + "...");
             
@@ -230,25 +287,31 @@ public class DevicePropertiesViewer extends JPanel {
             refreshButton.setEnabled(false);
             editButton.setEnabled(false);
             
-            // Run update in background
+            // 使用异步方式发送属性设置请求
             CompletableFuture.runAsync(() -> {
                 try {
-                    boolean success = SetPropHandler.setDeviceProperty(currentDeviceId, key, newValue);
+                    // 使用修改后的SetPropHandler发送属性设置请求
+                    boolean sent = SetPropHandler.setProperty(currentDeviceId, key, newValue);
                     
-                    // Update UI on EDT
-                    SwingUtilities.invokeLater(() -> {
-                        if (success) {
-                            // Update table if successful
-                            propertiesTableModel.setValueAt(newValue, selectedRow, 1);
-                            statusLabel.setText("Property " + key + " updated successfully");
-                        } else {
-                            statusLabel.setText("Failed to update property " + key);
-                        }
-                        
-                        // Re-enable buttons
-                        refreshButton.setEnabled(true);
-                        editButton.setEnabled(true);
-                    });
+                    if (!sent) {
+                        // 如果发送失败，更新UI
+                        SwingUtilities.invokeLater(() -> {
+                            statusLabel.setText("Failed to send property update request: " + key);
+                            
+                            // 清除待处理状态
+                            pendingPropertyKey = null;
+                            pendingPropertyValue = null;
+                            pendingPropertyRow = -1;
+                            
+                            // 重新启用按钮
+                            refreshButton.setEnabled(true);
+                            editButton.setEnabled(true);
+                        });
+                    } else {
+                        // 发送成功，等待设备响应(响应将通过onEvent方法处理)
+                        // 启动超时计时器
+                        startResponseTimeout();
+                    }
                 } catch (Exception ex) {
                     logger.log(Level.SEVERE, "Error setting property", ex);
                     
@@ -256,13 +319,48 @@ public class DevicePropertiesViewer extends JPanel {
                     SwingUtilities.invokeLater(() -> {
                         statusLabel.setText("Error: " + ex.getMessage());
                         
-                        // Re-enable buttons
+                        // 清除待处理状态
+                        pendingPropertyKey = null;
+                        pendingPropertyValue = null;
+                        pendingPropertyRow = -1;
+                        
+                        // 重新启用按钮
                         refreshButton.setEnabled(true);
                         editButton.setEnabled(true);
                     });
                 }
             });
         }
+    }
+    
+    /**
+     * 启动响应超时计时器
+     * 如果在指定时间内没有收到设备响应，则恢复UI状态
+     */
+    private void startResponseTimeout() {
+        Timer timer = new Timer(5000, e -> {
+            // 只有在还有待处理的请求时才处理超时
+            if (pendingPropertyKey != null) {
+                logger.log(Level.WARNING, "Property set response timeout: " + pendingPropertyKey);
+                
+                SwingUtilities.invokeLater(() -> {
+                    statusLabel.setText("Timeout waiting for response on property: " + pendingPropertyKey);
+                    
+                    // 清除待处理状态
+                    pendingPropertyKey = null;
+                    pendingPropertyValue = null;
+                    pendingPropertyRow = -1;
+                    
+                    // 重新启用按钮
+                    refreshButton.setEnabled(true);
+                    editButton.setEnabled(true);
+                });
+            }
+        });
+        
+        // 设置为只执行一次
+        timer.setRepeats(false);
+        timer.start();
     }
     
     /**
@@ -447,5 +545,13 @@ public class DevicePropertiesViewer extends JPanel {
             default:
                 return "";
         }
+    }
+    
+    /**
+     * 清理资源，在组件被移除前调用
+     */
+    public void cleanup() {
+        // 取消注册事件监听
+        EventBus.getInstance().unregister(this);
     }
 }
