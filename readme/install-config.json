@@ -1,12 +1,40 @@
 {
 	"properties": {
-	  "radar_func_ctrl": "7",
-	  "radar_install_style": "1",
-	  "radar_install_heght": "16",
-	  "rectangle": "-21, 0; 18, 0; -21, 40; -18, 40",
-	  "declare_area": "1, 4, -5, 35; 5, 35; -5, 40; 5, 40",
-	  "declare_area2": "2, 2, 0, 0; 9, 0; 0, 12; 9, 12"
+	  "radar_func_ctrl": "15",
+	  "radar_install_style": "0",
+	  "radar_install_height": "25",
+	  "rectangle": "50,50,250,50,250,250,50,250",
+	  "declare_area": "0,1,100,100,150,100,150,150,100,150",
+	  "declare_area_1": "1,2,200,100,250,100,250,150,200,150",
+	  "declare_area_2": "2,3,100,200,150,200,150,250,100,250",
+	  "fall_param": "AAAAAAAAAAAAAAAAAAAAAA==",
+	  "heart_breath_param": "BBBBBBBBBBBBBBBBBBBBBB==",
+	  "app_compile_time": "Apr 22 2024-14:36:29",
+	  "radar_compile_time": "Mar 18 2024 10:41:11",
+	  "accelera": "36.74:9.97:-38.52:1",
+	  "type": "TSL60G442",
+	  "sfver": "2.0",
+	  "radarsfver": "2.3",
+	  "mac": "AA:BB:CC:DD:EE:FF",
+	  "ip_port": "192.168.1.100:1060",
+	  "ssid_password": "WiFi_SSID:Password123"
+	},
+	"description": {
+	  "radar_func_ctrl": "工作模式 (3: 人数轨迹, 7: 跌倒检测, 11: 呼吸睡眠, 15: 全功能)",
+	  "radar_install_style": "安装方式 (0: 顶装, 1: 侧装)",
+	  "radar_install_height": "安装高度 (单位为分米, 范围: 15-33)",
+	  "rectangle": "检测边界 (格式: x1,y1,x2,y2,x3,y3,x4,y4 单位为分米)",
+	  "declare_area": "区域设置 (格式: 区域ID,区域类型,x1,y1,x2,y2,x3,y3,x4,y4)",
+	  "fall_param": "跌倒检测参数 (16字节数组, BASE64编码)",
+	  "heart_breath_param": "呼吸心率参数 (16字节数组, BASE64编码)",
+	  "app_compile_time": "通讯固件编译时间",
+	  "radar_compile_time": "雷达固件编译时间",
+	  "accelera": "雷达倾角 (格式: x:y:z:校准标志)",
+	  "type": "设备类型 (TSL60G442为Wi-Fi版, TSL60G4G为4G版)",
+	  "sfver": "主控版本 (2.0为HC2设备, 2.6为TK2设备)",
+	  "radarsfver": "雷达版本 (1.0或2.3)",
+	  "mac": "设备MAC地址",
+	  "ip_port": "平台地址 (格式: 服务器地址:端口)",
+	  "ssid_password": "WiFi信息 (格式: SSID:密码)"
 	}
   }
-
-  
